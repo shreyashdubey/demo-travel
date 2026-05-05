@@ -24,27 +24,27 @@ type SoundContextValue = {
 const SoundContext = createContext<SoundContextValue | null>(null);
 
 /**
- * Sound is synthesized in the browser via Web Audio API.
- * No external audio files = no broken CDN dependencies.
+ * Sound is synthesised entirely in the browser with the Web Audio API
+ * (no external audio files):
  *
- * - Wind: filtered pink noise + slow LFO modulation on the cutoff.
- * - River: brighter pink noise with high-pass.
- * - Bell: layered sine harmonics with exponential decay.
- * - Chime: short sine + 5th, soft envelope.
- * - Snow: tiny burst of high-passed white noise.
+ * - Hero ambient ("wind"): filtered pink noise + a slow bansuri-flute
+ *   melody in D pentatonic, played one note every ~6–8 seconds with
+ *   meditative pauses.
+ * - Journey ambient ("river"): higher-passed pink noise, no flute.
+ * - Cues: chime (two-tone), bell (harmonic stack), snow (noise puff).
  *
- * Browsers block AudioContext until a user gesture. We resume on the first
- * pointerdown/keydown so the user doesn't have to do anything explicit.
+ * Default is ON. The toggle in the top bar is the user's escape hatch
+ * and the choice persists in localStorage. Browsers block AudioContext
+ * until a user gesture, so we resume on the first pointerdown/keydown.
  */
 export function SoundProvider({ children }: { children: ReactNode }) {
   const [enabled, setEnabled] = useState(true);
   const ctxRef = useRef<AudioContext | null>(null);
   const masterRef = useRef<GainNode | null>(null);
-  const ambientNodesRef = useRef<{ gain: GainNode; stop: () => void } | null>(null);
+  const ambientNodesRef = useRef<{ stop: () => void } | null>(null);
   const desiredAmbient = useRef<Ambient>(null);
   const unlockedRef = useRef(false);
 
-  // Initialise context lazily on first need
   const ensureCtx = useCallback(() => {
     if (typeof window === "undefined") return null;
     if (!ctxRef.current) {
@@ -55,7 +55,7 @@ export function SoundProvider({ children }: { children: ReactNode }) {
       if (!Ctor) return null;
       const ctx = new Ctor();
       const master = ctx.createGain();
-      master.gain.value = 0.7;
+      master.gain.value = 0.55;
       master.connect(ctx.destination);
       ctxRef.current = ctx;
       masterRef.current = master;
@@ -63,7 +63,6 @@ export function SoundProvider({ children }: { children: ReactNode }) {
     return ctxRef.current;
   }, []);
 
-  // Read persisted preference
   useEffect(() => {
     try {
       const saved = localStorage.getItem("dh_sound");
@@ -72,49 +71,16 @@ export function SoundProvider({ children }: { children: ReactNode }) {
     } catch {}
   }, []);
 
-  // Persist whenever it changes
   useEffect(() => {
     try {
       localStorage.setItem("dh_sound", String(enabled));
     } catch {}
   }, [enabled]);
 
-  // Unlock audio on first user gesture
-  useEffect(() => {
-    const unlock = () => {
-      if (unlockedRef.current) return;
-      unlockedRef.current = true;
-      const ctx = ensureCtx();
-      if (!ctx) return;
-      if (ctx.state === "suspended") void ctx.resume();
-      // Replay the desired ambient if one was queued before unlock
-      if (enabled && desiredAmbient.current) {
-        startAmbient(desiredAmbient.current);
-      }
-    };
-    window.addEventListener("pointerdown", unlock, { once: true });
-    window.addEventListener("keydown", unlock, { once: true });
-    window.addEventListener("touchstart", unlock, { once: true, passive: true });
-    return () => {
-      window.removeEventListener("pointerdown", unlock);
-      window.removeEventListener("keydown", unlock);
-      window.removeEventListener("touchstart", unlock);
-    };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [enabled, ensureCtx]);
-
   const stopAmbient = useCallback(() => {
     const node = ambientNodesRef.current;
     if (!node) return;
-    const ctx = ctxRef.current;
-    if (ctx) {
-      node.gain.gain.cancelScheduledValues(ctx.currentTime);
-      node.gain.gain.setValueAtTime(node.gain.gain.value, ctx.currentTime);
-      node.gain.gain.linearRampToValueAtTime(0, ctx.currentTime + 0.6);
-      setTimeout(node.stop, 800);
-    } else {
-      node.stop();
-    }
+    node.stop();
     ambientNodesRef.current = null;
   }, []);
 
@@ -129,8 +95,9 @@ export function SoundProvider({ children }: { children: ReactNode }) {
       if (!ctx || !master) return;
       stopAmbient();
 
-      // ── 1. Wind/river bed: filtered pink noise with a slow LFO on the cutoff
       const sampleRate = ctx.sampleRate;
+
+      // ── Wind/river bed: filtered pink noise with a slow LFO on cutoff
       const length = sampleRate * 4;
       const buffer = ctx.createBuffer(1, length, sampleRate);
       const data = buffer.getChannelData(0);
@@ -169,22 +136,19 @@ export function SoundProvider({ children }: { children: ReactNode }) {
       filter.connect(noiseGain);
       noiseGain.connect(master);
       source.start();
-      const noiseTarget = kind === "wind" ? 0.14 : 0.12;
+      const noiseTarget = kind === "wind" ? 0.12 : 0.12;
       noiseGain.gain.linearRampToValueAtTime(noiseTarget, ctx.currentTime + 1.5);
 
-      // ── 2. Bansuri-flute melody (only over the 'wind' bed)
-      // A slow morning raga in D — pentatonic Bilawal-ish:
-      //   Sa  Re  Ga  Pa  Dha   (D5 E5 F#5 A5 B5)
-      const flutePhrase: number[] = [
-        587.33, 659.26, 739.99, 880, 987.77, 880, 739.99, 587.33, 493.88,
-      ];
+      // ── Bansuri-flute melody (only over the wind bed)
+      // D major pentatonic: D5 E5 F#5 A5 B5
+      const flutePhrase = [587.33, 659.26, 739.99, 880, 987.77, 880, 739.99, 587.33, 493.88];
       let phraseIdx = 0;
-      let fluteCancelled = false;
+      let cancelled = false;
       const fluteVoices: Array<() => void> = [];
+      let phraseTimer: ReturnType<typeof setTimeout> | null = null;
 
       const playFluteNote = (freq: number, duration: number) => {
         const t0 = ctx.currentTime;
-        // Two harmonics (sine + 2nd) gives a hollow, breathy bansuri-ish tone
         const fund = ctx.createOscillator();
         const second = ctx.createOscillator();
         fund.type = "sine";
@@ -192,7 +156,6 @@ export function SoundProvider({ children }: { children: ReactNode }) {
         fund.frequency.value = freq;
         second.frequency.value = freq * 2;
 
-        // Vibrato (~5 Hz, ±3 cents)
         const vibrato = ctx.createOscillator();
         const vibratoGain = ctx.createGain();
         vibrato.frequency.value = 4.5;
@@ -206,20 +169,19 @@ export function SoundProvider({ children }: { children: ReactNode }) {
         gFund.gain.value = 0;
         gSecond.gain.value = 0;
 
-        // Soft envelope: 0.6s attack, hold, 0.8s release
         const attack = 0.6;
         const release = 0.9;
         gFund.gain.setValueAtTime(0, t0);
-        gFund.gain.linearRampToValueAtTime(0.09, t0 + attack);
-        gFund.gain.linearRampToValueAtTime(0.075, t0 + duration - release);
+        gFund.gain.linearRampToValueAtTime(0.08, t0 + attack);
+        gFund.gain.linearRampToValueAtTime(0.06, t0 + duration - release);
         gFund.gain.exponentialRampToValueAtTime(0.0001, t0 + duration);
 
         gSecond.gain.setValueAtTime(0, t0);
-        gSecond.gain.linearRampToValueAtTime(0.025, t0 + attack);
-        gSecond.gain.linearRampToValueAtTime(0.018, t0 + duration - release);
+        gSecond.gain.linearRampToValueAtTime(0.022, t0 + attack);
+        gSecond.gain.linearRampToValueAtTime(0.015, t0 + duration - release);
         gSecond.gain.exponentialRampToValueAtTime(0.0001, t0 + duration);
 
-        // Breath: brief filtered noise burst at note start
+        // Brief breath at note start
         const breathBuf = ctx.createBuffer(1, sampleRate * 0.8, sampleRate);
         const bd = breathBuf.getChannelData(0);
         for (let i = 0; i < bd.length; i++) bd[i] = (Math.random() * 2 - 1) * 0.5;
@@ -231,7 +193,7 @@ export function SoundProvider({ children }: { children: ReactNode }) {
         breathFilter.Q.value = 4;
         const breathGain = ctx.createGain();
         breathGain.gain.setValueAtTime(0, t0);
-        breathGain.gain.linearRampToValueAtTime(0.025, t0 + 0.1);
+        breathGain.gain.linearRampToValueAtTime(0.022, t0 + 0.1);
         breathGain.gain.exponentialRampToValueAtTime(0.0001, t0 + 0.7);
 
         fund.connect(gFund);
@@ -251,7 +213,7 @@ export function SoundProvider({ children }: { children: ReactNode }) {
         vibrato.stop(t0 + duration + 0.1);
         breath.stop(t0 + 0.85);
 
-        const cleanup = () => {
+        fluteVoices.push(() => {
           try {
             fund.disconnect();
             second.disconnect();
@@ -263,47 +225,48 @@ export function SoundProvider({ children }: { children: ReactNode }) {
             breathFilter.disconnect();
             breathGain.disconnect();
           } catch {}
-        };
-        fluteVoices.push(cleanup);
+        });
       };
 
-      let phraseTimer: ReturnType<typeof setTimeout> | null = null;
       const stepPhrase = () => {
-        if (fluteCancelled) return;
+        if (cancelled) return;
         const freq = flutePhrase[phraseIdx % flutePhrase.length];
-        const dur = 4 + Math.random() * 2; // 4–6s notes
+        const dur = 4 + Math.random() * 2;
         playFluteNote(freq, dur);
         phraseIdx += 1;
-        // Pause between notes — sometimes longer to feel meditative
         const gap = phraseIdx % flutePhrase.length === 0 ? 7 : 3 + Math.random() * 1.5;
         phraseTimer = setTimeout(stepPhrase, (dur * 0.7 + gap) * 1000);
       };
-
       if (kind === "wind") {
-        // Start the first note shortly after the wind fades in
-        phraseTimer = setTimeout(stepPhrase, 2000);
+        phraseTimer = setTimeout(stepPhrase, 2500);
       }
 
       const stop = () => {
-        fluteCancelled = true;
+        cancelled = true;
         if (phraseTimer) clearTimeout(phraseTimer);
         try {
-          source.stop();
+          noiseGain.gain.cancelScheduledValues(ctx.currentTime);
+          noiseGain.gain.setValueAtTime(noiseGain.gain.value, ctx.currentTime);
+          noiseGain.gain.linearRampToValueAtTime(0, ctx.currentTime + 0.6);
         } catch {}
-        try {
-          lfo.stop();
-        } catch {}
-        try {
-          source.disconnect();
-          filter.disconnect();
-          lfo.disconnect();
-          lfoGain.disconnect();
-          noiseGain.disconnect();
-        } catch {}
-        // Cleanup any in-flight flute voices in ~2s
-        setTimeout(() => fluteVoices.forEach((c) => c()), 2000);
+        setTimeout(() => {
+          try {
+            source.stop();
+          } catch {}
+          try {
+            lfo.stop();
+          } catch {}
+          try {
+            source.disconnect();
+            filter.disconnect();
+            lfo.disconnect();
+            lfoGain.disconnect();
+            noiseGain.disconnect();
+          } catch {}
+          fluteVoices.forEach((c) => c());
+        }, 800);
       };
-      ambientNodesRef.current = { gain: noiseGain, stop };
+      ambientNodesRef.current = { stop };
     },
     [ensureCtx, stopAmbient],
   );
@@ -317,7 +280,26 @@ export function SoundProvider({ children }: { children: ReactNode }) {
     [enabled, startAmbient],
   );
 
-  // When enabled flips, start or stop the desired ambient
+  // Unlock on first user gesture
+  useEffect(() => {
+    const unlock = () => {
+      if (unlockedRef.current) return;
+      unlockedRef.current = true;
+      const ctx = ensureCtx();
+      if (ctx?.state === "suspended") void ctx.resume();
+      if (enabled && desiredAmbient.current) startAmbient(desiredAmbient.current);
+    };
+    window.addEventListener("pointerdown", unlock, { once: true });
+    window.addEventListener("keydown", unlock, { once: true });
+    window.addEventListener("touchstart", unlock, { once: true, passive: true });
+    return () => {
+      window.removeEventListener("pointerdown", unlock);
+      window.removeEventListener("keydown", unlock);
+      window.removeEventListener("touchstart", unlock);
+    };
+  }, [enabled, ensureCtx, startAmbient]);
+
+  // React to enable/disable changes
   useEffect(() => {
     if (!enabled) {
       stopAmbient();
@@ -335,13 +317,10 @@ export function SoundProvider({ children }: { children: ReactNode }) {
       const master = masterRef.current;
       if (!ctx || !master) return;
       if (ctx.state === "suspended") void ctx.resume();
-
       const now = ctx.currentTime;
 
       if (cue === "chime") {
-        // Two-tone soft chime: A5 + E6
-        const freqs = [880, 1318.51];
-        freqs.forEach((f, i) => {
+        [880, 1318.51].forEach((f, i) => {
           const o = ctx.createOscillator();
           const g = ctx.createGain();
           o.type = "sine";
@@ -350,18 +329,17 @@ export function SoundProvider({ children }: { children: ReactNode }) {
           g.connect(master);
           const t = now + i * 0.07;
           g.gain.setValueAtTime(0, t);
-          g.gain.linearRampToValueAtTime(0.18, t + 0.02);
+          g.gain.linearRampToValueAtTime(0.16, t + 0.02);
           g.gain.exponentialRampToValueAtTime(0.0001, t + 1.4);
           o.start(t);
           o.stop(t + 1.6);
         });
       } else if (cue === "bell") {
-        // Bell: fundamental + 2.76x harmonic + 5.4x harmonic, longer decay
-        const fundamental = 523.25; // C5
-        const partials = [
-          [1, 0.6, 2.4],
-          [2.76, 0.3, 1.6],
-          [5.4, 0.15, 1.0],
+        const fundamental = 523.25;
+        const partials: [number, number, number][] = [
+          [1, 0.45, 2.2],
+          [2.76, 0.22, 1.4],
+          [5.4, 0.1, 0.9],
         ];
         partials.forEach(([mult, amp, dur]) => {
           const o = ctx.createOscillator();
@@ -377,11 +355,9 @@ export function SoundProvider({ children }: { children: ReactNode }) {
           o.stop(now + dur + 0.1);
         });
       } else if (cue === "snow") {
-        // Tiny puff of high-passed noise
-        const bufferSize = ctx.sampleRate * 0.3;
-        const buffer = ctx.createBuffer(1, bufferSize, ctx.sampleRate);
-        const data = buffer.getChannelData(0);
-        for (let i = 0; i < bufferSize; i++) data[i] = (Math.random() * 2 - 1) * 0.5;
+        const buffer = ctx.createBuffer(1, ctx.sampleRate * 0.3, ctx.sampleRate);
+        const d = buffer.getChannelData(0);
+        for (let i = 0; i < d.length; i++) d[i] = (Math.random() * 2 - 1) * 0.5;
         const src = ctx.createBufferSource();
         src.buffer = buffer;
         const f = ctx.createBiquadFilter();
@@ -389,7 +365,7 @@ export function SoundProvider({ children }: { children: ReactNode }) {
         f.frequency.value = 2500;
         const g = ctx.createGain();
         g.gain.setValueAtTime(0, now);
-        g.gain.linearRampToValueAtTime(0.2, now + 0.02);
+        g.gain.linearRampToValueAtTime(0.18, now + 0.02);
         g.gain.exponentialRampToValueAtTime(0.0001, now + 0.3);
         src.connect(f);
         f.connect(g);
@@ -401,9 +377,7 @@ export function SoundProvider({ children }: { children: ReactNode }) {
     [enabled, ensureCtx],
   );
 
-  const toggle = useCallback(() => {
-    setEnabled((v) => !v);
-  }, []);
+  const toggle = useCallback(() => setEnabled((v) => !v), []);
 
   const value = useMemo<SoundContextValue>(
     () => ({ enabled, toggle, play, setAmbient }),

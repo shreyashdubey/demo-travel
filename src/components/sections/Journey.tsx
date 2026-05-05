@@ -8,7 +8,7 @@ import {
   useMotionValueEvent,
   type MotionValue,
 } from "framer-motion";
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { spitiJourney, packages, type JourneyDay } from "@/data/content";
 import { useSound } from "@/components/providers/SoundProvider";
 
@@ -60,8 +60,6 @@ export function Journey({ selected }: { selected: string | null }) {
 
   return (
     <section ref={ref} id="journey" className="relative bg-snow">
-      <BackdropLayer phase={phase} scrollYProgress={scrollYProgress} />
-
       {/* Sticky top map */}
       <div className="sticky top-0 z-30 h-[80px] w-full">
         <RouteMap days={days} progress={lineProgress} currentIdx={currentIdx} />
@@ -83,62 +81,6 @@ export function Journey({ selected }: { selected: string | null }) {
       {/* Reveal panel */}
       <PriceReveal pack={pack} />
     </section>
-  );
-}
-
-function BackdropLayer({
-  phase,
-  scrollYProgress,
-}: {
-  phase: JourneyDay["phase"];
-  scrollYProgress: MotionValue<number>;
-}) {
-  const c = PHASE_COLORS[phase];
-  // Fade in when journey enters viewport, fade out when leaving — avoids
-  // sticky-in-absolute layout cost and any persistent paint past the section.
-  const opacity = useTransform(scrollYProgress, [0, 0.04, 0.96, 1], [0, 0.85, 0.85, 0]);
-  return (
-    <motion.div
-      aria-hidden
-      style={{
-        opacity,
-        background: `linear-gradient(180deg, ${c.from} 0%, ${c.to} 100%)`,
-      }}
-      className="pointer-events-none fixed inset-0 z-0 transition-colors duration-1000 ease-soft"
-    >
-      {phase === "night" && <Stars />}
-    </motion.div>
-  );
-}
-
-function Stars() {
-  const stars = useMemo(
-    () =>
-      Array.from({ length: 40 }, (_, i) => ({
-        x: (i * 37) % 100,
-        y: (i * 23) % 100,
-        s: 0.6 + ((i * 13) % 7) / 10,
-        d: (i % 7) * 0.4,
-      })),
-    [],
-  );
-  return (
-    <div className="absolute inset-0">
-      {stars.map((s, i) => (
-        <span
-          key={i}
-          className="absolute block rounded-full bg-white"
-          style={{
-            left: `${s.x}%`,
-            top: `${s.y}%`,
-            width: s.s * 2,
-            height: s.s * 2,
-            opacity: 0.55 + (i % 4) * 0.1,
-            animation: `ember 3s ease-in-out ${s.d}s infinite`,
-          }}
-        />
-      ))}
-    </div>
   );
 }
 

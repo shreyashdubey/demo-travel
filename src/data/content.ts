@@ -282,8 +282,7 @@ export const spitiJourney: JourneyDay[] = [
         time: "18:00",
         title: "Arrive Kaza",
         detail: "Spiti's tiny administrative town. Thinner air. You may feel a small headache — drink water, walk slow.",
-        image:
-          "https://images.unsplash.com/photo-1626885930974-4b69aa21bbf9?auto=format&fit=crop&w=900&q=80",
+        image: "/img/places/key-monastery.jpg",
       },
       {
         time: "21:00",
