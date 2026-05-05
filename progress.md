@@ -70,14 +70,15 @@ Legend: `[ ]` not started · `[~]` in progress · `[x]` done
 - [x] Lazy-mounted via `next/dynamic` and unmounted when off-screen
 - [~] **Disabled in `page.tsx`** per request — to be brought back when the
       3D treatment feels ready
-- [x] **Sound is fully synthesised** in the browser (Web Audio API):
-  - Hero ambient: filtered pink noise + a slow bansuri-flute melody
-    in D pentatonic (Sa Re Ga Pa Dha)
-  - Journey ambient: higher-passed pink noise (river)
-  - Cues: chime (two-tone), bell (harmonic stack), snow (noise puff)
-  - On by default; persists user toggle in `localStorage`
-  - Audio context unlocks on first pointerdown/keydown to satisfy
-    autoplay policies
+- [x] **Sound is short UI cues only** (Web Audio API):
+  - chime: two-tone soft chime, on package select / day change
+  - bell: harmonic-stack bell, on the primary CTA
+  - snow: high-passed noise puff
+  - On by default; persists user toggle in `localStorage` (`dh_sound_v3`)
+  - Audio context unlocks on first pointerdown/keydown
+  - Drone/flute layers were prototyped (`d44741b`) but the synthesised
+    bansuri tone wasn't melodious enough. Removed in `eb2c8ab` — if
+    we want ambience back, ship a real-instrument recording.
 
 ## Phase 8 — Polish & post-launch fixes
 - [x] Mobile responsive (375 → 1920 grids verified)
@@ -119,6 +120,7 @@ Legend: `[ ]` not started · `[~]` in progress · `[x]` done
 | 15 | `d44741b` | feat(sound): bansuri-flute over wind ambient + fix Chandratal photos |
 | 16 | `9758612` | fix: remove journey backdrop tint, fix Arrive Kaza photo, restore sound |
 | 17 | `c791df0` | fix: remove journey day-by-day fade + sound silence root causes |
+| 18 | `eb2c8ab` | fix: replace Spiti construction photo + remove the synth flute drone |
 
 ---
 
@@ -141,10 +143,11 @@ Legend: `[ ]` not started · `[~]` in progress · `[x]` done
 - **Wikimedia rate limits**: do not point `next/image` at
   `upload.wikimedia.org` directly — Wikimedia 429s the proxy aggressively.
   Always self-host Wikimedia photos.
-- **Sound**: all synthesised in-browser via Web Audio API. No external
-  audio files = no broken CDN dependencies. The flute uses two sine
-  harmonics + 4.5 Hz vibrato + a brief band-pass noise burst at the
-  attack to mimic the breath of a bansuri.
+- **Sound**: synthesised in-browser via Web Audio API. Currently
+  ships only short UI cues — the synth ambient/flute was prototyped
+  and pulled because it wasn't melodious enough. If we want a wind +
+  bansuri bed back, ship a small recorded loop in `public/audio/`
+  rather than synthesising it.
 - **No backend yet**. The booking form generates a reference locally and
   console-logs the payload. Wire to a backend / WhatsApp Business / email
   before launch.

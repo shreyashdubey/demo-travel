@@ -56,26 +56,19 @@ Inspired by Apple's product storytelling × Aman resorts × Kinfolk magazine × 
 
 ### Sound
 
-- **On by default.** A persistent `🔊` toggle in top-right disables it for the
-  session and the choice persists in `localStorage` (key `dh_sound_v3`).
-- The browser's autoplay policy still requires a user gesture; the audio
-  context is unlocked automatically on the first `pointerdown`/`keydown`/
-  `touchstart`, after which the bed and flute fade in.
-- **All audio is synthesised in-browser via the Web Audio API.** No external
-  audio files, no broken CDN dependencies.
-  - **Wind bed** — filtered pink noise (4-second loop) with a slow LFO on
-    the cutoff frequency for organic motion.
-  - **Bansuri flute** — a slow morning melody in D major pentatonic
-    (`D5 E5 F#5 A5 B5` and back). Each note is a sine fundamental + sine
-    2nd-harmonic with 4.5 Hz vibrato and a brief band-pass noise burst at
-    the attack to mimic a player's breath. Notes hold for 4–6 seconds, with
-    longer pauses at the end of each phrase for a meditative pace.
-  - **Cues** — *chime* (two-tone soft chime, used on package select and
-    day change), *bell* (harmonic-stack bell with longer decay, used on
-    the primary CTA), *snow* (high-passed noise puff).
-- The single ambient bed plays for the whole page — earlier iterations
-  switched to a "river" bed inside the journey but that was killing the
-  flute, so it was removed.
+- **On by default.** A persistent `🔊` toggle in the top bar mutes for
+  the session; the choice persists in `localStorage` (key `dh_sound_v3`).
+- The browser's autoplay policy requires a user gesture; the audio
+  context is unlocked automatically on the first
+  `pointerdown`/`keydown`/`touchstart`.
+- **Cues only** — synthesised in-browser via the Web Audio API:
+  - *chime* (two-tone soft chime) — on package select and day change
+  - *bell* (harmonic-stack bell, longer decay) — on the primary CTA
+  - *snow* (high-passed noise puff) — on micro-interactions
+- A wind + bansuri-flute ambient bed was prototyped in commit `d44741b`
+  and removed in `eb2c8ab` — synthesised flute didn't read as melodious
+  enough. If we want ambience back later, ship a recorded loop in
+  `public/audio/` rather than synthesising it.
 
 ---
 
