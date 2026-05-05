@@ -174,25 +174,33 @@ On submit: a soft confetti of pine needles and snowflakes, plus a generated *Boo
 
 ## 4. Tech architecture
 
-| Layer | Choice | Why |
-|---|---|---|
-| Framework | **Next.js 14 App Router, TypeScript** | RSC, image optimization, route handlers for booking |
-| Styling | **Tailwind CSS** + CSS variables for tokens | Speed without losing custom feel |
-| Animation | **Framer Motion** + **GSAP ScrollTrigger** | Springs for UI, scroll choreography for the journey |
-| 3D | **react-three-fiber** + **drei** | Mountain hero, package map elevation |
-| Smooth scroll | **Lenis** | Buttery scroll feel |
-| Sound | **Howler.js** | Cross-browser, fades, mute persistence |
-| Forms | **react-hook-form** + **zod** | Type-safe validation, animated steps |
-| Images | `next/image` + Unsplash curated set | Real Himachal photography (CC0) |
-| Fonts | `next/font` self-hosted Fraunces + Inter | Zero CLS |
-| Analytics | none for now (privacy) | Saroj is private |
-| Deploy | Vercel-ready | One-click |
+| Layer | Choice | Pinned to | Why |
+|---|---|---|---|
+| Framework | **Next.js 14 App Router, TypeScript** | `next@14.2.15` · `react@18` | RSC, image optimization, route handlers for booking |
+| Styling | **Tailwind CSS** + CSS variables for tokens | `tailwindcss@3.4` | Speed without losing custom feel |
+| Animation | **Framer Motion** | `^11.11.17` ⚠️ not v12 | v12 introduced strict WAAPI offset validation that bit us with `Offsets must be monotonically non-decreasing` |
+| 3D | **react-three-fiber** + **drei** | `fiber@^8.18` · `drei@^9.122` ⚠️ | The `npm i` default is `fiber@9` / `drei@10`, which require **React 19**. Pin until we move to Next 15 / React 19. Symptom otherwise: `Cannot read properties of undefined (reading 'S')` at the R3F reconciler. |
+| Smooth scroll | **Lenis** | `^1.3` | Buttery scroll feel; honors `prefers-reduced-motion` |
+| Sound | **Howler.js** | `^2.2` | Cross-browser, fades, mute persistence |
+| Forms | **react-hook-form** + **zod** | `^7.75` / `^4.4` | Type-safe validation, animated steps |
+| Images | `next/image` + Unsplash curated set | — | Replace with the agency's own photography for launch |
+| Fonts | `next/font/google` Fraunces + Inter + JetBrains Mono | — | Zero CLS, self-hosted at build time |
+| Error boundary | Top-level class component in `src/components/ErrorBoundary.tsx` | — | Surfaces silent runtime crashes with a friendly fallback instead of a blank tab |
+| Analytics | none for now (privacy) | — | Saroj is private |
+| Deploy | Vercel-ready | — | One-click |
 
 ### Performance budget
 - LCP < 2.0s on 4G
 - Lighthouse > 90 on mobile
 - All animations via `transform` / `opacity` only
-- 3D scene lazy-mounted after hero in view
+- 3D scene lazy-mounted *and* unmounted on `IntersectionObserver`. The WebGL
+  context is freed the moment the section leaves the viewport — no idle
+  GPU work behind the rest of the page.
+- Snow particles capped at 28; journey stars at 40. Both are CSS keyframe
+  animations, no per-frame JS.
+- The journey's tinted backdrop is a single fixed `motion.div` whose
+  opacity is tied to journey scroll progress (cleaner than sticky-in-absolute
+  and avoids the `position: sticky` paint storm).
 
 ### Accessibility
 - All images have alt text written *editorially*
