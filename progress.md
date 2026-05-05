@@ -42,6 +42,13 @@ Legend: `[ ]` not started · `[~]` in progress · `[x]` done
 - [x] **Removed**: the full-viewport tinted backdrop. Reads cleaner
       without the constant overlay; the DayCard's phase-coloured
       header carries the dawn → night feel on its own.
+- [x] **Removed**: per-DaySection opacity transform (was driving the
+      page from 0.4 → 1 → 0.5 between day sections, which the user
+      perceived as a "tint covering the whole screen"). Sections now
+      stay at full opacity throughout.
+- [x] **Removed**: Journey's `setAmbient("river")` override that was
+      killing the Hero's flute. The wind+flute bed now persists for
+      the whole page.
 
 ## Phase 5 — Food, Culture, About
 - [x] Food spread — every dish has a real Pahari/Himachali photo
@@ -111,6 +118,7 @@ Legend: `[ ]` not started · `[~]` in progress · `[x]` done
 | 14 | `c1e6a26` | fix: rewrite Saroj's bio (she/her, Bhuntar), real Pahari food photos, sound on by default |
 | 15 | `d44741b` | feat(sound): bansuri-flute over wind ambient + fix Chandratal photos |
 | 16 | `9758612` | fix: remove journey backdrop tint, fix Arrive Kaza photo, restore sound |
+| 17 | `c791df0` | fix: remove journey day-by-day fade + sound silence root causes |
 
 ---
 

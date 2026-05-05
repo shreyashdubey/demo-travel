@@ -44,7 +44,7 @@ export const destinations = [
     elevation: "3,800–4,500 m",
     bestMonths: "Jun–Sep · winter for the brave",
     body: "Lahaul-Spiti is moonscape Himalaya — Key Monastery clinging to a cliff, Chandratal cupping the sky, Hikkim posting letters from the world's highest post office.",
-    image: "https://images.unsplash.com/photo-1626885930974-4b69aa21bbf9?auto=format&fit=crop&w=1600&q=80",
+    image: "/img/places/spiti.jpg",
     color: "#2f4862",
   },
   {
@@ -190,7 +190,7 @@ export const packages = [
     pitch: "Manali → Kaza → Chandratal → Shimla. Monasteries, lakes, the world's highest post office.",
     priceFrom: 38900,
     cover:
-      "https://images.unsplash.com/photo-1626885930974-4b69aa21bbf9?auto=format&fit=crop&w=1600&q=80",
+      "/img/places/spiti.jpg",
     accent: "#C9A26A",
   },
 ] as const;
