@@ -18,8 +18,8 @@ export function AboutSaroj() {
               className="relative aspect-[4/5] overflow-hidden rounded-[3px] ring-1 ring-snow/10"
             >
               <Image
-                src="https://images.unsplash.com/photo-1552058544-f2b08422138a?auto=format&fit=crop&w=1200&q=80"
-                alt="Saroj Thakur"
+                src="https://images.unsplash.com/photo-1718801656896-96c723007f3d?auto=format&fit=crop&w=1200&q=80"
+                alt="Saroj Thakur — founder of Dhodhu Travels, on a Kullu hillside"
                 fill
                 sizes="(min-width: 1024px) 40vw, 100vw"
                 className="object-cover"
@@ -28,7 +28,7 @@ export function AboutSaroj() {
               <div className="absolute inset-x-0 bottom-0 p-5">
                 <p className="font-display text-[22px] tracking-tightest">Saroj Thakur</p>
                 <p className="mt-1 text-[12.5px] uppercase tracking-[0.22em] text-snow/65">
-                  Founder · Patlikuhl, Kullu
+                  Founder · Bhuntar, Kullu valley
                 </p>
               </div>
             </motion.div>
@@ -40,18 +40,18 @@ export function AboutSaroj() {
               Who runs this
             </p>
             <h2 className="font-display text-balance text-[40px] leading-[1.02] tracking-tightest sm:text-[58px] lg:text-[68px]">
-              Born to a valley.<br />
-              <span className="text-alpenglow">Trained by a city.</span><br />
-              Came home for good.
+              Born in Bhuntar.<br />
+              <span className="text-alpenglow">Walked every valley.</span><br />
+              Now she takes you home.
             </h2>
 
             <div className="mt-10 grid grid-cols-1 gap-y-7 sm:grid-cols-[80px_1fr] sm:gap-x-8">
               {[
-                ["1985", "Born in Patlikuhl, Kullu valley. Father a horticulturist, mother a weaver."],
-                ["2004", "Left for Delhi at 19 to study tourism. Worked nine years for big agencies."],
-                ["2014", "Came home for an apple harvest. Stayed."],
-                ["2017", "Started Dhodhu Travels with a single Innova and a phone full of friends."],
-                ["Today", "Eight drivers, eleven homestay families, no commission, no hurry."],
+                ["Born", "In Bhuntar — the small town in the Kullu valley where the airport sits and the Beas meets the Parvati."],
+                ["School", "Right here in the valley. Pine forests on the way to school, the river loud in monsoon."],
+                ["Tourism", "Studied hotel management and tourism — because she wanted to learn how to host people the way Pahari families already do, but at scale."],
+                ["2017", "Founded Dhodhu Travels with a single Innova and a notebook full of homestay friends."],
+                ["Today", "Eight drivers, eleven homestay families. In the off-season she travels — Ladakh, Bhutan, Nepal, Norway, Patagonia next — to bring back what the world is doing right."],
               ].map(([year, line]) => (
                 <motion.div
                   key={year}

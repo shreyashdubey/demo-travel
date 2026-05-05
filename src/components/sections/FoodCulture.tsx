@@ -65,7 +65,7 @@ export function FoodCulture() {
           <div className="lg:col-span-7">
             <div className="relative aspect-[16/10] overflow-hidden rounded-[3px]">
               <Image
-                src="https://images.unsplash.com/photo-1606298855672-3efb63017be8?auto=format&fit=crop&w=1600&q=80"
+                src="/img/places/kullu-dussehra-hero.jpg"
                 alt="Kullu Dussehra deota procession"
                 fill
                 sizes="(min-width: 1024px) 60vw, 100vw"

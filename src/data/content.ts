@@ -54,7 +54,7 @@ export const destinations = [
     elevation: "1,580 m",
     bestMonths: "Mar–Jun · Oct–Nov",
     body: "Parvati river noise, hummus everywhere, hash brownies (we don't), and treks to Kheerganga and Tosh that carry you deep.",
-    image: "https://images.unsplash.com/photo-1606298855672-3efb63017be8?auto=format&fit=crop&w=1600&q=80",
+    image: "/img/places/kasol-parvati.jpg",
     color: "#4a6b3e",
   },
   {
@@ -108,10 +108,10 @@ export const experiences = [
   },
   {
     slug: "lakes",
-    title: "Alpine lakes",
+    title: "Mountain lakes",
     sub: "Chandratal · Prashar · Dashir · Bhrigu",
-    body: "High-altitude mirrors. We carry hot tea up. You will not say a word for ten minutes.",
-    image: "https://images.unsplash.com/photo-1506197603052-3cc9c3a201bd?auto=format&fit=crop&w=1400&q=80",
+    body: "Quiet lakes high in the mountains. We carry hot tea up. You will not say a word for ten minutes.",
+    image: "/img/places/chandratal.jpg",
     icon: "lake",
   },
   {
@@ -119,7 +119,7 @@ export const experiences = [
     title: "Rivers",
     sub: "Beas · Parvati · Tirthan · Spiti",
     body: "Rafting, fly-fishing for trout, riverside dinners, glacier-melt dips.",
-    image: "https://images.unsplash.com/photo-1604152135912-04a022e23696?auto=format&fit=crop&w=1400&q=80",
+    image: "/img/places/beas.jpg",
     icon: "river",
   },
   {
@@ -135,23 +135,26 @@ export const experiences = [
     title: "Pahari food",
     sub: "Sidu · Madra · Babru · Dham · Aktori",
     body: "Steamed wheat breads, yogurt-rich curries, slow festival feasts on leaf platters.",
-    image: "https://images.unsplash.com/photo-1631452180519-c014fe946bc7?auto=format&fit=crop&w=1400&q=80",
+    image:
+      "/img/food/dham.jpg",
     icon: "food",
   },
   {
     slug: "culture",
     title: "Culture",
-    sub: "Kullu Dussehra · weavers · temples · deota processions",
-    body: "Travel with us during festival weeks. You'll see a Himachal that doesn't perform for you.",
-    image: "https://images.unsplash.com/photo-1606298855672-3efb63017be8?auto=format&fit=crop&w=1400&q=80",
+    sub: "Kullu Dussehra · weavers · temples · village deities",
+    body: "Travel with us during festival week and you'll see a Himachal that doesn't perform for you. It just lives.",
+    image:
+      "/img/places/dussehra-procession.jpg",
     icon: "culture",
   },
   {
     slug: "after-dark",
     title: "After dark",
-    sub: "Stargazing 4,200m · bonfire kathas · Manikaran hot springs",
-    body: "Skies so clear you can read by the Milky Way. Stories under blankets. Sulphur springs at midnight.",
-    image: "https://images.unsplash.com/photo-1535320903710-d993d3d77d29?auto=format&fit=crop&w=1400&q=80",
+    sub: "Stargazing · bonfire stories · Manikaran hot springs",
+    body: "Skies so clear you can read by the Milky Way. Stories around a fire. Sulphur springs at midnight.",
+    image:
+      "/img/places/starry-night.jpg",
     icon: "night",
   },
 ] as const;
@@ -232,8 +235,7 @@ export const spitiJourney: JourneyDay[] = [
         time: "10:00",
         title: "Check-in at Old Manali homestay",
         detail: "A wooden home with apple trees outside the window. Breakfast: aloo paratha, sweet curd, our own apple jam.",
-        image:
-          "https://images.unsplash.com/photo-1631452180519-c014fe946bc7?auto=format&fit=crop&w=900&q=80",
+        image: "/img/food/madra.jpg",
       },
       {
         time: "13:30",
@@ -245,7 +247,7 @@ export const spitiJourney: JourneyDay[] = [
         title: "Welcome dinner",
         detail: "Sidu (yeast-leavened wheat bread, ghee, walnut chutney), Madra, mountain trout if it's in season.",
         image:
-          "https://images.unsplash.com/photo-1606298855672-3efb63017be8?auto=format&fit=crop&w=900&q=80",
+          "/img/food/sidu.jpg",
       },
     ],
   },
@@ -304,8 +306,7 @@ export const spitiJourney: JourneyDay[] = [
         time: "08:00",
         title: "Key Monastery",
         detail: "1,000 years old, white walls stacked up the cliff like a child's blocks. Morning chants if we time it.",
-        image:
-          "https://images.unsplash.com/photo-1606298855672-3efb63017be8?auto=format&fit=crop&w=900&q=80",
+        image: "/img/places/key-monastery.jpg",
       },
       {
         time: "11:00",
@@ -458,48 +459,46 @@ export const spitiJourney: JourneyDay[] = [
   },
 ];
 
+// Real photos. Sourced from Wikimedia Commons (CC-BY-SA / public domain),
+// each one is the actual Pahari/Himachali dish — not a generic curry.
 export const food = [
   {
     name: "Sidu",
     sub: "Steamed wheat bread, walnut & poppy filling, ghee.",
     image:
-      "https://images.unsplash.com/photo-1631452180519-c014fe946bc7?auto=format&fit=crop&w=900&q=80",
+      "/img/food/sidu.jpg",
   },
   {
     name: "Madra",
     sub: "Chickpeas in yogurt, cardamom, ghee. A Pahari Sunday.",
-    image:
-      "https://images.unsplash.com/photo-1631292784640-2b24be784d5d?auto=format&fit=crop&w=900&q=80",
+    image: "/img/food/madra.jpg",
   },
   {
     name: "Babru",
     sub: "Black-gram-stuffed kachori with tamarind chutney.",
-    image:
-      "https://images.unsplash.com/photo-1567188040759-fb8a883dc6d8?auto=format&fit=crop&w=900&q=80",
+    image: "/img/food/babru.jpg",
   },
   {
     name: "Dham",
     sub: "Festival feast served on a leaf, cooked only by botis.",
     image:
-      "https://images.unsplash.com/photo-1606298855672-3efb63017be8?auto=format&fit=crop&w=900&q=80",
+      "/img/food/dham.jpg",
   },
   {
     name: "Chha Gosht",
     sub: "Yogurt-marinated lamb, slow-cooked with whole spices.",
-    image:
-      "https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&w=900&q=80",
+    image: "/img/food/chha-gosht.jpg",
   },
   {
     name: "Aktori",
     sub: "Buckwheat pancake from Kinnaur, jaggery, butter.",
-    image:
-      "https://images.unsplash.com/photo-1567188040759-fb8a883dc6d8?auto=format&fit=crop&w=900&q=80",
+    image: "/img/food/aktori.jpg",
   },
   {
     name: "Tudkiya Bhath",
     sub: "Slow-cooked rice with pulses, potato, garam masala.",
     image:
-      "https://images.unsplash.com/photo-1631292784640-2b24be784d5d?auto=format&fit=crop&w=900&q=80",
+      "/img/food/tudkiya-bhath.jpg",
   },
 ];
 

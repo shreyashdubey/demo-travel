@@ -25,8 +25,8 @@ export function StoryStrip() {
             className="relative aspect-[4/5] overflow-hidden rounded-[2px] ring-soft"
           >
             <Image
-              src="https://images.unsplash.com/photo-1469125155630-7ed37e065743?auto=format&fit=crop&w=1200&q=80"
-              alt="Saroj Thakur in his home valley"
+              src="/img/places/kullu-valley.jpg"
+              alt="Kullu valley — pine forests, snow ridges, the Beas below"
               fill
               className="object-cover"
               sizes="(min-width: 1024px) 40vw, 100vw"
@@ -34,7 +34,7 @@ export function StoryStrip() {
             <div className="absolute inset-0 bg-gradient-to-t from-pine/40 via-transparent" />
           </motion.div>
           <p className="mt-4 text-[12px] uppercase tracking-[0.22em] text-mist">
-            Saroj Thakur · Patlikuhl, Kullu
+            Saroj Thakur · Bhuntar, Kullu valley
           </p>
         </div>
 
@@ -44,18 +44,19 @@ export function StoryStrip() {
             A note from the founder
           </p>
           <h2 className="font-display text-balance text-[36px] leading-[1.04] tracking-tightest text-pine sm:text-[58px] lg:text-[68px]">
-            <Reveal delay={0}>I grew up in Kullu.</Reveal>
+            <Reveal delay={0}>I was born in Bhuntar.</Reveal>
             <Reveal delay={0.12}>
-              <span className="text-dusk">I came back from Delhi</span>
+              <span className="text-dusk">I studied tourism</span>
             </Reveal>
-            <Reveal delay={0.24}>to take you home.</Reveal>
+            <Reveal delay={0.24}>so I could take you home.</Reveal>
           </h2>
           <Reveal delay={0.4}>
             <p className="mt-8 max-w-xl text-pretty text-[16.5px] leading-[1.7] text-pine/75">
-              I started Dhodhu Travels in 2017 with one Innova and a list of friends who knew the
-              best apple tea, the gentlest river crossing, the snowfield that doesn't make the
-              guidebooks. We are now eight drivers and eleven homestay families. We will not put
-              you on a bus. We will not pretend a destination is yours when it is not.
+              My whole life has been in this valley. I did hotel management and tourism because I
+              wanted to learn how to host people the way Pahari families already do — properly,
+              slowly, without fuss. I started Dhodhu Travels in 2017 with one Innova and a notebook
+              of homestay friends. Today we are eight drivers and eleven homestay families. We will
+              not put you on a bus. We will not pretend a place is yours when it is not.
             </p>
           </Reveal>
           <Reveal delay={0.55}>
