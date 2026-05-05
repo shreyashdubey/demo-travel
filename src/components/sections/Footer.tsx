@@ -1,0 +1,115 @@
+"use client";
+
+import { motion } from "framer-motion";
+import { useState } from "react";
+
+export function Footer() {
+  const [email, setEmail] = useState("");
+  const [done, setDone] = useState(false);
+
+  return (
+    <footer className="relative bg-night text-snow">
+      <div className="mx-auto max-w-[1280px] px-5 sm:px-10 pt-24 pb-12 sm:pt-32">
+        <div className="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:gap-16">
+          <div className="lg:col-span-6">
+            <p className="text-[12px] uppercase tracking-[0.22em] text-alpenglow/80">
+              <span className="mr-2 inline-block h-px w-8 align-middle bg-alpenglow/40" />
+              Letters from the valley
+            </p>
+            <h3 className="mt-4 font-display text-balance text-[36px] leading-[1.04] tracking-tightest sm:text-[52px]">
+              One slow letter a month.<br /> Photos. A recipe. A route.
+            </h3>
+            <form
+              onSubmit={(e) => {
+                e.preventDefault();
+                setDone(true);
+              }}
+              className="mt-7 flex max-w-md gap-2"
+            >
+              <input
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                placeholder="Your email"
+                required
+                className="flex-1 rounded-full border border-snow/20 bg-white/5 px-5 py-3 text-[14.5px] text-snow placeholder:text-snow/45 focus:border-snow focus:outline-none"
+              />
+              <button
+                type="submit"
+                className="rounded-full bg-alpenglow px-5 py-3 text-[14px] font-medium text-pine transition-colors hover:bg-snow"
+              >
+                {done ? "Subscribed ✓" : "Subscribe"}
+              </button>
+            </form>
+            <p className="mt-3 text-[12.5px] text-snow/55">No tracking. No spam. We mean it.</p>
+          </div>
+
+          <div className="lg:col-span-6 grid grid-cols-2 gap-8 sm:grid-cols-3">
+            <div>
+              <p className="text-[12px] uppercase tracking-[0.22em] text-snow/55">Reach Saroj</p>
+              <ul className="mt-4 space-y-2 text-[14.5px] text-snow/85">
+                <li>
+                  <a href="https://wa.me/919xxxxxxxxx" className="hover:text-snow">
+                    +91 9xxx-xxx-xxx · WhatsApp
+                  </a>
+                </li>
+                <li>
+                  <a href="mailto:saroj@dhodhutravels.com" className="hover:text-snow">
+                    saroj@dhodhutravels.com
+                  </a>
+                </li>
+                <li className="text-snow/65">Daily 8am–9pm IST</li>
+              </ul>
+            </div>
+            <div>
+              <p className="text-[12px] uppercase tracking-[0.22em] text-snow/55">The office</p>
+              <ul className="mt-4 space-y-2 text-[14.5px] text-snow/85">
+                <li>Patlikuhl, Kullu</li>
+                <li>Himachal Pradesh 175130</li>
+                <li>India</li>
+              </ul>
+            </div>
+            <div>
+              <p className="text-[12px] uppercase tracking-[0.22em] text-snow/55">Wander</p>
+              <ul className="mt-4 space-y-2 text-[14.5px] text-snow/85">
+                {[
+                  ["Destinations", "#destinations"],
+                  ["Experiences", "#experiences"],
+                  ["Journeys", "#journeys"],
+                  ["Food & Culture", "#food"],
+                  ["Saroj's story", "#saroj"],
+                  ["Plan a journey", "#book"],
+                ].map(([t, h]) => (
+                  <li key={h}>
+                    <a href={h} className="hover:text-snow">
+                      {t}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <motion.p
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 1.4 }}
+          className="mt-24 max-w-3xl font-display text-balance text-[28px] leading-[1.15] tracking-tightest text-snow/80 sm:text-[40px]"
+        >
+          The mountains will still be here when you are ready.
+        </motion.p>
+
+        <div className="mt-14 flex flex-col items-start justify-between gap-4 border-t border-snow/10 pt-8 text-[12.5px] text-snow/55 sm:flex-row sm:items-center">
+          <div>© {new Date().getFullYear()} Dhodhu Travels · All photographs licensed.</div>
+          <div className="flex gap-5">
+            <a href="#" className="hover:text-snow">Instagram</a>
+            <a href="#" className="hover:text-snow">YouTube</a>
+            <a href="#" className="hover:text-snow">Privacy</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+  );
+}
