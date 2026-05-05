@@ -63,9 +63,12 @@ export function SoundProvider({ children }: { children: ReactNode }) {
     return ctxRef.current;
   }, []);
 
+  // Bumped key (`dh_sound_v3`) — earlier sessions wrote "false" to the v2
+  // key when the synth was being iterated on; honouring that would now mean
+  // the user is silently muted. Start fresh with the default-on behaviour.
   useEffect(() => {
     try {
-      const saved = localStorage.getItem("dh_sound");
+      const saved = localStorage.getItem("dh_sound_v3");
       if (saved === "false") setEnabled(false);
       else if (saved === "true") setEnabled(true);
     } catch {}
@@ -73,7 +76,7 @@ export function SoundProvider({ children }: { children: ReactNode }) {
 
   useEffect(() => {
     try {
-      localStorage.setItem("dh_sound", String(enabled));
+      localStorage.setItem("dh_sound_v3", String(enabled));
     } catch {}
   }, [enabled]);
 

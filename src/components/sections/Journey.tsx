@@ -38,7 +38,7 @@ export function Journey({ selected }: { selected: string | null }) {
     setCurrentIdx(idx);
   });
 
-  const { play, setAmbient } = useSound();
+  const { play } = useSound();
   const prevIdx = useRef(0);
   useEffect(() => {
     if (currentIdx !== prevIdx.current) {
@@ -46,11 +46,6 @@ export function Journey({ selected }: { selected: string | null }) {
       play("chime");
     }
   }, [currentIdx, play]);
-
-  useEffect(() => {
-    setAmbient("river");
-    return () => setAmbient(null);
-  }, [setAmbient]);
 
   const current = days[currentIdx];
   const phase = current.phase;
@@ -155,22 +150,9 @@ function DaySection({
   const localStart = index / total;
   const localEnd = (index + 1) / total;
   const localProgress = useTransform(scrollYProgress, [localStart, localEnd], [0, 1]);
-  const opacity = useTransform(
-    scrollYProgress,
-    [
-      Math.max(0, localStart - 0.04),
-      localStart,
-      Math.max(localStart + 0.001, localEnd - 0.04),
-      localEnd,
-    ],
-    [0.4, 1, 1, 0.5],
-  );
 
   return (
-    <motion.div
-      style={{ opacity }}
-      className="relative grid grid-cols-1 gap-8 px-5 py-20 sm:px-10 sm:py-28 lg:grid-cols-12 lg:gap-10"
-    >
+    <div className="relative grid grid-cols-1 gap-8 px-5 py-20 sm:px-10 sm:py-28 lg:grid-cols-12 lg:gap-10">
       {/* Sticky day card */}
       <div className="lg:col-span-4">
         <div className="lg:sticky lg:top-[120px]">
@@ -217,7 +199,7 @@ function DaySection({
           </motion.li>
         ))}
       </ol>
-    </motion.div>
+    </div>
   );
 }
 
