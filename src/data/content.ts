@@ -371,8 +371,7 @@ export const spitiJourney: JourneyDay[] = [
     elevation: "4,300 m",
     weather: "stars",
     phase: "night",
-    cover:
-      "https://images.unsplash.com/photo-1506197603052-3cc9c3a201bd?auto=format&fit=crop&w=1800&q=80",
+    cover: "/img/places/chandratal.jpg",
     hours: [
       {
         time: "06:00",
@@ -383,8 +382,7 @@ export const spitiJourney: JourneyDay[] = [
         time: "13:00",
         title: "Arrive Chandratal camp",
         detail: "A tented camp at 4,200m. Lunch, then a slow 30-min walk up to the lake.",
-        image:
-          "https://images.unsplash.com/photo-1535320903710-d993d3d77d29?auto=format&fit=crop&w=900&q=80",
+        image: "/img/places/chandratal.jpg",
       },
       {
         time: "16:30",
@@ -405,8 +403,7 @@ export const spitiJourney: JourneyDay[] = [
     elevation: "2,050 m",
     weather: "cloud",
     phase: "dusk",
-    cover:
-      "https://images.unsplash.com/photo-1591019479261-1a103585c559?auto=format&fit=crop&w=1800&q=80",
+    cover: "/img/places/kullu-valley.jpg",
     hours: [
       { time: "07:00", title: "Sunrise at the lake", detail: "Pink on the peaks. A short prayer if you wish." },
       { time: "10:00", title: "Drive to Gramphu", detail: "Slow over Batal — the road is the road." },
