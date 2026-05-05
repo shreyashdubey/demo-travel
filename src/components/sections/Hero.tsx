@@ -173,11 +173,7 @@ export function Hero() {
         className="absolute bottom-6 left-1/2 z-10 flex -translate-x-1/2 flex-col items-center gap-2 text-[10.5px] uppercase tracking-[0.3em] text-snow/70"
       >
         <span>Scroll</span>
-        <motion.div
-          animate={{ y: [0, 8, 0] }}
-          transition={{ duration: 2.2, repeat: Infinity, ease: "easeInOut" }}
-          className="h-9 w-px bg-snow/40"
-        />
+        <span className="block h-9 w-px origin-top animate-ember bg-snow/40" />
       </motion.div>
     </section>
   );

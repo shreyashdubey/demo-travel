@@ -24,7 +24,7 @@ export const destinations = [
     elevation: "1,279 m",
     bestMonths: "Year round",
     body: "The valley after which the entire region is named. Apple orchards, Pahari weavers, and a Dussehra so unlike anyone else's it has UNESCO's eye.",
-    image: "https://images.unsplash.com/photo-1599661046827-dacde6976549?auto=format&fit=crop&w=1600&q=80",
+    image: "https://images.unsplash.com/photo-1469125155630-7ed37e065743?auto=format&fit=crop&w=1600&q=80",
     color: "#476a3c",
   },
   {
@@ -34,7 +34,7 @@ export const destinations = [
     elevation: "2,276 m",
     bestMonths: "Mar–Jun · Dec–Feb",
     body: "Mall Road, deodar avenues, the toy train from Kalka. Empire architecture wearing snow.",
-    image: "https://images.unsplash.com/photo-1601999117317-3f3a4e066d49?auto=format&fit=crop&w=1600&q=80",
+    image: "https://images.unsplash.com/photo-1483728642387-6c3bdd6c93e5?auto=format&fit=crop&w=1600&q=80",
     color: "#5a4a3c",
   },
   {
@@ -119,7 +119,7 @@ export const experiences = [
     title: "Rivers",
     sub: "Beas · Parvati · Tirthan · Spiti",
     body: "Rafting, fly-fishing for trout, riverside dinners, glacier-melt dips.",
-    image: "https://images.unsplash.com/photo-1500039436846-25ae2f11882d?auto=format&fit=crop&w=1400&q=80",
+    image: "https://images.unsplash.com/photo-1604152135912-04a022e23696?auto=format&fit=crop&w=1400&q=80",
     icon: "river",
   },
   {
@@ -176,7 +176,7 @@ export const packages = [
     pitch: "Kullu valley + Tirthan + Naggar. Apple orchards, Pahari kitchens, slow rivers.",
     priceFrom: 22500,
     cover:
-      "https://images.unsplash.com/photo-1599661046827-dacde6976549?auto=format&fit=crop&w=1600&q=80",
+      "https://images.unsplash.com/photo-1469125155630-7ed37e065743?auto=format&fit=crop&w=1600&q=80",
     accent: "#7BA66E",
   },
   {
@@ -226,7 +226,7 @@ export const spitiJourney: JourneyDay[] = [
         title: "Pickup at Bhuntar airport",
         detail: "An Innova waiting with chai in a flask. Saroj's cousin Tashi is your driver — he's been doing this run since 2009.",
         image:
-          "https://images.unsplash.com/photo-1601999117317-3f3a4e066d49?auto=format&fit=crop&w=900&q=80",
+          "https://images.unsplash.com/photo-1483728642387-6c3bdd6c93e5?auto=format&fit=crop&w=900&q=80",
       },
       {
         time: "10:00",
@@ -269,7 +269,7 @@ export const spitiJourney: JourneyDay[] = [
         title: "Sissu waterfall stop",
         detail: "A frozen ribbon if it's December. The river still moves under the ice.",
         image:
-          "https://images.unsplash.com/photo-1500039436846-25ae2f11882d?auto=format&fit=crop&w=900&q=80",
+          "https://images.unsplash.com/photo-1604152135912-04a022e23696?auto=format&fit=crop&w=900&q=80",
       },
       {
         time: "13:00",
@@ -298,7 +298,7 @@ export const spitiJourney: JourneyDay[] = [
     weather: "sun",
     phase: "noon",
     cover:
-      "https://images.unsplash.com/photo-1599661046827-dacde6976549?auto=format&fit=crop&w=1800&q=80",
+      "https://images.unsplash.com/photo-1469125155630-7ed37e065743?auto=format&fit=crop&w=1800&q=80",
     hours: [
       {
         time: "08:00",
@@ -420,7 +420,7 @@ export const spitiJourney: JourneyDay[] = [
     weather: "sun",
     phase: "noon",
     cover:
-      "https://images.unsplash.com/photo-1599661046827-dacde6976549?auto=format&fit=crop&w=1800&q=80",
+      "https://images.unsplash.com/photo-1469125155630-7ed37e065743?auto=format&fit=crop&w=1800&q=80",
     hours: [
       { time: "10:00", title: "Naggar Castle", detail: "The Roerich gallery, Pahari painting at the height of itself." },
       { time: "13:00", title: "Lunch in an apple orchard", detail: "Saroj's friend Mahendra's farm. Dham if it's a Sunday." },
@@ -435,7 +435,7 @@ export const spitiJourney: JourneyDay[] = [
     weather: "cloud",
     phase: "dusk",
     cover:
-      "https://images.unsplash.com/photo-1601999117317-3f3a4e066d49?auto=format&fit=crop&w=1800&q=80",
+      "https://images.unsplash.com/photo-1483728642387-6c3bdd6c93e5?auto=format&fit=crop&w=1800&q=80",
     hours: [
       { time: "10:00", title: "Drive via Mandi", detail: "Stop at Pandoh for river lunch." },
       { time: "17:00", title: "Mall Road walk", detail: "The Ridge, Christ Church, Scandal Point." },

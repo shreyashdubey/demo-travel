@@ -110,6 +110,7 @@ export function BookingForm() {
             <div className="h-1 bg-pine/10">
               <motion.div
                 className="h-full bg-alpenglow"
+                initial={{ width: "0%" }}
                 animate={{ width: `${((step + (submitted ? 1 : 0)) / STEPS.length) * 100}%` }}
                 transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
               />

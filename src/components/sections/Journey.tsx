@@ -209,7 +209,16 @@ function DaySection({
   const localStart = index / total;
   const localEnd = (index + 1) / total;
   const localProgress = useTransform(scrollYProgress, [localStart, localEnd], [0, 1]);
-  const opacity = useTransform(scrollYProgress, [localStart - 0.04, localStart, localEnd - 0.04, localEnd], [0.4, 1, 1, 0.5]);
+  const opacity = useTransform(
+    scrollYProgress,
+    [
+      Math.max(0, localStart - 0.04),
+      localStart,
+      Math.max(localStart + 0.001, localEnd - 0.04),
+      localEnd,
+    ],
+    [0.4, 1, 1, 0.5],
+  );
 
   return (
     <motion.div

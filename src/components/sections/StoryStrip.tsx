@@ -25,7 +25,7 @@ export function StoryStrip() {
             className="relative aspect-[4/5] overflow-hidden rounded-[2px] ring-soft"
           >
             <Image
-              src="https://images.unsplash.com/photo-1601999117317-3f3a4e066d49?auto=format&fit=crop&w=1200&q=80"
+              src="https://images.unsplash.com/photo-1469125155630-7ed37e065743?auto=format&fit=crop&w=1200&q=80"
               alt="Saroj Thakur in his home valley"
               fill
               className="object-cover"
