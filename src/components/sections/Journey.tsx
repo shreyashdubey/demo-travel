@@ -59,13 +59,8 @@ export function Journey({ selected }: { selected: string | null }) {
   const lineProgress = useTransform(scrollYProgress, [0.02, 0.95], [0, 1]);
 
   return (
-    <section ref={ref} id="journey" className="relative isolate bg-snow">
-      {/* Backdrop pinned to journey section only */}
-      <div className="pointer-events-none absolute inset-0 z-0">
-        <div className="sticky top-0 h-screen w-full">
-          <BackdropLayer phase={phase} />
-        </div>
-      </div>
+    <section ref={ref} id="journey" className="relative bg-snow">
+      <BackdropLayer phase={phase} scrollYProgress={scrollYProgress} />
 
       {/* Sticky top map */}
       <div className="sticky top-0 z-30 h-[80px] w-full">
@@ -91,26 +86,35 @@ export function Journey({ selected }: { selected: string | null }) {
   );
 }
 
-function BackdropLayer({ phase }: { phase: JourneyDay["phase"] }) {
+function BackdropLayer({
+  phase,
+  scrollYProgress,
+}: {
+  phase: JourneyDay["phase"];
+  scrollYProgress: MotionValue<number>;
+}) {
   const c = PHASE_COLORS[phase];
+  // Fade in when journey enters viewport, fade out when leaving — avoids
+  // sticky-in-absolute layout cost and any persistent paint past the section.
+  const opacity = useTransform(scrollYProgress, [0, 0.04, 0.96, 1], [0, 0.85, 0.85, 0]);
   return (
-    <div
+    <motion.div
       aria-hidden
-      className="pointer-events-none absolute inset-0 transition-[background] duration-[2000ms] ease-soft"
       style={{
+        opacity,
         background: `linear-gradient(180deg, ${c.from} 0%, ${c.to} 100%)`,
-        opacity: 0.9,
       }}
+      className="pointer-events-none fixed inset-0 z-0 transition-colors duration-1000 ease-soft"
     >
       {phase === "night" && <Stars />}
-    </div>
+    </motion.div>
   );
 }
 
 function Stars() {
   const stars = useMemo(
     () =>
-      Array.from({ length: 90 }, (_, i) => ({
+      Array.from({ length: 40 }, (_, i) => ({
         x: (i * 37) % 100,
         y: (i * 23) % 100,
         s: 0.6 + ((i * 13) % 7) / 10,

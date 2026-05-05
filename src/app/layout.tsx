@@ -4,6 +4,7 @@ import "./globals.css";
 import { SmoothScroll } from "@/components/providers/SmoothScroll";
 import { SoundProvider } from "@/components/providers/SoundProvider";
 import { TopBar } from "@/components/chrome/TopBar";
+import { ErrorBoundary } from "@/components/ErrorBoundary";
 
 const display = Fraunces({
   subsets: ["latin"],
@@ -42,12 +43,14 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${display.variable} ${sans.variable} ${mono.variable}`}>
       <body className="bg-snow text-pine antialiased font-sans">
-        <SoundProvider>
-          <SmoothScroll>
-            <TopBar />
-            {children}
-          </SmoothScroll>
-        </SoundProvider>
+        <ErrorBoundary>
+          <SoundProvider>
+            <SmoothScroll>
+              <TopBar />
+              {children}
+            </SmoothScroll>
+          </SoundProvider>
+        </ErrorBoundary>
       </body>
     </html>
   );

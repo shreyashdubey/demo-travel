@@ -11,18 +11,13 @@ const MountainScene = dynamic(
 
 export function RangeMoment() {
   const ref = useRef<HTMLElement>(null);
-  const [mounted, setMounted] = useState(false);
+  const [inView, setInView] = useState(false);
 
   useEffect(() => {
     if (!ref.current) return;
     const obs = new IntersectionObserver(
-      (entries) => {
-        if (entries[0].isIntersecting) {
-          setMounted(true);
-          obs.disconnect();
-        }
-      },
-      { rootMargin: "200px" },
+      (entries) => setInView(entries[0].isIntersecting),
+      { rootMargin: "300px 0px" },
     );
     obs.observe(ref.current);
     return () => obs.disconnect();
@@ -30,9 +25,7 @@ export function RangeMoment() {
 
   return (
     <section ref={ref} className="relative h-[90vh] overflow-hidden bg-night text-snow">
-      <div className="absolute inset-0">
-        {mounted && <MountainScene />}
-      </div>
+      <div className="absolute inset-0">{inView && <MountainScene />}</div>
       <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-night/30 via-transparent to-night/80" />
 
       <div className="relative z-10 mx-auto flex h-full max-w-[1280px] flex-col justify-end px-5 pb-20 sm:px-10 sm:pb-28">

@@ -228,7 +228,7 @@ function Mountain({
 
 function Snowfall() {
   // Static positions for SSR consistency
-  const flakes = Array.from({ length: 60 }, (_, i) => ({
+  const flakes = Array.from({ length: 28 }, (_, i) => ({
     left: ((i * 17) % 100) + (i % 7) * 0.7,
     delay: -(i * 0.27) % 14,
     size: 2 + (i % 4),

@@ -85,21 +85,14 @@ function Sun() {
 export function MountainScene() {
   return (
     <Canvas
-      shadows
       camera={{ position: [0, 1.6, 6], fov: 38 }}
-      dpr={[1, 1.6]}
-      gl={{ antialias: true, alpha: true }}
+      dpr={[1, 1.5]}
+      gl={{ antialias: true, alpha: true, powerPreference: "default" }}
     >
       <color attach="background" args={["#0B1320"]} />
       <fog attach="fog" args={["#0B1320", 8, 18]} />
       <ambientLight intensity={0.55} />
-      <directionalLight
-        position={[6, 7, 4]}
-        intensity={1.1}
-        color="#ffd9b3"
-        castShadow
-        shadow-mapSize={[1024, 1024]}
-      />
+      <directionalLight position={[6, 7, 4]} intensity={1.1} color="#ffd9b3" />
       <Suspense fallback={null}>
         <Peaks />
         <Sun />
