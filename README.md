@@ -1,36 +1,85 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Dhodhu Travels
 
-## Getting Started
+A travel atelier from the Himalayas, run by **Saroj Thakur**.
+Curated journeys through Kullu, Manali, Shimla & Spiti.
 
-First, run the development server:
+This repo is a Next.js 14 + TypeScript build of the marketing & booking site, designed
+to feel cinematic on desktop and elegant on mobile — slow scroll, layered mountains,
+day-by-day journey storytelling, and a five-step booking conversation.
+
+## Run it
 
 ```bash
+npm install --legacy-peer-deps
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+# → http://localhost:3000
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Build for production
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+npm run build
+npm start
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## What's where
 
-## Learn More
+```
+src/
+├── app/
+│   ├── layout.tsx        # fonts, providers, metadata
+│   ├── page.tsx          # composes all sections
+│   └── globals.css       # tokens, smooth scroll, snowfall, grain
+├── components/
+│   ├── chrome/           # TopBar (sticky nav + sound toggle)
+│   ├── providers/        # SmoothScroll (Lenis), SoundProvider (Howler)
+│   ├── three/            # MountainScene (R3F)
+│   └── sections/         # Hero, StoryStrip, Destinations, Experiences,
+│                         # RangeMoment, Packages, Journey, FoodCulture,
+│                         # AboutSaroj, BookingForm, Footer
+├── data/content.ts       # destinations, experiences, packages, the
+│                         # fully-wired Spiti journey, food, phrases
+└── lib/cn.ts             # class-name util
+```
 
-To learn more about Next.js, take a look at the following resources:
+## Design system
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Colours, type, motion and sound are documented in [`product.md`](./product.md).
+Build progress is tracked in [`progress.md`](./progress.md).
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Notable bits
 
-## Deploy on Vercel
+- **The Journey** (`src/components/sections/Journey.tsx`) is the centrepiece. Pick a
+  package and the page becomes a vertical, day-by-day, hour-by-hour walkthrough — sky
+  shifts dawn → noon → dusk → night with scroll, the route line draws itself, and a
+  soft chime plays at each new day if sound is on.
+- **The Range** (`RangeMoment.tsx` + `MountainScene.tsx`) is a low-poly R3F scene
+  that lazy-mounts when in view. Move the cursor — the range follows.
+- **Sound** is opt-in. Toggle in the top-right. Wind ambient on hero, river ambient on
+  the journey, chime on day-change, bell on CTA.
+- **Reduced motion** is respected. The Lenis smooth scroller is disabled, parallax
+  collapses, and animation durations clamp.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Stack
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- **Next.js 14** App Router · TypeScript · Tailwind CSS
+- **Framer Motion** for UI motion · **GSAP** available for advanced choreography
+- **Lenis** smooth scroll
+- **Howler.js** for ambient & UI sound
+- **react-three-fiber + drei + three** for the 3D moment
+- **react-hook-form + zod** for the booking form (zod schemas can be added)
+
+## Photography
+
+All images are licensed from Unsplash. For production launch, replace with the
+agency's own photography of Kullu, Manali, Shimla and Spiti. The `data/content.ts`
+exports each section's image URL — easy to swap.
+
+## Deploying
+
+Deploy to Vercel, Netlify, or any Node host. No backend yet — the booking form logs
+the booking reference locally. Wire to a backend / WhatsApp Business / email of choice.
+
+---
+
+> "The mountains will still be here when you are ready." — Saroj Thakur
