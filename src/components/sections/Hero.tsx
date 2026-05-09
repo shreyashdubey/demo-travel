@@ -38,20 +38,20 @@ export function Hero() {
         className="absolute inset-0"
         style={{
           background:
-            "radial-gradient(120% 80% at 70% 25%, #f3c9a3 0%, #b88e7a 22%, #5b6b7e 50%, #1f2e44 80%, #0b1320 100%)",
+            "radial-gradient(120% 80% at 70% 25%, #F4D9B0 0%, #C49874 22%, #7C6748 50%, #3D2E1F 80%, #1F1810 100%)",
         }}
       />
       {/* Soft sun halo */}
       <div
         className="absolute -right-24 top-24 h-[480px] w-[480px] rounded-full opacity-90 blur-[60px]"
-        style={{ background: "radial-gradient(circle, #ffd9b3 0%, rgba(255,217,179,0) 70%)" }}
+        style={{ background: "radial-gradient(circle, #F4D9B0 0%, rgba(244,217,176,0) 70%)" }}
       />
 
       {/* Mountain layers */}
       <motion.div style={{ y: yBack }} className="absolute inset-x-0 bottom-0 h-[80%]">
         <Mountain
           className="absolute inset-x-0 bottom-0 w-full"
-          fill="#3b4a5d"
+          fill="#5C4A3A"
           opacity={0.85}
           variant="far"
         />
@@ -59,7 +59,7 @@ export function Hero() {
       <motion.div style={{ y: yMid }} className="absolute inset-x-0 bottom-0 h-[68%]">
         <Mountain
           className="absolute inset-x-0 bottom-0 w-full"
-          fill="#283447"
+          fill="#3D2F22"
           opacity={0.95}
           variant="mid"
         />
@@ -67,7 +67,7 @@ export function Hero() {
       <motion.div style={{ y: yFront }} className="absolute inset-x-0 bottom-0 h-[55%]">
         <Mountain
           className="absolute inset-x-0 bottom-0 w-full"
-          fill="#0f1828"
+          fill="#1F1810"
           opacity={1}
           variant="near"
         />
@@ -87,6 +87,29 @@ export function Hero() {
           className="object-cover"
         />
       </div>
+
+      {/* Mobile logo — top half */}
+      <motion.div
+        initial={{ opacity: 0, scale: 0.92 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 1.6, ease: [0.22, 1, 0.36, 1], delay: 0.2 }}
+        className="pointer-events-none absolute inset-x-0 top-0 z-[6] flex h-[46%] items-center justify-center px-6 pt-8 lg:hidden"
+      >
+        <div className="relative">
+          <span aria-hidden className="absolute -inset-10 rounded-full bg-alpenglow/35 blur-3xl" />
+          <span aria-hidden className="absolute -inset-3 rounded-full bg-snow/15 blur-2xl" />
+          <div className="relative aspect-square w-[min(64vw,300px)] overflow-hidden rounded-full ring-1 ring-white/30 shadow-[0_20px_70px_rgba(0,0,0,0.5)]">
+            <Image
+              src="/img/logo.jpeg"
+              alt="Wandering Saya Travels — Explore the world with us"
+              fill
+              sizes="(max-width: 1023px) 70vw, 0px"
+              priority
+              className="object-cover"
+            />
+          </div>
+        </div>
+      </motion.div>
 
       {/* Desktop logo — right half */}
       <motion.div
@@ -122,30 +145,6 @@ export function Hero() {
         style={{ y: headlineY, opacity: headlineOpacity }}
         className="relative z-10 mx-auto flex h-full max-w-[1280px] flex-col justify-end px-5 pb-28 sm:px-10 sm:pb-32 lg:pb-40 lg:pr-[44%]"
       >
-        <motion.div
-          initial={{ opacity: 0, y: 14, scale: 0.92 }}
-          animate={{ opacity: 1, y: 0, scale: 1 }}
-          transition={{ duration: 1.4, ease: [0.22, 1, 0.36, 1], delay: 0.15 }}
-          className="mb-7 self-start lg:hidden"
-        >
-          <div className="relative">
-            <span
-              aria-hidden
-              className="absolute inset-0 -m-3 rounded-full bg-alpenglow/25 blur-2xl"
-            />
-            <div className="relative h-20 w-20 overflow-hidden rounded-full ring-1 ring-white/40 shadow-[0_10px_40px_rgba(0,0,0,0.45)] sm:h-24 sm:w-24">
-              <Image
-                src="/img/logo.jpeg"
-                alt="Wandering Saya Travels"
-                fill
-                sizes="(min-width: 640px) 96px, 80px"
-                priority
-                className="object-cover"
-              />
-            </div>
-          </div>
-        </motion.div>
-
         <motion.p
           initial={{ opacity: 0, y: 14 }}
           animate={{ opacity: 1, y: 0 }}
@@ -156,7 +155,7 @@ export function Hero() {
           Himachal Pradesh, India
         </motion.p>
 
-        <h1 className="font-display text-balance text-[44px] leading-[0.98] tracking-tightest sm:text-[88px] lg:text-[112px]">
+        <h1 className="font-display text-balance text-[40px] leading-[0.98] tracking-tightest sm:text-[88px] lg:text-[112px]">
           {["The mountains", "are waiting.", "We know the way."].map((line, i) => (
             <motion.span
               key={i}

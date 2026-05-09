@@ -13,10 +13,10 @@ import { spitiJourney, packages, type JourneyDay } from "@/data/content";
 import { useSound } from "@/components/providers/SoundProvider";
 
 const PHASE_COLORS: Record<JourneyDay["phase"], { from: string; to: string; text: string }> = {
-  dawn: { from: "#f6dcc4", to: "#c79a7e", text: "#3a2a22" },
-  noon: { from: "#cfe6ee", to: "#7ea3b8", text: "#1f2e3a" },
-  dusk: { from: "#e8895c", to: "#5c3b48", text: "#fff5ec" },
-  night: { from: "#1f2a44", to: "#070b18", text: "#e7e9f5" },
+  dawn: { from: "#F4D9B0", to: "#C49874", text: "#3D2E1F" },
+  noon: { from: "#E7DAB9", to: "#A8927A", text: "#3A4A2F" },
+  dusk: { from: "#B85A3E", to: "#3E2820", text: "#F1E4CB" },
+  night: { from: "#241B11", to: "#0D0805", text: "#E7DAB9" },
 };
 
 export function Journey({ selected }: { selected: string | null }) {
@@ -104,13 +104,13 @@ function RouteMap({
         >
           <path
             d="M5,15 C100,5 200,25 300,12 S500,22 600,10 700,20 800,12 920,18 995,12"
-            stroke="rgba(31,58,46,0.12)"
+            stroke="rgba(58,74,47,0.14)"
             strokeWidth="2"
             fill="none"
           />
           <motion.path
             d="M5,15 C100,5 200,25 300,12 S500,22 600,10 700,20 800,12 920,18 995,12"
-            stroke="#1F3A2E"
+            stroke="#3A4A2F"
             strokeWidth="2"
             fill="none"
             strokeDasharray={dasharray}
@@ -122,8 +122,8 @@ function RouteMap({
             const active = i <= currentIdx;
             return (
               <g key={i}>
-                <circle cx={x} cy={15} r={active ? 5 : 3.5} fill={active ? "#1F3A2E" : "#B8C2C9"} />
-                {active && <circle cx={x} cy={15} r={9} fill="rgba(31,58,46,0.12)" />}
+                <circle cx={x} cy={15} r={active ? 5 : 3.5} fill={active ? "#3A4A2F" : "#A8927A"} />
+                {active && <circle cx={x} cy={15} r={9} fill="rgba(58,74,47,0.14)" />}
               </g>
             );
           })}

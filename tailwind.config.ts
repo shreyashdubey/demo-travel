@@ -9,15 +9,15 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        snow: "#F6F4EF",
-        glacier: "#E8EEF2",
-        mist: "#B8C2C9",
-        pine: "#1F3A2E",
-        slate: "#243240",
-        dusk: "#7B5E57",
-        alpenglow: "#E8895C",
-        night: "#0B1320",
-        gold: "#C9A26A",
+        snow: "#F1E4CB",
+        glacier: "#E7DAB9",
+        mist: "#A8927A",
+        pine: "#3A4A2F",
+        slate: "#3E2E22",
+        dusk: "#8B6B3F",
+        alpenglow: "#B85A3E",
+        night: "#1F1810",
+        gold: "#C9943B",
       },
       fontFamily: {
         display: ["var(--font-display)", "ui-serif", "Georgia", "serif"],

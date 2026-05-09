@@ -522,7 +522,7 @@ function Success({ submitted }: { submitted: { ref: string; data: Form } }) {
     >
       <Confetti />
       <div className="grid h-20 w-20 place-items-center rounded-full bg-alpenglow/20">
-        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#E8895C" strokeWidth="1.6">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#B85A3E" strokeWidth="1.6">
           <path d="M5 12l4 4L19 6" />
         </svg>
       </div>
@@ -571,7 +571,7 @@ function Confetti() {
           <span
             className="block h-full w-full"
             style={{
-              background: b.snow ? "#fff" : i % 3 === 0 ? "#E8895C" : "#1F3A2E",
+              background: b.snow ? "#fff" : i % 3 === 0 ? "#B85A3E" : "#3A4A2F",
               borderRadius: b.snow ? 999 : 1,
             }}
           />

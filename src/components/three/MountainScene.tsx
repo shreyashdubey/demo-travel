@@ -42,7 +42,7 @@ function Peaks() {
         <mesh key={i} position={p.pos} castShadow receiveShadow>
           <coneGeometry args={[p.r, p.h, 4, 1]} />
           <meshStandardMaterial
-            color={new THREE.Color(0x1f3a2e).multiplyScalar(p.tone)}
+            color={new THREE.Color(0x3a4a2f).multiplyScalar(p.tone)}
             flatShading
             roughness={0.85}
             metalness={0}
@@ -53,14 +53,14 @@ function Peaks() {
       {peaks.map((p, i) => (
         <mesh key={`s-${i}`} position={[p.pos[0], p.pos[1] + p.h * 0.32, p.pos[2]]}>
           <coneGeometry args={[p.r * 0.42, p.h * 0.32, 4, 1]} />
-          <meshStandardMaterial color="#F6F4EF" flatShading roughness={0.65} />
+          <meshStandardMaterial color="#F1E4CB" flatShading roughness={0.65} />
         </mesh>
       ))}
 
       {/* Ground plane */}
       <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, -1, 0]} receiveShadow>
         <planeGeometry args={[40, 40]} />
-        <meshStandardMaterial color="#11202a" roughness={1} />
+        <meshStandardMaterial color="#241B11" roughness={1} />
       </mesh>
     </group>
   );
@@ -77,7 +77,7 @@ function Sun() {
   return (
     <mesh ref={ref} position={[3, 2.4, -3]}>
       <sphereGeometry args={[0.5, 24, 24]} />
-      <meshBasicMaterial color="#E8895C" />
+      <meshBasicMaterial color="#B85A3E" />
     </mesh>
   );
 }
@@ -89,10 +89,10 @@ export function MountainScene() {
       dpr={[1, 1.5]}
       gl={{ antialias: true, alpha: true, powerPreference: "default" }}
     >
-      <color attach="background" args={["#0B1320"]} />
-      <fog attach="fog" args={["#0B1320", 8, 18]} />
+      <color attach="background" args={["#1F1810"]} />
+      <fog attach="fog" args={["#1F1810", 8, 18]} />
       <ambientLight intensity={0.55} />
-      <directionalLight position={[6, 7, 4]} intensity={1.1} color="#ffd9b3" />
+      <directionalLight position={[6, 7, 4]} intensity={1.1} color="#F4D9B0" />
       <Suspense fallback={null}>
         <Peaks />
         <Sun />

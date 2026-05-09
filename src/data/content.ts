@@ -169,7 +169,7 @@ export const packages = [
     priceFrom: 14900,
     cover:
       "https://images.unsplash.com/photo-1517299321609-52687d1bc55a?auto=format&fit=crop&w=1600&q=80",
-    accent: "#7BA8C9",
+    accent: "#5E8A8C",
   },
   {
     slug: "kullu-roots",
@@ -180,7 +180,7 @@ export const packages = [
     priceFrom: 22500,
     cover:
       "https://images.unsplash.com/photo-1469125155630-7ed37e065743?auto=format&fit=crop&w=1600&q=80",
-    accent: "#7BA66E",
+    accent: "#7C8A6A",
   },
   {
     slug: "spiti-circuit",
@@ -191,7 +191,7 @@ export const packages = [
     priceFrom: 38900,
     cover:
       "/img/places/spiti.jpg",
-    accent: "#C9A26A",
+    accent: "#B85A3E",
   },
 ] as const;
 
