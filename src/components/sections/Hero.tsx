@@ -88,11 +88,64 @@ export function Hero() {
         />
       </div>
 
+      {/* Desktop logo — right half */}
+      <motion.div
+        initial={{ opacity: 0, scale: 0.94 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 1.8, ease: [0.22, 1, 0.36, 1], delay: 0.25 }}
+        className="pointer-events-none absolute inset-y-0 right-0 z-[6] hidden w-1/2 items-center justify-center lg:flex"
+      >
+        <div className="relative">
+          <span
+            aria-hidden
+            className="absolute -inset-16 rounded-full bg-alpenglow/30 blur-[80px]"
+          />
+          <span
+            aria-hidden
+            className="absolute -inset-6 rounded-full bg-snow/15 blur-3xl"
+          />
+          <div className="relative aspect-square w-[min(44vw,560px)] overflow-hidden rounded-full ring-1 ring-white/30 shadow-[0_30px_120px_rgba(0,0,0,0.55)]">
+            <Image
+              src="/img/logo.jpeg"
+              alt="Wandering Saya Travels — Explore the world with us"
+              fill
+              sizes="(min-width: 1024px) 50vw, 0px"
+              priority
+              className="object-cover"
+            />
+          </div>
+        </div>
+      </motion.div>
+
       {/* Headline */}
       <motion.div
         style={{ y: headlineY, opacity: headlineOpacity }}
-        className="relative z-10 mx-auto flex h-full max-w-[1280px] flex-col justify-end px-5 pb-28 sm:px-10 sm:pb-32 lg:pb-40"
+        className="relative z-10 mx-auto flex h-full max-w-[1280px] flex-col justify-end px-5 pb-28 sm:px-10 sm:pb-32 lg:pb-40 lg:pr-[44%]"
       >
+        <motion.div
+          initial={{ opacity: 0, y: 14, scale: 0.92 }}
+          animate={{ opacity: 1, y: 0, scale: 1 }}
+          transition={{ duration: 1.4, ease: [0.22, 1, 0.36, 1], delay: 0.15 }}
+          className="mb-7 self-start lg:hidden"
+        >
+          <div className="relative">
+            <span
+              aria-hidden
+              className="absolute inset-0 -m-3 rounded-full bg-alpenglow/25 blur-2xl"
+            />
+            <div className="relative h-20 w-20 overflow-hidden rounded-full ring-1 ring-white/40 shadow-[0_10px_40px_rgba(0,0,0,0.45)] sm:h-24 sm:w-24">
+              <Image
+                src="/img/logo.jpeg"
+                alt="Wandering Saya Travels"
+                fill
+                sizes="(min-width: 640px) 96px, 80px"
+                priority
+                className="object-cover"
+              />
+            </div>
+          </div>
+        </motion.div>
+
         <motion.p
           initial={{ opacity: 0, y: 14 }}
           animate={{ opacity: 1, y: 0 }}

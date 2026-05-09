@@ -36,7 +36,7 @@ export function TopBar() {
           )}
         >
           <Glyph className={cn("transition-colors", scrolled ? "text-alpenglow" : "text-snow")} />
-          <span className="font-medium">Dhodhu</span>
+          <span className="font-medium">Wandering Saya</span>
           <span className="opacity-60">Travels</span>
         </a>
 

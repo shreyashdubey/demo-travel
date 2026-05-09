@@ -54,7 +54,7 @@ export function StoryStrip() {
             <p className="mt-8 max-w-xl text-pretty text-[16.5px] leading-[1.7] text-pine/75">
               My whole life has been in this valley. I did hotel management and tourism because I
               wanted to learn how to host people the way Pahari families already do — properly,
-              slowly, without fuss. I started Dhodhu Travels in 2017 with one Innova and a notebook
+              slowly, without fuss. I started Wandering Saya Travels in 2017 with one Innova and a notebook
               of homestay friends. Today we are eight drivers and eleven homestay families. We will
               not put you on a bus. We will not pretend a place is yours when it is not.
             </p>

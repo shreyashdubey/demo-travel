@@ -19,7 +19,7 @@ export function AboutSaroj() {
             >
               <Image
                 src="https://images.unsplash.com/photo-1718801656896-96c723007f3d?auto=format&fit=crop&w=1200&q=80"
-                alt="Saroj Thakur — founder of Dhodhu Travels, on a Kullu hillside"
+                alt="Saroj Thakur — founder of Wandering Saya Travels, on a Kullu hillside"
                 fill
                 sizes="(min-width: 1024px) 40vw, 100vw"
                 className="object-cover"
@@ -50,7 +50,7 @@ export function AboutSaroj() {
                 ["Born", "In Bhuntar — the small town in the Kullu valley where the airport sits and the Beas meets the Parvati."],
                 ["School", "Right here in the valley. Pine forests on the way to school, the river loud in monsoon."],
                 ["Tourism", "Studied hotel management and tourism — because she wanted to learn how to host people the way Pahari families already do, but at scale."],
-                ["2017", "Founded Dhodhu Travels with a single Innova and a notebook full of homestay friends."],
+                ["2017", "Founded Wandering Saya Travels with a single Innova and a notebook full of homestay friends."],
                 ["Today", "Eight drivers, eleven homestay families. In the off-season she travels — Ladakh, Bhutan, Nepal, Norway, Patagonia next — to bring back what the world is doing right."],
               ].map(([year, line]) => (
                 <motion.div

@@ -26,14 +26,37 @@ const mono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Dhodhu Travels — Slow journeys through fast mountains",
+  title: "Wandering Saya Travels — Slow journeys through fast mountains",
   description:
     "A travel atelier from the Himalayas. Curated journeys through Kullu, Manali, Shimla & Spiti — by Saroj Thakur, born and raised in the valley.",
-  metadataBase: new URL("https://dhodhutravels.com"),
+  metadataBase: new URL("https://wanderingsayatravels.com"),
+  icons: {
+    icon: [
+      { url: "/icon.svg", type: "image/svg+xml" },
+      { url: "/favicon.ico", sizes: "any" },
+    ],
+    apple: "/img/logo.jpeg",
+  },
   openGraph: {
-    title: "Dhodhu Travels",
-    description: "Slow journeys through fast mountains.",
+    title: "Wandering Saya Travels",
+    description: "Slow journeys through fast mountains. Explore the world with us.",
+    url: "https://wanderingsayatravels.com",
+    siteName: "Wandering Saya Travels",
     type: "website",
+    images: [
+      {
+        url: "/img/logo.jpeg",
+        width: 1240,
+        height: 1240,
+        alt: "Wandering Saya Travels — Explore the world with us",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Wandering Saya Travels",
+    description: "Slow journeys through fast mountains. Explore the world with us.",
+    images: ["/img/logo.jpeg"],
   },
 };
 

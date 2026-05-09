@@ -54,7 +54,7 @@ export function BookingForm() {
   const back = () => setStep((s) => Math.max(0, s - 1));
 
   const submit = () => {
-    const ref = `DHODHU-${form.month.toUpperCase()}-${Math.random()
+    const ref = `WST-${form.month.toUpperCase()}-${Math.random()
       .toString(36)
       .slice(2, 6)
       .toUpperCase()}`;

@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { useState } from "react";
 
@@ -10,6 +11,25 @@ export function Footer() {
   return (
     <footer className="relative bg-night text-snow">
       <div className="mx-auto max-w-[1280px] px-5 sm:px-10 pt-24 pb-12 sm:pt-32">
+        <div className="mb-16 flex flex-col items-center gap-5 text-center sm:mb-20">
+          <div className="relative h-28 w-28 overflow-hidden rounded-full ring-1 ring-snow/15 sm:h-36 sm:w-36">
+            <Image
+              src="/img/logo.jpeg"
+              alt="Wandering Saya Travels"
+              fill
+              sizes="(min-width: 640px) 144px, 112px"
+              className="object-cover"
+            />
+          </div>
+          <div>
+            <p className="font-display text-[26px] tracking-tightest leading-none sm:text-[32px]">
+              Wandering Saya <span className="opacity-60">Travels</span>
+            </p>
+            <p className="mt-2 text-[12px] uppercase tracking-[0.22em] text-snow/55">
+              Explore the world with us
+            </p>
+          </div>
+        </div>
         <div className="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:gap-16">
           <div className="lg:col-span-6">
             <p className="text-[12px] uppercase tracking-[0.22em] text-alpenglow/80">
@@ -54,8 +74,8 @@ export function Footer() {
                   </a>
                 </li>
                 <li>
-                  <a href="mailto:saroj@dhodhutravels.com" className="hover:text-snow">
-                    saroj@dhodhutravels.com
+                  <a href="mailto:saroj@wanderingsayatravels.com" className="hover:text-snow">
+                    saroj@wanderingsayatravels.com
                   </a>
                 </li>
                 <li className="text-snow/65">Daily 8am–9pm IST</li>
@@ -102,7 +122,7 @@ export function Footer() {
         </motion.p>
 
         <div className="mt-14 flex flex-col items-start justify-between gap-4 border-t border-snow/10 pt-8 text-[12.5px] text-snow/55 sm:flex-row sm:items-center">
-          <div>© {new Date().getFullYear()} Dhodhu Travels · All photographs licensed.</div>
+          <div>© {new Date().getFullYear()} Wandering Saya Travels · All photographs licensed.</div>
           <div className="flex gap-5">
             <a href="#" className="hover:text-snow">Instagram</a>
             <a href="#" className="hover:text-snow">YouTube</a>

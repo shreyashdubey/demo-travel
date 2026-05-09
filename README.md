@@ -1,4 +1,4 @@
-# Dhodhu Travels
+# Wandering Saya Travels
 
 A travel atelier from the Himalayas, run by **Saroj Thakur**.
 Curated journeys through Kullu, Manali, Shimla & Spiti.
