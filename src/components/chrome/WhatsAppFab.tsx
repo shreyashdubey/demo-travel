@@ -6,7 +6,7 @@ const HREF = whatsappUrl("Hi Saroj, I'd like to ask about a trip.");
 
 export function WhatsAppFab() {
   return (
-    <div className="fixed bottom-5 right-5 z-40 flex flex-col items-end gap-2 sm:bottom-6 sm:right-6">
+    <div className="fixed bottom-5 right-5 z-40 flex flex-col items-end gap-5 sm:bottom-6 sm:right-6">
       <span className="hidden sm:inline-flex items-center gap-1.5 rounded-full bg-pine px-3 py-1.5 text-[11px] font-medium text-snow shadow-md">
         <span className="h-1.5 w-1.5 rounded-full bg-alpenglow animate-ember" />
         Saroj replies in 4 hrs
