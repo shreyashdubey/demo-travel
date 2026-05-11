@@ -77,9 +77,23 @@ export function HiddenHimachal() {
                     )}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="group/cta mt-4 inline-flex items-center gap-1.5 rounded-full bg-snow px-4 py-2 text-[12.5px] font-semibold text-pine shadow-md shadow-night/40 ring-1 ring-snow/60 transition-all duration-300 ease-soft hover:gap-2.5 hover:bg-white hover:shadow-lg hover:shadow-night/50"
+                    className="group/cta mt-4 inline-flex items-center gap-2 rounded-full bg-alpenglow px-5 py-2.5 text-[13px] font-semibold text-snow shadow-lg shadow-alpenglow/40 ring-1 ring-alpenglow/70 transition-all duration-300 ease-soft hover:bg-[#cc6747] hover:gap-3 hover:shadow-xl hover:shadow-alpenglow/60"
                   >
-                    Enquire now
+                    <svg
+                      width="14"
+                      height="14"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2.4"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      aria-hidden
+                    >
+                      <path d="M12 21s-7-6.5-7-12a7 7 0 1 1 14 0c0 5.5-7 12-7 12Z" />
+                      <circle cx="12" cy="9" r="2.5" />
+                    </svg>
+                    Take me here
                     <svg
                       width="13"
                       height="13"

@@ -112,6 +112,42 @@ body {
   animation: slowSpin 9s linear infinite;
 }
 
+/* Happy WhatsApp bounce — long idle, then a cheerful hop + wiggle */
+@keyframes happyHop {
+  0%,
+  60%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  64% {
+    transform: translateY(-10px) rotate(-12deg);
+  }
+  68% {
+    transform: translateY(-16px) rotate(10deg);
+  }
+  72% {
+    transform: translateY(-10px) rotate(-8deg);
+  }
+  76% {
+    transform: translateY(-5px) rotate(6deg);
+  }
+  80% {
+    transform: translateY(-2px) rotate(-3deg);
+  }
+  85% {
+    transform: translateY(0) rotate(0deg);
+  }
+}
+
+.animate-happy-hop {
+  animation: happyHop 3.2s cubic-bezier(0.22, 1, 0.36, 1) infinite;
+  transform-origin: 50% 80%;
+}
+
+.animate-happy-hop:hover {
+  animation-play-state: paused;
+}
+
 /* Reduced motion */
 @media (prefers-reduced-motion: reduce) {
   *,
