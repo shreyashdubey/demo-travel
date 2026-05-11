@@ -70,9 +70,21 @@ export function Experiences() {
                   )}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="mt-4 inline-flex items-center gap-1.5 text-[12.5px] font-medium text-alpenglow underline-offset-4 hover:text-snow hover:underline"
+                  className="group/cta mt-4 inline-flex items-center gap-1.5 rounded-full bg-snow px-4 py-2 text-[12.5px] font-semibold text-pine shadow-md shadow-night/40 ring-1 ring-snow/60 transition-all duration-300 ease-soft hover:gap-2.5 hover:bg-white hover:shadow-lg hover:shadow-night/50"
                 >
-                  Enquire for free →
+                  Enquire for free
+                  <svg
+                    width="13"
+                    height="13"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2.4"
+                    aria-hidden
+                    className="transition-transform duration-300 ease-soft group-hover/cta:translate-x-0.5"
+                  >
+                    <path d="M5 12h14m-6-6 6 6-6 6" />
+                  </svg>
                 </a>
               </div>
             </motion.article>

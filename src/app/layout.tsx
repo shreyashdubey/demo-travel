@@ -4,6 +4,7 @@ import "./globals.css";
 import { SmoothScroll } from "@/components/providers/SmoothScroll";
 import { TopBar } from "@/components/chrome/TopBar";
 import { WhatsAppFab } from "@/components/chrome/WhatsAppFab";
+import { SnowFloater } from "@/components/chrome/SnowFloater";
 import { ErrorBoundary } from "@/components/ErrorBoundary";
 
 const display = Fraunces({
@@ -70,6 +71,7 @@ export default function RootLayout({
           <SmoothScroll>
             <TopBar />
             {children}
+            <SnowFloater />
             <WhatsAppFab />
           </SmoothScroll>
         </ErrorBoundary>

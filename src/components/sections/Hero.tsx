@@ -55,28 +55,34 @@ export function Hero() {
             </span>
           </p>
 
-          {/* Snow window CTA — the free utility hook */}
+          {/* Snow window CTA — clean glass pill, cool not warm */}
           <a
             href="#weather"
-            className="mt-5 inline-flex items-center gap-3 rounded-full bg-alpenglow px-5 py-3 text-[14px] font-medium text-snow shadow-lg shadow-alpenglow/30 transition-all hover:bg-pine hover:shadow-pine/30"
+            className="mt-5 inline-flex items-center gap-2.5 rounded-full border border-snow/30 bg-white/10 px-4 py-2.5 text-[13.5px] font-medium text-snow backdrop-blur transition-all hover:border-snow/60 hover:bg-white/20"
           >
-            <span className="grid h-8 w-8 place-items-center rounded-full bg-snow/25">
+            <span className="grid h-7 w-7 place-items-center rounded-full bg-snow text-pine">
               <svg
-                width="16"
-                height="16"
+                width="15"
+                height="15"
                 viewBox="0 0 24 24"
                 fill="none"
                 stroke="currentColor"
-                strokeWidth="2.2"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
                 aria-hidden
               >
-                <path d="M12 2v20M2 12h20M5 5l14 14M19 5 5 19" />
+                <path d="M2 12h20" />
+                <path d="M12 2v20" />
+                <path d="m20 16-4-4 4-4" />
+                <path d="m4 8 4 4-4 4" />
+                <path d="m16 4-4 4-4-4" />
+                <path d="m8 20 4-4 4 4" />
               </svg>
             </span>
-            <span className="flex flex-wrap items-baseline gap-x-2">
-              <span className="text-[11px] font-bold uppercase tracking-wider">Free Tool</span>
-              <span>When to visit — snow & temperature for 5 places</span>
-              <span className="text-snow/85">→ See the best months</span>
+            <span>
+              Find out when it snows
+              <span className="ml-1.5 text-snow/65">— free tool →</span>
             </span>
           </a>
 

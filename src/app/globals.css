@@ -74,6 +74,44 @@ body {
   }
 }
 
+/* Snow floater animations — kept in plain CSS so they hot-reload reliably */
+@keyframes flakeFall {
+  0% {
+    transform: translate(0, -6px);
+    opacity: 0;
+  }
+  15% {
+    opacity: 1;
+  }
+  50% {
+    transform: translate(2px, 18px);
+  }
+  85% {
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-2px, 42px);
+    opacity: 0;
+  }
+}
+
+@keyframes slowSpin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-flake-fall {
+  animation: flakeFall 2.6s linear infinite;
+}
+
+.animate-slow-spin {
+  animation: slowSpin 9s linear infinite;
+}
+
 /* Reduced motion */
 @media (prefers-reduced-motion: reduce) {
   *,
