@@ -15,7 +15,7 @@ export function Footer() {
           <div className="relative h-28 w-28 overflow-hidden rounded-full ring-1 ring-snow/15 sm:h-36 sm:w-36">
             <Image
               src="/img/logo.jpeg"
-              alt="Wandering Saya Travels"
+              alt="Wandering Saya Travels — Himachal Pradesh travel atelier based in Kullu valley."
               fill
               sizes="(min-width: 640px) 144px, 112px"
               className="object-cover"
@@ -64,8 +64,8 @@ export function Footer() {
             <p className="mt-3 text-[12.5px] text-snow/55">No tracking. No spam. We mean it.</p>
           </div>
 
-          <div className="lg:col-span-6 grid grid-cols-2 gap-8 sm:grid-cols-3">
-            <div>
+          <div className="lg:col-span-6 grid grid-cols-2 gap-x-6 gap-y-8 sm:grid-cols-3 sm:gap-x-8">
+            <div className="min-w-0">
               <p className="text-[12px] uppercase tracking-[0.22em] text-snow/55">Reach Saroj</p>
               <ul className="mt-4 space-y-2 text-[14.5px] text-snow/85">
                 <li>
@@ -79,14 +79,17 @@ export function Footer() {
                   </a>
                 </li>
                 <li>
-                  <a href="mailto:saroj@wanderingsayatravels.com" className="hover:text-snow">
-                    saroj@wanderingsayatravels.com
+                  <a
+                    href="mailto:wanderingsayatravels@gmail.com"
+                    className="break-all hover:text-snow"
+                  >
+                    wanderingsayatravels@gmail.com
                   </a>
                 </li>
                 <li className="text-snow/65">Daily 8am–9pm IST</li>
               </ul>
             </div>
-            <div>
+            <div className="min-w-0">
               <p className="text-[12px] uppercase tracking-[0.22em] text-snow/55">The office</p>
               <ul className="mt-4 space-y-2 text-[14.5px] text-snow/85">
                 <li>Patlikuhl, Kullu</li>
@@ -94,7 +97,7 @@ export function Footer() {
                 <li>India</li>
               </ul>
             </div>
-            <div>
+            <div className="min-w-0">
               <p className="text-[12px] uppercase tracking-[0.22em] text-snow/55">Wander</p>
               <ul className="mt-4 space-y-2 text-[14.5px] text-snow/85">
                 {[
@@ -132,9 +135,27 @@ export function Footer() {
         <div className="mt-14 flex flex-col items-start justify-between gap-4 border-t border-snow/10 pt-8 text-[12.5px] text-snow/55 sm:flex-row sm:items-center">
           <div>© {new Date().getFullYear()} Wandering Saya Travels · All photographs licensed.</div>
           <div className="flex gap-5">
-            <a href="#" className="hover:text-snow">Instagram</a>
-            <a href="#" className="hover:text-snow">YouTube</a>
-            <a href="#" className="hover:text-snow">Privacy</a>
+            <a
+              href="https://www.instagram.com/wanderingsayatravels"
+              target="_blank"
+              rel="noopener noreferrer me"
+              aria-label="Wandering Saya Travels on Instagram"
+              className="hover:text-snow"
+            >
+              Instagram
+            </a>
+            <a
+              href="https://www.youtube.com/@wanderingsayatravels"
+              target="_blank"
+              rel="noopener noreferrer me"
+              aria-label="Wandering Saya Travels on YouTube"
+              className="hover:text-snow"
+            >
+              YouTube
+            </a>
+            <a href="#privacy" aria-label="Privacy policy" className="hover:text-snow">
+              Privacy
+            </a>
           </div>
         </div>
       </div>

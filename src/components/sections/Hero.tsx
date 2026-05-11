@@ -16,8 +16,7 @@ export function Hero() {
     >
       <Image
         src="https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?auto=format&fit=crop&w=1920&q=80"
-        alt=""
-        aria-hidden
+        alt="Snow-capped Himalayan peaks above the Kullu valley in Himachal Pradesh at first light."
         fill
         priority
         sizes="100vw"

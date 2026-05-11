@@ -47,7 +47,7 @@ export function FoodCulture() {
             >
               <Image
                 src={d.image}
-                alt={d.name}
+                alt={`${d.name} — traditional Pahari (Himachali) dish. ${d.sub}`}
                 fill
                 sizes="(min-width: 1024px) 14vw, (min-width: 640px) 30vw, 46vw"
                 className="object-cover transition-transform duration-[1400ms] ease-soft group-hover:scale-110"
@@ -68,7 +68,7 @@ export function FoodCulture() {
             <div className="relative aspect-[16/10] overflow-hidden rounded-[3px]">
               <Image
                 src="/img/places/kullu-dussehra-hero.jpg"
-                alt="Kullu Dussehra deota procession"
+                alt="Kullu Dussehra procession in Himachal Pradesh — village deities (deotas) on decorated palanquins walking into Dhalpur grounds in October."
                 fill
                 sizes="(min-width: 1024px) 60vw, 100vw"
                 className="object-cover"
@@ -95,7 +95,7 @@ export function FoodCulture() {
               <div className="relative aspect-[16/10] sm:aspect-auto sm:h-full">
                 <Image
                   src="/img/places/kullu-valley.jpg"
-                  alt=""
+                  alt="Sunday haat (open-air market) in Kullu town, Himachal Pradesh — locals trading apples, grain and shawls in the valley."
                   fill
                   sizes="(min-width: 1024px) 32vw, 100vw"
                   className="object-cover opacity-55 transition-opacity duration-500 group-hover:opacity-65"
@@ -190,7 +190,12 @@ export function FoodCulture() {
               className="relative grid w-full max-w-3xl grid-cols-1 overflow-hidden rounded-[4px] bg-snow ring-soft sm:grid-cols-2"
             >
               <div className="relative aspect-[4/5] sm:aspect-auto">
-                <Image src={dish.image} alt={dish.name} fill className="object-cover" />
+                <Image
+                  src={dish.image}
+                  alt={`${dish.name} — traditional Pahari dish from Himachal Pradesh. ${dish.sub}`}
+                  fill
+                  className="object-cover"
+                />
               </div>
               <div className="p-7 sm:p-9">
                 <p className="text-[11.5px] uppercase tracking-[0.22em] text-dusk">

@@ -39,7 +39,11 @@ export function HiddenHimachal() {
       });
     }
     for (const photo of openPlace.shotByUs.photos) {
-      items.push({ type: "photo", src: photo, alt: openPlace.name });
+      items.push({
+        type: "photo",
+        src: photo,
+        alt: `${openPlace.name} in ${openPlace.region}, Himachal Pradesh — photographed by Wandering Saya Travels.`,
+      });
     }
     return items;
   }, [openPlace]);
@@ -97,7 +101,7 @@ export function HiddenHimachal() {
                 <div className="relative aspect-[4/5]">
                   <Image
                     src={p.image}
-                    alt={p.name}
+                    alt={`${p.name} — ${p.region}, Himachal Pradesh (${p.elevation}). ${p.statLabel}.`}
                     fill
                     sizes="(min-width: 1024px) 30vw, (min-width: 640px) 46vw, 92vw"
                     className="object-cover transition-transform duration-[1400ms] ease-soft group-hover:scale-105"

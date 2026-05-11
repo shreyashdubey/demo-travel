@@ -7,7 +7,7 @@ export function SnowFloater() {
   return (
     <a
       href="#weather"
-      aria-label="Find your snow window — free planning tool"
+      aria-label="When will it snow? — free month-by-month guide"
       className="group fixed bottom-5 left-5 z-40 inline-flex items-center gap-2.5 rounded-full bg-[radial-gradient(ellipse_140%_180%_at_50%_-20%,_#5E7449_0%,_#3A4A2F_45%,_#1A2415_100%)] py-2 pl-2 pr-4 text-snow shadow-[0_10px_28px_rgba(26,36,21,0.45),inset_0_1px_0_rgba(241,228,203,0.18)] ring-1 ring-inset ring-snow/10 transition-all duration-300 hover:scale-105 hover:shadow-[0_14px_34px_rgba(26,36,21,0.55),inset_0_1px_0_rgba(241,228,203,0.25)] active:scale-95 sm:bottom-6 sm:left-6 sm:gap-3 sm:py-2.5 sm:pl-2.5 sm:pr-5"
     >
       {/* Snow globe — falling particles + slowly spinning snowflake centre */}
@@ -56,10 +56,10 @@ export function SnowFloater() {
 
       <span className="flex flex-col leading-tight">
         <span className="text-[12.5px] font-semibold sm:text-[13px]">
-          Find your snow window
+          When will it snow?
         </span>
         <span className="hidden text-[10px] uppercase tracking-[0.18em] text-snow/65 sm:block">
-          Free tool · tap to check
+          Free month-by-month guide
         </span>
       </span>
     </a>

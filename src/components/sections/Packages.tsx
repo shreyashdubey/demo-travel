@@ -81,7 +81,7 @@ export function Packages({
               >
                 <Image
                   src={p.cover}
-                  alt={p.title}
+                  alt={`${p.title} — ${p.days}-day Himachal Pradesh journey. ${p.pitch}`}
                   fill
                   sizes="(min-width: 1024px) 32vw, 92vw"
                   className="object-cover transition-transform duration-[1400ms] ease-soft group-hover:scale-[1.06]"

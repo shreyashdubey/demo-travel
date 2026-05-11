@@ -24,10 +24,11 @@ export function MediaLightbox({
 }) {
   const [index, setIndex] = useState(0);
 
-  // Reset to first item every time the lightbox opens.
+  // Reset to first item whenever the lightbox opens or the media set changes,
+  // so a stale index from a previous (longer) gallery can't index out of bounds.
   useEffect(() => {
     if (open) setIndex(0);
-  }, [open]);
+  }, [open, items]);
 
   const goTo = useCallback(
     (i: number) => {
@@ -64,7 +65,7 @@ export function MediaLightbox({
   }, [open]);
 
   if (!items.length) return null;
-  const current = items[index];
+  const current = items[index] ?? items[0];
   const enquireHref = whatsappUrl(
     `Hi Saroj, I just saw the ${title} photos on your site — could we plan a trip?`,
   );
@@ -121,7 +122,9 @@ export function MediaLightbox({
                 <img
                   key={current.src}
                   src={current.src}
-                  alt={current.alt}
+                  alt={current.alt || `${title} in ${region} — photo from Wandering Saya Travels.`}
+                  loading="lazy"
+                  decoding="async"
                   className="block max-h-[60vh] max-w-full object-contain"
                 />
               ) : (
@@ -135,6 +138,7 @@ export function MediaLightbox({
                   playsInline
                   loop
                   preload="metadata"
+                  aria-label={`${title} in ${region} — video shot by Wandering Saya Travels.`}
                   className="block max-h-[60vh] max-w-full"
                 />
               )}

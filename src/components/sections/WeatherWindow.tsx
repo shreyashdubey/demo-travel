@@ -197,7 +197,7 @@ export function WeatherWindow() {
             <div className="relative aspect-[4/3] lg:aspect-auto lg:min-h-[420px]">
               <Image
                 src={data.image}
-                alt={data.name}
+                alt={`${data.name}, Himachal Pradesh (elevation ${data.elevation}) — ${data.summary}`}
                 fill
                 sizes="(min-width: 1024px) 50vw, 100vw"
                 className="object-cover"

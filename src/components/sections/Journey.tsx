@@ -129,7 +129,7 @@ function DaySection({
                   <div className="relative aspect-[16/9]">
                     <Image
                       src={h.image}
-                      alt={h.title}
+                      alt={`${h.title} — ${day.place}, Himachal Pradesh (${h.time}).`}
                       fill
                       sizes="(min-width: 1024px) 50vw, 92vw"
                       className="object-cover transition-transform duration-[1200ms] ease-soft hover:scale-[1.04]"
@@ -166,7 +166,7 @@ function DayCard({
       <div className="relative aspect-[4/3]">
         <Image
           src={day.cover}
-          alt={day.title}
+          alt={`Day ${day.day} of the Spiti Circuit — ${day.title}. ${day.place}, elevation ${day.elevation}.`}
           fill
           sizes="(min-width: 1024px) 30vw, 92vw"
           className="object-cover opacity-90"
@@ -260,7 +260,7 @@ function EnquirePanel({
           <div className="relative aspect-[4/3] lg:col-span-5 lg:aspect-auto">
             <Image
               src={pack.cover}
-              alt={pack.title}
+              alt={`${pack.title} — ${pack.days}-day, ${pack.nights}-night small-group Himachal journey.`}
               fill
               sizes="(min-width: 1024px) 40vw, 100vw"
               className="object-cover"

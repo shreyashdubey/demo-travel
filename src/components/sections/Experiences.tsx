@@ -43,7 +43,7 @@ export function Experiences() {
             >
               <Image
                 src={e.image}
-                alt={e.title}
+                alt={`${e.title} in Himachal Pradesh — ${e.sub}`}
                 fill
                 sizes="(min-width: 1024px) 22vw, (min-width: 640px) 44vw, 92vw"
                 className="object-cover opacity-80 transition-all duration-[1400ms] ease-soft group-hover:scale-[1.06] group-hover:opacity-100"
