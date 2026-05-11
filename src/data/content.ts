@@ -597,6 +597,45 @@ export const trustPoints = [
 // The "where few go" section. Real census-era population numbers, real elevations.
 // Each place is chosen because Saroj has been and very few tourists do.
 export const hiddenPlaces = [
+  // Mathsaur — real photos + video shot by Saroj. The `shotByUs` field
+  // unlocks the lightbox in the UI.
+  {
+    slug: "mathsaur",
+    name: "Mathsaur",
+    region: "Banjar, Kullu",
+    elevation: "~3,200 m",
+    stat: "📷",
+    statLabel: "Our own photos and video",
+    detail:
+      "A pine-cedar ridge above the cloud-line. Locals walk up for the cloud break — we did, and brought back the proof.",
+    image: "/img/places/mathsaur/mathsaur-1.jpg",
+    shotByUs: {
+      photos: [
+        "/img/places/mathsaur/mathsaur-1.jpg",
+        "/img/places/mathsaur/mathsaur-2.jpg",
+        "/img/places/mathsaur/mathsaur-3.jpg",
+      ],
+      video: "/video/mathsaur.mp4",
+    },
+  },
+  // Dhanasar Lake — glacial lake we've actually walked to.
+  {
+    slug: "dhanasar",
+    name: "Dhanasar Lake",
+    region: "Tirthan / Banjar, Kullu",
+    elevation: "~3,800 m",
+    stat: "📷",
+    statLabel: "Our own photos",
+    detail:
+      "A glacial lake hidden inside the Great Himalayan NP. A two-day trek from Sojha. Half-frozen most of the year, and almost nobody up there with you.",
+    image: "/img/places/dhanasar/dhanasar-1.jpg",
+    shotByUs: {
+      photos: [
+        "/img/places/dhanasar/dhanasar-1.jpg",
+        "/img/places/dhanasar/dhanasar-2.jpg",
+      ],
+    },
+  },
   {
     slug: "komic",
     name: "Komic",
