@@ -5,6 +5,7 @@ import { Hero } from "@/components/sections/Hero";
 import { StoryStrip } from "@/components/sections/StoryStrip";
 import { Destinations } from "@/components/sections/Destinations";
 import { Experiences } from "@/components/sections/Experiences";
+import { HiddenHimachal } from "@/components/sections/HiddenHimachal";
 import { WeatherWindow } from "@/components/sections/WeatherWindow";
 import { Packages } from "@/components/sections/Packages";
 import { Journey } from "@/components/sections/Journey";
@@ -29,6 +30,7 @@ export default function Home() {
     <main className="relative">
       <Hero />
       <Experiences />
+      <HiddenHimachal />
       <StoryStrip />
       <Destinations />
       <WeatherWindow />

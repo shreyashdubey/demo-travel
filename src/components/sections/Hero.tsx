@@ -43,15 +43,17 @@ export function Hero() {
             <span>11 homestay families</span>
           </div>
 
-          <h1 className="font-display text-balance text-[42px] leading-[1.02] tracking-tightest sm:text-[76px] lg:text-[100px]">
-            The mountains are waiting.
+          <h1 className="font-display text-balance text-[42px] leading-[1.02] tracking-tightest sm:text-[72px] lg:text-[96px]">
+            Saroj's Himachal —
             <br />
-            <span className="opacity-90">We know the way.</span>
+            <span className="opacity-90">not the one in the brochures.</span>
           </h1>
 
-          <p className="mt-5 max-w-2xl text-pretty text-[16px] leading-relaxed text-snow/90 sm:text-[18px]">
-            Curated journeys through Kullu, Manali, Shimla & Spiti.
-            <span className="mt-1 block font-medium text-snow">
+          <p className="mt-5 max-w-2xl text-pretty text-[16px] leading-relaxed text-snow/90 sm:text-[17.5px]">
+            Born and raised in Bhuntar. We've been in this valley all our lives — and we take you
+            to the homestays you call by first name, the trails the buses skip, the festivals only
+            the villages know.
+            <span className="mt-2 block font-medium text-snow">
               Tell us your dates — Saroj replies on WhatsApp within 4 hours.
             </span>
           </p>

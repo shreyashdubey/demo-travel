@@ -530,6 +530,78 @@ export const trustPoints = [
   },
 ];
 
+// The "where few go" section. Real census-era population numbers, real elevations.
+// Each place is chosen because Saroj has been and very few tourists do.
+export const hiddenPlaces = [
+  {
+    slug: "komic",
+    name: "Komic",
+    region: "Spiti, Lahaul–Spiti",
+    elevation: "4,587 m",
+    stat: "Pop. 84",
+    statLabel: "Highest motorable village on earth",
+    detail:
+      "One monastery, one shop. A monk pours you tea. You may not see another traveller all day.",
+    image: "/img/places/key-monastery.jpg",
+  },
+  {
+    slug: "hikkim",
+    name: "Hikkim",
+    region: "Spiti",
+    elevation: "4,440 m",
+    stat: "Pop. 250",
+    statLabel: "World's highest post office",
+    detail:
+      "Send a postcard from the highest post office on earth. We carry stamps. The postmaster has been here 35 years.",
+    image: "/img/places/spiti.jpg",
+  },
+  {
+    slug: "mudh",
+    name: "Mudh",
+    region: "Pin Valley, Spiti",
+    elevation: "3,810 m",
+    stat: "Pop. 150",
+    statLabel: "End of the road into Pin Valley NP",
+    detail:
+      "The last village before the national park. Black-pea soup, barley bread, ibex on the slopes if you look slowly.",
+    image: "/img/places/chandratal.jpg",
+  },
+  {
+    slug: "chitkul",
+    name: "Chitkul",
+    region: "Kinnaur",
+    elevation: "3,450 m",
+    stat: "Pop. ~600",
+    statLabel: "Last Indian village before the China border",
+    detail:
+      "Wooden temples, the Baspa river, apple orchards at impossible altitude. Six months a year the road is snow-cut.",
+    image:
+      "https://images.unsplash.com/photo-1469125155630-7ed37e065743?auto=format&fit=crop&w=1600&q=80",
+  },
+  {
+    slug: "malana",
+    name: "Malana",
+    region: "Parvati Valley",
+    elevation: "2,652 m",
+    stat: "~1,700 yrs",
+    statLabel: "One of the world's oldest democracies",
+    detail:
+      "Speaks its own language (Kanashi), governs by its own council, claims descent from Alexander's soldiers. Visit with respect — touching things is forbidden.",
+    image: "/img/places/kasol-parvati.jpg",
+  },
+  {
+    slug: "pangi",
+    name: "Pangi Valley",
+    region: "Chamba",
+    elevation: "2,400 m",
+    stat: "Snow-cut 6 mo",
+    statLabel: "Cut off from the world Nov–May",
+    detail:
+      "17,000 people across 25 villages, snowed-in half the year. The Sach Pass road opens in June and closes in October.",
+    image: "/img/places/beas.jpg",
+  },
+] as const;
+
 export const roadStatus = [
   { name: "Manali–Leh via Atal Tunnel", status: "Open", state: "open" },
   { name: "Manali–Kaza via Kunzum La", status: "Open · caution past Batal", state: "caution" },
