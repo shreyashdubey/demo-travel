@@ -3,7 +3,6 @@
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { packages } from "@/data/content";
-import { useSound } from "@/components/providers/SoundProvider";
 import { whatsappUrl } from "@/lib/contact";
 
 const WhatsAppGlyph = () => (
@@ -19,8 +18,6 @@ export function Packages({
   onSelect: (slug: string) => void;
   selected: string | null;
 }) {
-  const { play } = useSound();
-
   return (
     <section id="journeys" className="relative bg-snow py-24 sm:py-32 lg:py-40">
       <div className="mx-auto max-w-[1280px] px-5 sm:px-10">
@@ -67,7 +64,6 @@ export function Packages({
             <div key={p.slug} className="flex flex-col gap-3">
               <motion.button
                 onClick={() => {
-                  play("chime");
                   onSelect(p.slug);
                   requestAnimationFrame(() => {
                     document

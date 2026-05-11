@@ -505,6 +505,70 @@ export const phrases = [
   { hi: "Dhanyavaad", en: "Thank you", pahari: "Meherbani" },
 ];
 
+// PLACEHOLDER testimonials — replace with real reviews from past travellers
+// (ask 4–6 of your past travellers if you can quote them with their city and trip).
+export const testimonials = [
+  {
+    name: "Anjali & Rohan Sharma",
+    location: "Delhi NCR",
+    trip: "Spiti Circuit · September 2025",
+    quote:
+      "We were nervous about driving in Spiti, but Tashi made us feel safe from day one. Saroj checked in twice during the trip. The Komic monastery breakfast we'll never forget.",
+  },
+  {
+    name: "Vikram Mehta",
+    location: "Mumbai",
+    trip: "Kullu Roots · October 2025",
+    quote:
+      "I've done a lot of Himachal trips with bigger operators. This was the first that felt like staying with family. Mahendra's orchard, Dolma's kitchen — these aren't on any app.",
+  },
+  {
+    name: "The Iyer family",
+    location: "Bangalore",
+    trip: "First Snow · December 2024",
+    quote:
+      "Saroj rebuilt our whole itinerary when our flights got delayed. No drama, no extra charge. The kids still talk about the snowball fight at Solang.",
+  },
+  {
+    name: "Priya Krishnan",
+    location: "Chennai",
+    trip: "Tirthan & Great Himalayan NP · May 2025",
+    quote:
+      "Solo female traveller, was anxious. Saroj's homestay host Tara treated me like her own. I read three books in five days and forgot what my phone was for.",
+  },
+];
+
+export const faqs = [
+  {
+    q: "How do I book a trip?",
+    a: "Message Saroj on WhatsApp at +91 85809-46251 with your rough dates and group size. She sends back a tailored itinerary and a fair quote within 4 hours. No form, no signup.",
+  },
+  {
+    q: "How does payment work?",
+    a: "25% advance to confirm dates and reserve homestays. Balance is paid on arrival in cash, UPI, or bank transfer — whichever you prefer.",
+  },
+  {
+    q: "What if I need to cancel?",
+    a: "Free cancellation up to 14 days before departure. And if a cloudburst or road closure ends your trip mid-way, we refund what hasn't been used — every rupee. We call it the Saroj Promise.",
+  },
+  {
+    q: "Are the drivers and guides safe?",
+    a: "All eight of our drivers have been working in Himachal for at least seven years. They're our cousins, neighbours, friends. We don't outsource. Trek guides are licensed by Himachal Tourism.",
+  },
+  {
+    q: "What about food restrictions, kids, or older travellers?",
+    a: "We've hosted vegetarian, Jain, vegan, gluten-free and allergy-sensitive travellers. Tell Saroj on WhatsApp and she'll talk to the kitchens. Kids 5 and up are very welcome; for younger or older travellers we'll talk through altitude and pace.",
+  },
+  {
+    q: "Can I travel solo?",
+    a: "Yes. About 30% of our travellers come solo. Saroj will match you with the right homestays and route. For solo female travellers, we have specific routes and host families we prefer.",
+  },
+  {
+    q: "What's actually included?",
+    a: "Private vehicle and driver, all homestay/camp stays, daily breakfast and dinner, local guides on trek days, inner-line permits where needed, and a small welcome pack (hand-drawn map, language card, pressed leaf bookmark). Not included: flights, lunch on the road, personal extras.",
+  },
+];
+
 export const trustPoints = [
   {
     stat: "9",
@@ -602,11 +666,52 @@ export const hiddenPlaces = [
   },
 ] as const;
 
-export const roadStatus = [
-  { name: "Manali–Leh via Atal Tunnel", status: "Open", state: "open" },
-  { name: "Manali–Kaza via Kunzum La", status: "Open · caution past Batal", state: "caution" },
-  { name: "Rohtang Pass", status: "Open · snow possible", state: "caution" },
-  { name: "Shimla–Kalka toy train", status: "Operating", state: "open" },
-  { name: "Kasol–Kheerganga trail", status: "Clear", state: "open" },
-  { name: "Sach Pass", status: "Closed for winter", state: "closed" },
-] as const;
+// Saroj updates this manually each week from her driver network's WhatsApp group.
+// Date format: "DD MMM YYYY". Replace `by` with whoever did the latest check.
+export const roadStatus = {
+  updated: "11 May 2026",
+  by: "Tashi (our Manali driver)",
+  routes: [
+    {
+      name: "Manali–Leh via Atal Tunnel",
+      status: "Open",
+      state: "open",
+      detail:
+        "Atal Tunnel clear. Sissu, Keylong, Jispa accessible. Fuel at Tandi sangam — last petrol pump for 365 km.",
+    },
+    {
+      name: "Manali–Kaza via Kunzum La",
+      status: "Open · caution",
+      state: "caution",
+      detail:
+        "Kunzum La (4,551 m) opened mid-May. River crossings active past Batal — go with a driver only, no self-drive.",
+    },
+    {
+      name: "Rohtang Pass",
+      status: "Open",
+      state: "open",
+      detail:
+        "Permit from Manali RTO required (₹500). Snow walls 8–10 ft both sides. Closed beyond 5 pm.",
+    },
+    {
+      name: "Shimla–Kalka toy train",
+      status: "Operating",
+      state: "open",
+      detail:
+        "5 daily services. 102 tunnels, 988 bridges, ~5.5 hours of slow descent. Book HRTC seats in advance.",
+    },
+    {
+      name: "Kasol–Kheerganga trail",
+      status: "Clear",
+      state: "open",
+      detail: "Barshaini gate open. 12 km trek, 4–5 hours up. Camping currently permitted.",
+    },
+    {
+      name: "Sach Pass (Pangi)",
+      status: "Closed",
+      state: "closed",
+      detail:
+        "Opens around 15 June each year. Pangi accessible only via Kishtwar (J&K) side until then.",
+    },
+  ],
+} as const;

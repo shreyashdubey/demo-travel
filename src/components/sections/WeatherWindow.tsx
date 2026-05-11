@@ -124,28 +124,28 @@ export function WeatherWindow() {
           </p>
         </div>
 
-        {/* Road status */}
+        {/* Road status — updated by our driver network */}
         <div className="mb-10 rounded-[3px] border border-pine/10 bg-white p-5">
           <div className="flex flex-wrap items-baseline justify-between gap-2 border-b border-pine/10 pb-3">
             <p className="font-mono text-[11px] uppercase tracking-[0.22em] text-pine">
               Roads today
             </p>
             <p className="text-[11.5px] text-pine/55">
-              Updated by our driver network this week
+              Last checked {roadStatus.updated} · by {roadStatus.by}
             </p>
           </div>
-          <ul className="mt-4 grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
-            {roadStatus.map((r) => (
-              <li
-                key={r.name}
-                className="flex items-center justify-between gap-3 rounded-[3px] bg-glacier/50 px-3 py-2"
-              >
-                <span className="text-[13.5px] text-pine">{r.name}</span>
-                <span
-                  className={`text-[10.5px] font-medium uppercase tracking-[0.18em] ${STATE_STYLE[r.state]}`}
-                >
-                  {r.status}
-                </span>
+          <ul className="mt-4 grid gap-3 sm:grid-cols-2">
+            {roadStatus.routes.map((r) => (
+              <li key={r.name} className="rounded-[3px] bg-glacier/50 p-3">
+                <div className="flex items-start justify-between gap-3">
+                  <span className="text-[14px] font-medium text-pine">{r.name}</span>
+                  <span
+                    className={`flex-none text-[10.5px] font-medium uppercase tracking-[0.18em] ${STATE_STYLE[r.state]}`}
+                  >
+                    {r.status}
+                  </span>
+                </div>
+                <p className="mt-1.5 text-[12.5px] leading-snug text-pine/70">{r.detail}</p>
               </li>
             ))}
           </ul>

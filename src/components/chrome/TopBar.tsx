@@ -1,11 +1,9 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { useSound } from "@/components/providers/SoundProvider";
 import { cn } from "@/lib/cn";
 
 export function TopBar() {
-  const { enabled, toggle } = useSound();
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
@@ -60,18 +58,6 @@ export function TopBar() {
         </nav>
 
         <div className="flex items-center gap-2">
-          <button
-            onClick={toggle}
-            aria-label={enabled ? "Mute sound" : "Unmute sound"}
-            className={cn(
-              "h-9 w-9 grid place-items-center rounded-full border transition-all",
-              scrolled
-                ? "border-pine/15 bg-snow/80 text-pine hover:bg-snow"
-                : "border-white/30 glass-dark text-snow hover:bg-white/20",
-            )}
-          >
-            {enabled ? <SoundOn /> : <SoundOff />}
-          </button>
           <a
             href="https://wa.me/918580946251"
             target="_blank"
@@ -103,31 +89,8 @@ export function TopBar() {
 function Glyph({ className }: { className?: string }) {
   return (
     <svg viewBox="0 0 28 28" className={cn("w-7 h-7", className)} aria-hidden>
-      <path
-        d="M2 22 L9 10 L13 16 L17 6 L26 22 Z"
-        fill="currentColor"
-        opacity="0.92"
-      />
+      <path d="M2 22 L9 10 L13 16 L17 6 L26 22 Z" fill="currentColor" opacity="0.92" />
       <circle cx="22" cy="7" r="2.2" fill="currentColor" opacity="0.7" />
-    </svg>
-  );
-}
-
-function SoundOn() {
-  return (
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M11 5 6 9H2v6h4l5 4z" />
-      <path d="M15.5 8.5a5 5 0 0 1 0 7" />
-      <path d="M18.5 5.5a9 9 0 0 1 0 13" />
-    </svg>
-  );
-}
-function SoundOff() {
-  return (
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M11 5 6 9H2v6h4l5 4z" />
-      <path d="m22 9-6 6" />
-      <path d="m16 9 6 6" />
     </svg>
   );
 }

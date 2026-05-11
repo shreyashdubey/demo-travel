@@ -2,7 +2,6 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { useSound } from "@/components/providers/SoundProvider";
 import { whatsappUrl, WHATSAPP_DISPLAY } from "@/lib/contact";
 
 const ENQUIRE = whatsappUrl(
@@ -10,12 +9,10 @@ const ENQUIRE = whatsappUrl(
 );
 
 export function Hero() {
-  const { play } = useSound();
-
   return (
     <section
       id="top"
-      className="relative h-screen min-h-[720px] w-full overflow-hidden bg-night text-snow"
+      className="relative h-[100svh] w-full overflow-hidden bg-night text-snow sm:h-screen sm:min-h-[720px]"
     >
       <Image
         src="https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?auto=format&fit=crop&w=1920&q=80"
@@ -28,14 +25,14 @@ export function Hero() {
       />
       <div className="absolute inset-0 bg-gradient-to-t from-night via-night/55 to-night/15" />
 
-      <div className="relative z-10 mx-auto flex h-full max-w-[1280px] flex-col justify-end px-5 pb-14 sm:px-10 sm:pb-20">
+      <div className="relative z-10 mx-auto flex h-full max-w-[1280px] flex-col justify-start px-5 pb-10 pt-20 sm:justify-end sm:px-10 sm:pb-20 sm:pt-0">
         <motion.div
           initial={{ opacity: 0, y: 18 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
         >
           {/* Trust pill — credentials at a glance */}
-          <div className="mb-5 inline-flex flex-wrap items-center gap-x-3 gap-y-1 rounded-full border border-white/25 bg-white/15 px-4 py-2 text-[12.5px] text-snow backdrop-blur">
+          <div className="mb-4 inline-flex flex-wrap items-center gap-x-3 gap-y-1 rounded-full border border-white/25 bg-white/15 px-4 py-2 text-[12.5px] text-snow backdrop-blur">
             <span className="font-medium">🏔 Based in Kullu</span>
             <span className="opacity-50">·</span>
             <span>Since 2017</span>
@@ -43,13 +40,13 @@ export function Hero() {
             <span>11 homestay families</span>
           </div>
 
-          <h1 className="font-display text-balance text-[42px] leading-[1.02] tracking-tightest sm:text-[72px] lg:text-[96px]">
+          <h1 className="font-display text-balance text-[36px] leading-[1.02] tracking-tightest sm:text-[68px] lg:text-[96px]">
             Saroj's Himachal —
             <br />
             <span className="opacity-90">not the one in the brochures.</span>
           </h1>
 
-          <p className="mt-5 max-w-2xl text-pretty text-[16px] leading-relaxed text-snow/90 sm:text-[17.5px]">
+          <p className="mt-4 max-w-2xl text-pretty text-[15.5px] leading-relaxed text-snow/90 sm:mt-5 sm:text-[17.5px]">
             Born and raised in Bhuntar. We've been in this valley all our lives — and we take you
             to the homestays you call by first name, the trails the buses skip, the festivals only
             the villages know.
@@ -58,10 +55,10 @@ export function Hero() {
             </span>
           </p>
 
-          {/* Big snow window CTA — the free utility hook */}
+          {/* Snow window CTA — the free utility hook */}
           <a
             href="#weather"
-            className="mt-6 inline-flex items-center gap-3 rounded-full bg-alpenglow px-5 py-3 text-[14px] font-medium text-snow shadow-lg shadow-alpenglow/30 transition-all hover:bg-pine hover:shadow-pine/30"
+            className="mt-5 inline-flex items-center gap-3 rounded-full bg-alpenglow px-5 py-3 text-[14px] font-medium text-snow shadow-lg shadow-alpenglow/30 transition-all hover:bg-pine hover:shadow-pine/30"
           >
             <span className="grid h-8 w-8 place-items-center rounded-full bg-snow/25">
               <svg
@@ -83,11 +80,10 @@ export function Hero() {
             </span>
           </a>
 
-          {/* Primary CTAs — see journeys + chat directly */}
-          <div className="mt-5 flex flex-col items-stretch gap-3 sm:flex-row sm:items-center sm:gap-3">
+          {/* Primary CTAs */}
+          <div className="mt-4 flex flex-col items-stretch gap-3 sm:flex-row sm:items-center sm:gap-3">
             <a
               href="#journeys"
-              onClick={() => play("bell")}
               className="inline-flex items-center justify-center gap-2 rounded-full bg-snow px-6 py-3.5 text-[15px] font-semibold text-pine transition-colors hover:bg-white"
             >
               See all journeys
@@ -121,8 +117,8 @@ export function Hero() {
             </a>
           </div>
 
-          {/* Reassurance row — three quick promises */}
-          <div className="mt-5 flex flex-wrap items-center gap-x-4 gap-y-1.5 text-[12.5px] text-snow/85">
+          {/* Reassurance row */}
+          <div className="mt-4 flex flex-wrap items-center gap-x-4 gap-y-1.5 text-[12.5px] text-snow/85">
             <span className="flex items-center gap-1.5">
               <CheckMark /> Free cancellation up to 14 days
             </span>

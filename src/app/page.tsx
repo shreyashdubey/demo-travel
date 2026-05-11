@@ -10,8 +10,11 @@ import { WeatherWindow } from "@/components/sections/WeatherWindow";
 import { Packages } from "@/components/sections/Packages";
 import { Journey } from "@/components/sections/Journey";
 // import { RangeMoment } from "@/components/sections/RangeMoment"; // disabled per request — bring back when 3D is ready
+import { Testimonials } from "@/components/sections/Testimonials";
 import { FoodCulture } from "@/components/sections/FoodCulture";
 import { AboutSaroj } from "@/components/sections/AboutSaroj";
+import { HowItWorks } from "@/components/sections/HowItWorks";
+import { FAQ } from "@/components/sections/FAQ";
 import { BookingForm } from "@/components/sections/BookingForm";
 import { Footer } from "@/components/sections/Footer";
 
@@ -37,8 +40,11 @@ export default function Home() {
       {/* <RangeMoment /> — disabled per request */}
       <Packages selected={selected} onSelect={setSelected} />
       <Journey selected={selected} />
+      <Testimonials />
       <FoodCulture />
       <AboutSaroj />
+      <HowItWorks />
+      <FAQ />
       <BookingForm />
       <Footer />
     </main>

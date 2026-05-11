@@ -100,9 +100,12 @@ export function Footer() {
                 {[
                   ["Destinations", "#destinations"],
                   ["Experiences", "#experiences"],
+                  ["Where few go", "#hidden"],
                   ["Journeys", "#journeys"],
+                  ["When to go", "#weather"],
                   ["Food & Culture", "#food"],
-                  ["Saroj's story", "#saroj"],
+                  ["How it works", "#how"],
+                  ["FAQs", "#faq"],
                   ["Plan a journey", "#book"],
                 ].map(([t, h]) => (
                   <li key={h}>

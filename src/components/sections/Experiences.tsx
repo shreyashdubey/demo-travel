@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { experiences } from "@/data/content";
+import { whatsappUrl } from "@/lib/contact";
 
 export function Experiences() {
   return (
@@ -63,6 +64,16 @@ export function Experiences() {
                 <p className="mt-3 max-h-0 overflow-hidden text-[13.5px] leading-snug text-snow/85 transition-all duration-700 ease-soft group-hover:max-h-32">
                   {e.body}
                 </p>
+                <a
+                  href={whatsappUrl(
+                    `Hi Saroj, I'd like to enquire about ${e.title.toLowerCase()} in Himachal.`,
+                  )}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-4 inline-flex items-center gap-1.5 text-[12.5px] font-medium text-alpenglow underline-offset-4 hover:text-snow hover:underline"
+                >
+                  Enquire for free →
+                </a>
               </div>
             </motion.article>
           ))}

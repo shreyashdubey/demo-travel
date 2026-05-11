@@ -5,12 +5,10 @@ import {
   motion,
   useScroll,
   useTransform,
-  useMotionValueEvent,
   type MotionValue,
 } from "framer-motion";
-import { useEffect, useRef, useState } from "react";
+import { useRef } from "react";
 import { spitiJourney, packages, type JourneyDay } from "@/data/content";
-import { useSound } from "@/components/providers/SoundProvider";
 import { whatsappUrl } from "@/lib/contact";
 
 const PHASE_COLORS: Record<JourneyDay["phase"], { from: string; to: string; text: string }> = {
@@ -31,22 +29,6 @@ export function Journey({ selected }: { selected: string | null }) {
   const days = spitiJourney;
   const pack = packages.find((p) => p.slug === (selected ?? "spiti-circuit"))!;
   const totalDays = days.length;
-
-  // Track current day for the day-change chime
-  const [currentIdx, setCurrentIdx] = useState(0);
-  useMotionValueEvent(scrollYProgress, "change", (p) => {
-    const idx = Math.min(totalDays - 1, Math.floor(p * totalDays));
-    setCurrentIdx(idx);
-  });
-
-  const { play } = useSound();
-  const prevIdx = useRef(0);
-  useEffect(() => {
-    if (currentIdx !== prevIdx.current) {
-      prevIdx.current = currentIdx;
-      play("chime");
-    }
-  }, [currentIdx, play]);
 
   const enquireHref = whatsappUrl(
     `Hi Saroj, I'd like to enquire about the ${pack.title} journey (${pack.days} days, ${pack.nights} nights).`,
@@ -115,14 +97,12 @@ function DaySection({
 
   return (
     <div className="relative grid grid-cols-1 gap-8 px-5 py-20 sm:px-10 sm:py-28 lg:grid-cols-12 lg:gap-10">
-      {/* Sticky day card */}
       <div className="lg:col-span-4">
         <div className="lg:sticky lg:top-[120px]">
           <DayCard day={day} progress={localProgress} total={total} />
         </div>
       </div>
 
-      {/* Hours timeline */}
       <ol className="lg:col-span-8 space-y-6">
         {day.hours.map((h, i) => (
           <motion.li

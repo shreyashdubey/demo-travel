@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import { Fraunces, Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import { SmoothScroll } from "@/components/providers/SmoothScroll";
-import { SoundProvider } from "@/components/providers/SoundProvider";
 import { TopBar } from "@/components/chrome/TopBar";
+import { WhatsAppFab } from "@/components/chrome/WhatsAppFab";
 import { ErrorBoundary } from "@/components/ErrorBoundary";
 
 const display = Fraunces({
@@ -67,12 +67,11 @@ export default function RootLayout({
     <html lang="en" className={`${display.variable} ${sans.variable} ${mono.variable}`}>
       <body className="bg-snow text-pine antialiased font-sans">
         <ErrorBoundary>
-          <SoundProvider>
-            <SmoothScroll>
-              <TopBar />
-              {children}
-            </SmoothScroll>
-          </SoundProvider>
+          <SmoothScroll>
+            <TopBar />
+            {children}
+            <WhatsAppFab />
+          </SmoothScroll>
         </ErrorBoundary>
       </body>
     </html>
