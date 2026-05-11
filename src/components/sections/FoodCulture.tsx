@@ -4,9 +4,11 @@ import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
 import { food, phrases } from "@/data/content";
+import { MediaLightbox } from "@/components/chrome/MediaLightbox";
 
 export function FoodCulture() {
   const [active, setActive] = useState<number | null>(null);
+  const [marketOpen, setMarketOpen] = useState(false);
   const dish = active !== null ? food[active] : null;
 
   return (
@@ -84,24 +86,50 @@ export function FoodCulture() {
           </div>
 
           <div className="lg:col-span-5 grid grid-rows-2 gap-5">
-            <div className="relative overflow-hidden rounded-[3px] bg-dusk text-snow">
+            {/* Kullu market — real video, opens in lightbox */}
+            <button
+              type="button"
+              onClick={() => setMarketOpen(true)}
+              className="group relative overflow-hidden rounded-[3px] bg-dusk text-left text-snow ring-2 ring-snow/0 transition-all hover:ring-snow/40"
+            >
               <div className="relative aspect-[16/10] sm:aspect-auto sm:h-full">
                 <Image
-                  src="https://images.unsplash.com/photo-1551632811-561732d1e306?auto=format&fit=crop&w=1200&q=80"
-                  alt="Kullvi shawl loom"
+                  src="/img/places/kullu-valley.jpg"
+                  alt=""
                   fill
-                  className="object-cover opacity-50"
+                  sizes="(min-width: 1024px) 32vw, 100vw"
+                  className="object-cover opacity-55 transition-opacity duration-500 group-hover:opacity-65"
                 />
               </div>
-              <div className="absolute inset-0 flex flex-col justify-end p-6">
-                <p className="text-[11.5px] uppercase tracking-[0.22em] text-snow/80">
-                  Pattu shawls · Kullu loom
-                </p>
-                <p className="mt-1 font-display text-[22px] leading-tight tracking-tightest">
-                  Two hundred years of pattern, four colours, one loom.
-                </p>
+
+              {/* Shot by us badge */}
+              <div className="pointer-events-none absolute left-3 top-3 inline-flex items-center gap-1.5 rounded-full bg-snow px-2.5 py-1 text-[10px] font-bold uppercase tracking-[0.18em] text-pine shadow-md">
+                📷 Shot by us
               </div>
-            </div>
+
+              {/* Pulsing live-video indicator */}
+              <div className="pointer-events-none absolute right-3 top-3 inline-flex items-center gap-1.5 rounded-full bg-night/70 px-2.5 py-1 text-[10px] font-bold uppercase tracking-[0.18em] text-snow backdrop-blur">
+                <span className="h-1.5 w-1.5 rounded-full bg-red-500 animate-pulse" />
+                Video
+              </div>
+
+              {/* Play CTA + caption combined at bottom */}
+              <div className="pointer-events-none absolute inset-x-0 bottom-0 flex items-end gap-3 bg-gradient-to-t from-night/85 via-night/30 to-transparent p-5 sm:p-6">
+                <span className="grid h-11 w-11 flex-none place-items-center rounded-full bg-snow text-pine shadow-lg transition-transform group-hover:scale-110">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden>
+                    <path d="M8 5v14l11-7Z" />
+                  </svg>
+                </span>
+                <div>
+                  <p className="text-[11px] uppercase tracking-[0.22em] text-snow/85">
+                    Kullu Sunday haat
+                  </p>
+                  <p className="mt-0.5 font-display text-[20px] leading-tight tracking-tightest sm:text-[22px]">
+                    Where the locals actually shop.
+                  </p>
+                </div>
+              </div>
+            </button>
 
             <div className="rounded-[3px] border border-pine/10 bg-glacier p-6">
               <p className="text-[11.5px] uppercase tracking-[0.22em] text-dusk">
@@ -124,6 +152,21 @@ export function FoodCulture() {
           </div>
         </div>
       </div>
+
+      {/* Kullu market video lightbox */}
+      <MediaLightbox
+        open={marketOpen}
+        onClose={() => setMarketOpen(false)}
+        items={[
+          {
+            type: "video",
+            src: "/video/kullu-market.mp4",
+            poster: "/img/places/kullu-valley.jpg",
+          },
+        ]}
+        title="Kullu Sunday market"
+        region="Kullu"
+      />
 
       {/* Dish modal */}
       <AnimatePresence>

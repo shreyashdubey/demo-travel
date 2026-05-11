@@ -636,6 +636,21 @@ export const hiddenPlaces = [
       ],
     },
   },
+  // Bijli Mahadev — temple ridge above Kullu town, our own walk-up photo.
+  {
+    slug: "bijli-mahadev",
+    name: "Bijli Mahadev",
+    region: "Kullu",
+    elevation: "2,460 m",
+    stat: "📷",
+    statLabel: "Our own photo",
+    detail:
+      "A Shiva temple on a high ridge above Kullu. The lightning rod is said to attract bolts that shatter the lingam each year — and the priests rebuild it with butter. A 3-km uphill walk most tourists skip.",
+    image: "/img/places/bijli-mahadev.jpg",
+    shotByUs: {
+      photos: ["/img/places/bijli-mahadev.jpg"],
+    },
+  },
   {
     slug: "komic",
     name: "Komic",
