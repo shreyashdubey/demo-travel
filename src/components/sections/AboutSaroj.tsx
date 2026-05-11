@@ -18,19 +18,13 @@ export function AboutSaroj() {
               className="relative aspect-[4/5] overflow-hidden rounded-[3px] ring-1 ring-snow/10"
             >
               <Image
-                src="https://images.unsplash.com/photo-1718801656896-96c723007f3d?auto=format&fit=crop&w=1200&q=80"
-                alt="Saroj Thakur — founder of Wandering Saya Travels, on a Kullu hillside"
+                src="/img/places/pahadi-girl.jpg"
+                alt="A Pahadi woman in traditional Kullvi dress"
                 fill
                 sizes="(min-width: 1024px) 40vw, 100vw"
                 className="object-cover"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-pine via-transparent" />
-              <div className="absolute inset-x-0 bottom-0 p-5">
-                <p className="font-display text-[22px] tracking-tightest">Saroj Thakur</p>
-                <p className="mt-1 text-[12.5px] uppercase tracking-[0.22em] text-snow/65">
-                  Founder · Bhuntar, Kullu valley
-                </p>
-              </div>
+              <div className="absolute inset-0 bg-gradient-to-t from-pine/60 via-transparent" />
             </motion.div>
           </div>
 
@@ -71,7 +65,7 @@ export function AboutSaroj() {
           </div>
         </div>
 
-        {/* Trust strip */}
+        {/* Trust strip — big numbers + the promise behind each */}
         <div className="mt-20 grid grid-cols-1 gap-px overflow-hidden rounded-[3px] bg-snow/10 sm:grid-cols-2 lg:grid-cols-4">
           {trustPoints.map((p, i) => (
             <motion.div
@@ -82,12 +76,13 @@ export function AboutSaroj() {
               transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1], delay: i * 0.06 }}
               className="bg-pine p-6"
             >
-              <div className="grid h-9 w-9 place-items-center rounded-full bg-alpenglow/20 text-alpenglow">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                  <path d="M5 12l4 4L19 6" />
-                </svg>
-              </div>
-              <p className="mt-4 text-[14.5px] leading-snug text-snow/85">{p}</p>
+              <p className="font-display text-[52px] leading-none tracking-tightest text-alpenglow">
+                {p.stat}
+              </p>
+              <p className="mt-2 text-[11.5px] font-medium uppercase tracking-[0.22em] text-snow/65">
+                {p.label}
+              </p>
+              <p className="mt-4 text-[13.5px] leading-snug text-snow/80">{p.detail}</p>
             </motion.div>
           ))}
         </div>

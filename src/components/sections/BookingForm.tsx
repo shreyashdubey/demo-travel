@@ -275,7 +275,7 @@ export function BookingForm() {
                                 form.pkg === p.slug ? "text-snow/75" : "text-pine/65",
                               )}
                             >
-                              From ₹{p.priceFrom.toLocaleString("en-IN")}
+                              {p.days} days · {p.nights} nights
                             </p>
                           </button>
                         ))}

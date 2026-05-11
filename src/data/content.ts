@@ -506,8 +506,35 @@ export const phrases = [
 ];
 
 export const trustPoints = [
-  "₹0 cancellation up to 14 days before departure.",
-  "Verified homestays. No commission games.",
-  "Local guides, paid fairly. Drivers are family.",
-  "Curated for groups of six or fewer. No bus tours.",
+  {
+    stat: "9",
+    label: "Years in the valley",
+    detail:
+      "The Saroj Promise — full refund if a cloudburst or road closure ends your trip.",
+  },
+  {
+    stat: "₹0",
+    label: "Cancellation fees",
+    detail: "Free cancellation up to 14 days before. No questions asked.",
+  },
+  {
+    stat: "11",
+    label: "Homestay families",
+    detail:
+      "Verified homestays, local guides, fair pay. A share of every booking funds a Himachal cause.",
+  },
+  {
+    stat: "≤6",
+    label: "Travellers per group",
+    detail: "Curated journeys for small groups. No bus tours.",
+  },
 ];
+
+export const roadStatus = [
+  { name: "Manali–Leh via Atal Tunnel", status: "Open", state: "open" },
+  { name: "Manali–Kaza via Kunzum La", status: "Open · caution past Batal", state: "caution" },
+  { name: "Rohtang Pass", status: "Open · snow possible", state: "caution" },
+  { name: "Shimla–Kalka toy train", status: "Operating", state: "open" },
+  { name: "Kasol–Kheerganga trail", status: "Clear", state: "open" },
+  { name: "Sach Pass", status: "Closed for winter", state: "closed" },
+] as const;

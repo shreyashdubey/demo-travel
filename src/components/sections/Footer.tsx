@@ -69,8 +69,13 @@ export function Footer() {
               <p className="text-[12px] uppercase tracking-[0.22em] text-snow/55">Reach Saroj</p>
               <ul className="mt-4 space-y-2 text-[14.5px] text-snow/85">
                 <li>
-                  <a href="https://wa.me/919xxxxxxxxx" className="hover:text-snow">
-                    +91 9xxx-xxx-xxx · WhatsApp
+                  <a
+                    href="https://wa.me/918580946251"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hover:text-snow"
+                  >
+                    +91 85809-46251 · WhatsApp
                   </a>
                 </li>
                 <li>

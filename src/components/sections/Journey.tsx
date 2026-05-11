@@ -11,6 +11,7 @@ import {
 import { useEffect, useRef, useState } from "react";
 import { spitiJourney, packages, type JourneyDay } from "@/data/content";
 import { useSound } from "@/components/providers/SoundProvider";
+import { whatsappUrl } from "@/lib/contact";
 
 const PHASE_COLORS: Record<JourneyDay["phase"], { from: string; to: string; text: string }> = {
   dawn: { from: "#F4D9B0", to: "#C49874", text: "#3D2E1F" },
@@ -31,7 +32,7 @@ export function Journey({ selected }: { selected: string | null }) {
   const pack = packages.find((p) => p.slug === (selected ?? "spiti-circuit"))!;
   const totalDays = days.length;
 
-  // Determine current day from progress
+  // Track current day for the day-change chime
   const [currentIdx, setCurrentIdx] = useState(0);
   useMotionValueEvent(scrollYProgress, "change", (p) => {
     const idx = Math.min(totalDays - 1, Math.floor(p * totalDays));
@@ -47,17 +48,35 @@ export function Journey({ selected }: { selected: string | null }) {
     }
   }, [currentIdx, play]);
 
-  const current = days[currentIdx];
-  const phase = current.phase;
-
-  // Map line draw progress
-  const lineProgress = useTransform(scrollYProgress, [0.02, 0.95], [0, 1]);
+  const enquireHref = whatsappUrl(
+    `Hi Saroj, I'd like to enquire about the ${pack.title} journey (${pack.days} days, ${pack.nights} nights).`,
+  );
 
   return (
     <section ref={ref} id="journey" className="relative bg-snow">
-      {/* Sticky top map */}
-      <div className="sticky top-0 z-30 h-[80px] w-full">
-        <RouteMap days={days} progress={lineProgress} currentIdx={currentIdx} />
+      {/* Static journey header — no overlap with TopBar */}
+      <div className="border-y border-pine/10 bg-glacier">
+        <div className="mx-auto flex max-w-[1280px] flex-col gap-3 px-5 py-6 sm:flex-row sm:items-center sm:justify-between sm:px-10">
+          <div>
+            <p className="font-mono text-[10.5px] uppercase tracking-[0.22em] text-dusk">
+              The journey · day by day
+            </p>
+            <h2 className="mt-1 font-display text-[26px] leading-none tracking-tightest text-pine sm:text-[32px]">
+              {pack.title} · {days.length} days, hour by hour
+            </h2>
+          </div>
+          <a
+            href={enquireHref}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex w-fit items-center gap-2 rounded-full bg-[#25D366] px-5 py-2.5 text-[13px] font-semibold text-white transition-colors hover:bg-[#1ebd5a]"
+          >
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden>
+              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.149-.67.15-.197.297-.768.967-.941 1.165-.173.198-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479s1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.077 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.871.118.571-.085 1.758-.719 2.006-1.413.247-.694.247-1.289.173-1.413-.074-.124-.272-.198-.57-.347zM12.05 21.785h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884zM20.52 3.449C18.24 1.245 15.24.001 12.045 0 5.463 0 .104 5.334.101 11.892c0 2.096.549 4.142 1.595 5.945L0 24l6.335-1.652a11.882 11.882 0 0 0 5.71 1.447h.005c6.582 0 11.941-5.335 11.944-11.892a11.821 11.821 0 0 0-3.474-8.454z" />
+            </svg>
+            Enquire on WhatsApp
+          </a>
+        </div>
       </div>
 
       {/* Day sections */}
@@ -74,65 +93,8 @@ export function Journey({ selected }: { selected: string | null }) {
       </div>
 
       {/* Reveal panel */}
-      <PriceReveal pack={pack} />
+      <EnquirePanel pack={pack} enquireHref={enquireHref} />
     </section>
-  );
-}
-
-function RouteMap({
-  days,
-  progress,
-  currentIdx,
-}: {
-  days: JourneyDay[];
-  progress: MotionValue<number>;
-  currentIdx: number;
-}) {
-  const dasharray = 1000;
-  const offset = useTransform(progress, (p) => dasharray * (1 - (p as number)));
-
-  return (
-    <div className="glass border-b border-pine/10">
-      <div className="mx-auto flex h-[80px] max-w-[1280px] items-center gap-4 px-5 sm:px-10">
-        <span className="font-mono text-[11px] uppercase tracking-[0.22em] text-pine/70">
-          Spiti Circuit
-        </span>
-        <svg
-          viewBox="0 0 1000 30"
-          className="h-8 flex-1"
-          preserveAspectRatio="none"
-        >
-          <path
-            d="M5,15 C100,5 200,25 300,12 S500,22 600,10 700,20 800,12 920,18 995,12"
-            stroke="rgba(58,74,47,0.14)"
-            strokeWidth="2"
-            fill="none"
-          />
-          <motion.path
-            d="M5,15 C100,5 200,25 300,12 S500,22 600,10 700,20 800,12 920,18 995,12"
-            stroke="#3A4A2F"
-            strokeWidth="2"
-            fill="none"
-            strokeDasharray={dasharray}
-            strokeDashoffset={offset}
-            strokeLinecap="round"
-          />
-          {days.map((d, i) => {
-            const x = 5 + (i / (days.length - 1)) * 990;
-            const active = i <= currentIdx;
-            return (
-              <g key={i}>
-                <circle cx={x} cy={15} r={active ? 5 : 3.5} fill={active ? "#3A4A2F" : "#A8927A"} />
-                {active && <circle cx={x} cy={15} r={9} fill="rgba(58,74,47,0.14)" />}
-              </g>
-            );
-          })}
-        </svg>
-        <span className="hidden font-mono text-[11px] uppercase tracking-[0.22em] text-pine/70 sm:block">
-          Day {currentIdx + 1} / {days.length}
-        </span>
-      </div>
-    </div>
   );
 }
 
@@ -156,7 +118,7 @@ function DaySection({
       {/* Sticky day card */}
       <div className="lg:col-span-4">
         <div className="lg:sticky lg:top-[120px]">
-          <DayCard day={day} progress={localProgress} />
+          <DayCard day={day} progress={localProgress} total={total} />
         </div>
       </div>
 
@@ -206,9 +168,11 @@ function DaySection({
 function DayCard({
   day,
   progress,
+  total,
 }: {
   day: JourneyDay;
   progress: MotionValue<number>;
+  total: number;
 }) {
   const c = PHASE_COLORS[day.phase];
   return (
@@ -220,11 +184,17 @@ function DayCard({
       }}
     >
       <div className="relative aspect-[4/3]">
-        <Image src={day.cover} alt={day.title} fill sizes="(min-width: 1024px) 30vw, 92vw" className="object-cover opacity-90" />
+        <Image
+          src={day.cover}
+          alt={day.title}
+          fill
+          sizes="(min-width: 1024px) 30vw, 92vw"
+          className="object-cover opacity-90"
+        />
         <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/50" />
         <div className="absolute inset-x-0 bottom-0 p-5 text-snow">
           <p className="font-mono text-[11px] uppercase tracking-[0.22em] opacity-85">
-            Day {day.day}
+            Day {day.day} of {total}
           </p>
           <h3 className="mt-1 font-display text-[28px] leading-none tracking-tightest">
             {day.title}
@@ -290,7 +260,13 @@ function WeatherIcon({ w }: { w: JourneyDay["weather"] }) {
   );
 }
 
-function PriceReveal({ pack }: { pack: typeof packages[number] }) {
+function EnquirePanel({
+  pack,
+  enquireHref,
+}: {
+  pack: typeof packages[number];
+  enquireHref: string;
+}) {
   return (
     <motion.div
       initial={{ opacity: 0, y: 30 }}
@@ -302,12 +278,18 @@ function PriceReveal({ pack }: { pack: typeof packages[number] }) {
       <div className="overflow-hidden rounded-[4px] bg-pine text-snow ring-soft">
         <div className="grid grid-cols-1 lg:grid-cols-12">
           <div className="relative aspect-[4/3] lg:col-span-5 lg:aspect-auto">
-            <Image src={pack.cover} alt={pack.title} fill sizes="(min-width: 1024px) 40vw, 100vw" className="object-cover" />
+            <Image
+              src={pack.cover}
+              alt={pack.title}
+              fill
+              sizes="(min-width: 1024px) 40vw, 100vw"
+              className="object-cover"
+            />
             <div className="absolute inset-0 bg-gradient-to-r from-pine/80 via-pine/30 to-transparent" />
           </div>
           <div className="p-8 sm:p-12 lg:col-span-7">
             <p className="text-[11.5px] uppercase tracking-[0.22em] text-snow/60">
-              The journey ends. The bill arrives, gently.
+              Plan your dates with Saroj
             </p>
             <h3 className="mt-3 font-display text-[40px] leading-[1.02] tracking-tightest sm:text-[56px]">
               {pack.title}
@@ -342,6 +324,7 @@ function PriceReveal({ pack }: { pack: typeof packages[number] }) {
                     "Daily breakfast + dinner",
                     "Local guide on trek days",
                     "Inner-line permits",
+                    "A welcome pack — hand-drawn map, language card, pressed leaf bookmark",
                   ].map((x) => (
                     <li key={x} className="flex items-start gap-2">
                       <span className="mt-2 h-1 w-1 flex-none rounded-full bg-alpenglow" />
@@ -365,30 +348,20 @@ function PriceReveal({ pack }: { pack: typeof packages[number] }) {
               </div>
             </div>
 
-            <div className="mt-10 flex flex-col items-start justify-between gap-4 border-t border-snow/15 pt-6 sm:flex-row sm:items-end">
-              <div>
-                <p className="text-[11px] uppercase tracking-[0.22em] text-snow/55">From</p>
-                <p className="mt-1 font-display text-[44px] leading-none tracking-tightest">
-                  ₹{pack.priceFrom.toLocaleString("en-IN")}
-                  <span className="ml-2 text-[14px] text-snow/60">/ pp · twin sharing</span>
-                </p>
-              </div>
+            <div className="mt-10 flex flex-col items-start gap-3 border-t border-snow/15 pt-6 sm:flex-row sm:items-center sm:justify-between">
+              <p className="text-[13.5px] text-snow/75">
+                Pricing changes with the season. Saroj will WhatsApp you a fair quote within 4 hours.
+              </p>
               <a
-                href="#book"
-                className="group inline-flex items-center gap-2 rounded-full bg-alpenglow px-7 py-4 text-[14.5px] font-medium text-pine transition-colors hover:bg-snow"
+                href={enquireHref}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex w-fit items-center gap-2 rounded-full bg-[#25D366] px-6 py-3.5 text-[14.5px] font-semibold text-white transition-colors hover:bg-[#1ebd5a]"
               >
-                Reserve this journey
-                <svg
-                  className="transition-transform duration-500 ease-soft group-hover:translate-x-1"
-                  width="14"
-                  height="14"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="1.8"
-                >
-                  <path d="M5 12h14m-6-6 6 6-6 6" />
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden>
+                  <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.149-.67.15-.197.297-.768.967-.941 1.165-.173.198-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479s1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.077 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.871.118.571-.085 1.758-.719 2.006-1.413.247-.694.247-1.289.173-1.413-.074-.124-.272-.198-.57-.347zM12.05 21.785h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884zM20.52 3.449C18.24 1.245 15.24.001 12.045 0 5.463 0 .104 5.334.101 11.892c0 2.096.549 4.142 1.595 5.945L0 24l6.335-1.652a11.882 11.882 0 0 0 5.71 1.447h.005c6.582 0 11.941-5.335 11.944-11.892a11.821 11.821 0 0 0-3.474-8.454z" />
                 </svg>
+                Enquire for a quote
               </a>
             </div>
           </div>

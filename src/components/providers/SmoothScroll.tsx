@@ -1,35 +1,10 @@
 "use client";
 
-import Lenis from "lenis";
-import { useEffect, type ReactNode } from "react";
+import { type ReactNode } from "react";
 
+// Lenis smooth scroll was disabled — it introduced perceptible scroll lag on
+// trackpads. Native browser scroll feels snappier. Anchor smoothness is
+// handled by `scroll-behavior: smooth` in globals.css.
 export function SmoothScroll({ children }: { children: ReactNode }) {
-  useEffect(() => {
-    const reduced =
-      typeof window !== "undefined" &&
-      window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-
-    if (reduced) return;
-
-    const lenis = new Lenis({
-      duration: 1.15,
-      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-      wheelMultiplier: 1,
-      touchMultiplier: 1.4,
-    });
-
-    let raf = 0;
-    const loop = (time: number) => {
-      lenis.raf(time);
-      raf = requestAnimationFrame(loop);
-    };
-    raf = requestAnimationFrame(loop);
-
-    return () => {
-      cancelAnimationFrame(raf);
-      lenis.destroy();
-    };
-  }, []);
-
   return <>{children}</>;
 }
