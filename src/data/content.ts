@@ -600,7 +600,7 @@ export const hiddenPlaces = [
   // unlocks the lightbox in the UI.
   {
     slug: "mathsaur",
-    name: "Mathsaur",
+    name: "Mathasaur",
     region: "Banjar, Kullu",
     elevation: "~3,200 m",
     stat: "📷",
@@ -620,13 +620,13 @@ export const hiddenPlaces = [
   // Dhanasar Lake — glacial lake we've actually walked to.
   {
     slug: "dhanasar",
-    name: "Dhanasar Lake",
-    region: "Tirthan / Banjar, Kullu",
-    elevation: "~3,800 m",
+    name: "Dehnasar Lake",
+    region: "Chota Bhangal, Kangra",
+    elevation: "4,280 m",
     stat: "📷",
     statLabel: "Our own photos",
     detail:
-      "A glacial lake hidden inside the Great Himalayan NP. A two-day trek from Sojha. Half-frozen most of the year, and almost nobody up there with you.",
+      "A high alpine glacial lake in the Dhauladhar, at the foot of Ghora Lotnu peak. Reached by a 14 km climb from Polling village in Chota Bhangal — a hard single push, easier in two days. Half-frozen most of the year, and almost nobody up there with you.",
     image: "/img/places/dhanasar/dhanasar-1.jpg",
     shotByUs: {
       photos: [
