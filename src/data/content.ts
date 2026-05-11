@@ -135,8 +135,7 @@ export const experiences = [
     title: "Pahari food",
     sub: "Sidu · Madra · Babru · Dham · Aktori",
     body: "Steamed wheat breads, yogurt-rich curries, slow festival feasts on leaf platters.",
-    image:
-      "/img/food/dham.jpg",
+    image: "/img/food/sidu.jpg",
     icon: "food",
   },
   {
