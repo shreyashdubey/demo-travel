@@ -107,8 +107,16 @@ export function WeatherWindow() {
   const data = WEATHER[place];
 
   return (
-    <section id="weather" className="relative bg-glacier py-24 sm:py-32 lg:py-40">
-      <div className="mx-auto max-w-[1280px] px-5 sm:px-10">
+    <section
+      id="weather"
+      className="relative overflow-hidden bg-gradient-to-b from-[#FBF4DF] via-glacier to-[#D8C8A0] py-24 sm:py-32 lg:py-40"
+    >
+      <div aria-hidden className="pointer-events-none absolute inset-0">
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_70%_50%_at_20%_5%,_rgba(255,255,255,0.55),_transparent_65%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_55%_45%_at_88%_92%,_rgba(201,148,59,0.14),_transparent_70%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_40%_30%_at_75%_15%,_rgba(184,90,62,0.06),_transparent_70%)]" />
+      </div>
+      <div className="relative mx-auto max-w-[1280px] px-5 sm:px-10">
         <div className="mb-12 flex flex-col items-start justify-between gap-6 lg:flex-row lg:items-end">
           <div>
             <span className="mb-4 inline-flex items-center gap-2 rounded-full bg-alpenglow px-3.5 py-1.5 text-[11px] font-bold uppercase tracking-[0.18em] text-snow">
