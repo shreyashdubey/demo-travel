@@ -3,7 +3,6 @@
 import { useState } from "react";
 import { Hero } from "@/components/sections/Hero";
 import { StoryStrip } from "@/components/sections/StoryStrip";
-import { Destinations } from "@/components/sections/Destinations";
 import { Experiences } from "@/components/sections/Experiences";
 import { HiddenHimachal } from "@/components/sections/HiddenHimachal";
 import { WeatherWindow } from "@/components/sections/WeatherWindow";
@@ -35,10 +34,9 @@ export default function Home() {
       <Experiences />
       <HiddenHimachal />
       <StoryStrip />
-      <Destinations />
+      <Packages selected={selected} onSelect={setSelected} />
       <WeatherWindow />
       {/* <RangeMoment /> — disabled per request */}
-      <Packages selected={selected} onSelect={setSelected} />
       <Journey selected={selected} />
       <Testimonials />
       <FoodCulture />

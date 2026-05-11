@@ -32,10 +32,6 @@ export const metadata: Metadata = {
     "A travel atelier from the Himalayas. Curated journeys through Kullu, Manali, Shimla & Spiti — by Saroj Thakur, born and raised in the valley.",
   metadataBase: new URL("https://wanderingsayatravels.com"),
   icons: {
-    icon: [
-      { url: "/icon.svg", type: "image/svg+xml" },
-      { url: "/favicon.ico", sizes: "any" },
-    ],
     apple: "/img/logo.jpeg",
   },
   openGraph: {
