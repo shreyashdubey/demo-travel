@@ -56,7 +56,7 @@ export function Hero() {
               </span>
               <span className="flex items-baseline gap-1.5">
                 <span className="font-medium">@wanderingsayatravels</span>
-                <span className="hidden text-snow/65 sm:inline">— follow the journey</span>
+                <span className="hidden text-snow/65 sm:inline">follow the journey</span>
               </span>
             </a>
           </div>
@@ -76,36 +76,54 @@ export function Hero() {
             </span>
           </p>
 
-          {/* Snow window CTA, clean glass pill, cool not warm */}
-          <a
-            href="#weather"
-            className="mt-5 inline-flex items-center gap-2.5 rounded-full border border-snow/30 bg-white/10 px-4 py-2.5 text-[13.5px] font-medium text-snow backdrop-blur transition-all hover:border-snow/60 hover:bg-white/20"
-          >
-            <span className="grid h-7 w-7 place-items-center rounded-full bg-snow text-pine">
-              <svg
-                width="15"
-                height="15"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                aria-hidden
-              >
-                <path d="M2 12h20" />
-                <path d="M12 2v20" />
-                <path d="m20 16-4-4 4-4" />
-                <path d="m4 8 4 4-4 4" />
-                <path d="m16 4-4 4-4-4" />
-                <path d="m8 20 4-4 4 4" />
-              </svg>
-            </span>
-            <span>
-              Find out when it snows
-              <span className="ml-1.5 text-snow/65">- free tool →</span>
-            </span>
-          </a>
+          {/* Discovery row, glass pills to explore tools and seasons before committing */}
+          <div className="mt-5 flex flex-wrap items-center gap-2.5">
+            <a
+              href="#weather"
+              className="inline-flex items-center gap-2.5 rounded-full border border-snow/30 bg-white/10 px-4 py-2.5 text-[13.5px] font-medium text-snow backdrop-blur transition-all hover:border-snow/60 hover:bg-white/20"
+            >
+              <span className="grid h-7 w-7 place-items-center rounded-full bg-snow text-pine">
+                <svg
+                  width="15"
+                  height="15"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  aria-hidden
+                >
+                  <path d="M2 12h20" />
+                  <path d="M12 2v20" />
+                  <path d="m20 16-4-4 4-4" />
+                  <path d="m4 8 4 4-4 4" />
+                  <path d="m16 4-4 4-4-4" />
+                  <path d="m8 20 4-4 4 4" />
+                </svg>
+              </span>
+              <span>
+                Find out when it snows
+                <span className="ml-1.5 text-snow/65">free tool →</span>
+              </span>
+            </a>
+
+            <a
+              href="#seasons"
+              className="group inline-flex items-center gap-2.5 rounded-full border border-snow/30 bg-white/10 px-4 py-2.5 text-[13.5px] font-medium text-snow backdrop-blur transition-all hover:border-snow/60 hover:bg-white/20"
+            >
+              <span className="relative grid h-7 w-7 place-items-center rounded-full bg-snow text-pine">
+                <span className="absolute inset-0 rounded-full">
+                  <span className="absolute inset-0 animate-ping rounded-full bg-alpenglow/40" />
+                </span>
+                <span className="relative inline-block h-2 w-2 rounded-full bg-alpenglow" />
+              </span>
+              <span>
+                3 seasons opening
+                <span className="ml-1.5 text-snow/65">see the windows →</span>
+              </span>
+            </a>
+          </div>
 
           {/* Primary CTAs */}
           <div className="mt-4 flex flex-col items-stretch gap-3 sm:flex-row sm:items-center sm:gap-3">

@@ -37,25 +37,22 @@ export function Packages({
           </p>
         </div>
 
-        {/* Apple Harvest signature callout, bold, action-forward */}
-        <div className="mb-10 rounded-[4px] border-2 border-alpenglow bg-gradient-to-r from-alpenglow/20 via-alpenglow/8 to-transparent px-5 py-5 sm:px-6">
-          <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-            <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:gap-4">
-              <span className="inline-flex w-fit items-center gap-1.5 rounded-full bg-alpenglow px-3 py-1.5 text-[11px] font-bold uppercase tracking-[0.18em] text-snow">
-                🍎 New · Sept–Oct
-              </span>
-              <p className="text-[16.5px] font-medium text-pine">
-                The Apple Harvest, our signature trip through Kullu's orchards.
-              </p>
-            </div>
-            <a
-              href={whatsappUrl("Hi Saroj, tell me about The Apple Harvest signature trip.")}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2 rounded-full bg-alpenglow px-5 py-2.5 text-[14px] font-semibold text-snow transition-colors hover:bg-pine"
-            >
-              Enquire now →
-            </a>
+        {/* Seasonal live tiles, varied data per card so each feels distinct and real */}
+        <div id="seasons" className="mb-10">
+          <div className="mb-4 flex items-baseline justify-between gap-4">
+            <p className="text-[11px] uppercase tracking-[0.22em] text-dusk">
+              <span className="mr-2 inline-block h-px w-6 align-middle bg-dusk/60" />
+              Seasons opening, in order
+            </p>
+            <p className="hidden text-[12px] text-pine/55 sm:block">
+              Saroj replies on WhatsApp within 4 hours.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
+            {SEASONS.map((s, i) => (
+              <SeasonTile key={s.title} season={s} delay={i * 0.07} />
+            ))}
           </div>
         </div>
 
@@ -173,5 +170,163 @@ export function Packages({
         </div>
       </div>
     </section>
+  );
+}
+
+type Season = {
+  status: "open" | "next" | "signature";
+  statusLabel: string;
+  dateRange: string;
+  emoji: string;
+  title: string;
+  hook: string;
+  /** A real, defensible reason this window is time-bound. No fabricated counts or dates. */
+  whyNow: string;
+  /** A real fact about the trip's shape, not invented availability. */
+  shape: string;
+  accentHex: string;
+  whatsappMessage: string;
+};
+
+const SEASONS: Season[] = [
+  {
+    status: "open",
+    statusLabel: "This season",
+    dateRange: "May → mid-Jun",
+    emoji: "🌿",
+    title: "High Meadows & Rhododendron",
+    hook: "Year's first treks above 3,000 m, while the pink is still in bloom.",
+    whyNow: "The rhododendron fades by mid-June. After that, the high meadows green over and the window closes for the year.",
+    shape: "Small group, up to 6 travellers · homestay nights",
+    accentHex: "#3A4A2F",
+    whatsappMessage:
+      "Hi Saroj, I'd like to ask about the High Meadows & Rhododendron trip in May–June.",
+  },
+  {
+    status: "next",
+    statusLabel: "Next window",
+    dateRange: "Jul → Aug",
+    emoji: "☀️",
+    title: "Spiti Crossing",
+    hook: "Rain-shadow run while the rest of the Himalaya is under monsoon.",
+    whyNow: "Spiti sits behind the main range, so the monsoon barely reaches it. The road over Kunzum is only fully open in these two months.",
+    shape: "High-altitude · two small groups, up to 6 each",
+    accentHex: "#8B6B3F",
+    whatsappMessage: "Hi Saroj, I'd like to ask about the Spiti Crossing in July–August.",
+  },
+  {
+    status: "signature",
+    statusLabel: "Our signature",
+    dateRange: "Sept → late Oct",
+    emoji: "🍎",
+    title: "The Apple Harvest",
+    hook: "Pick alongside the families who raised these orchards. Kullu Dussehra coincides.",
+    whyNow: "Harvest is dictated by the orchards, not the calendar. Once the apples are off the trees, the trip is over for the year.",
+    shape: "Family homestays · UNESCO-recognised Dussehra",
+    accentHex: "#B85A3E",
+    whatsappMessage:
+      "Hi Saroj, I'd like to ask about The Apple Harvest signature trip in Sept–Oct.",
+  },
+];
+
+function SeasonTile({ season, delay }: { season: Season; delay: number }) {
+  const isOpen = season.status === "open";
+  const accent = season.accentHex;
+  const ctaVerb =
+    season.status === "open"
+      ? "Ask about dates"
+      : season.status === "next"
+        ? "Ask about this window"
+        : "Ask about the harvest";
+
+  return (
+    <motion.a
+      href={whatsappUrl(season.whatsappMessage)}
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label={`Enquire about ${season.title} on WhatsApp`}
+      initial={{ opacity: 0, y: 16 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-60px" }}
+      transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1], delay }}
+      className="group relative flex flex-col gap-3 overflow-hidden rounded-[6px] border bg-white px-5 py-4 shadow-sm transition-all duration-300 ease-soft hover:-translate-y-1 hover:shadow-lg"
+      style={{ borderColor: `${accent}40` }}
+    >
+      {/* Accent stripe on the left edge */}
+      <span
+        className="pointer-events-none absolute inset-y-0 left-0 w-1"
+        style={{ backgroundColor: accent }}
+        aria-hidden
+      />
+
+      {/* Top row, status + date */}
+      <div className="flex items-center justify-between gap-2">
+        <span
+          className="inline-flex items-center gap-2 rounded-full px-2.5 py-1 text-[10.5px] font-bold uppercase tracking-[0.18em] text-snow"
+          style={{ backgroundColor: accent }}
+        >
+          {isOpen ? (
+            <span className="relative flex h-1.5 w-1.5">
+              <span className="absolute inset-0 animate-ping rounded-full bg-snow opacity-75" />
+              <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-snow" />
+            </span>
+          ) : (
+            <span>{season.emoji}</span>
+          )}
+          {season.statusLabel}
+        </span>
+        <span className="font-mono text-[10.5px] uppercase tracking-[0.16em] text-pine/55">
+          {season.dateRange}
+        </span>
+      </div>
+
+      {/* Title */}
+      <h3 className="font-display text-[22px] leading-[1.1] tracking-tightest text-pine sm:text-[24px]">
+        {season.title}
+      </h3>
+
+      {/* Hook line */}
+      <p className="text-[13.5px] leading-snug text-pine/75">{season.hook}</p>
+
+      {/* Why-now panel, a real seasonal/geographic reason this window is bounded */}
+      <div className="mt-1 rounded-[3px] bg-glacier/55 px-3 py-2.5">
+        <div className="mb-1 flex items-center gap-1.5 text-[10.5px] font-bold uppercase tracking-[0.18em]" style={{ color: accent }}>
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+            <circle cx="12" cy="12" r="10" />
+            <path d="M12 6v6l4 2" />
+          </svg>
+          Why this window
+        </div>
+        <p className="text-[12.5px] leading-snug text-pine/80">{season.whyNow}</p>
+        <p className="mt-2 border-t border-pine/10 pt-2 text-[11.5px] text-pine/60">
+          {season.shape}
+        </p>
+      </div>
+
+      {/* CTA */}
+      <div className="mt-1 flex items-center justify-between border-t border-pine/10 pt-3">
+        <span className="text-[11.5px] uppercase tracking-[0.18em] text-pine/55">{ctaVerb}</span>
+        <span
+          className="inline-flex items-center gap-1.5 rounded-full px-3 py-1.5 text-[12.5px] font-semibold text-snow transition-all duration-300 ease-soft group-hover:gap-2"
+          style={{ backgroundColor: accent }}
+        >
+          WhatsApp Saroj
+          <svg
+            width="13"
+            height="13"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2.2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            aria-hidden
+            className="transition-transform duration-300 ease-soft group-hover:translate-x-0.5"
+          >
+            <path d="M5 12h14m-6-6 6 6-6 6" />
+          </svg>
+        </span>
+      </div>
+    </motion.a>
   );
 }
