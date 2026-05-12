@@ -143,19 +143,29 @@ export function WeatherWindow() {
             </p>
           </div>
           <ul className="mt-4 grid gap-3 sm:grid-cols-2">
-            {roadStatus.routes.map((r) => (
-              <li key={r.name} className="rounded-[3px] bg-glacier/50 p-3">
-                <div className="flex items-start justify-between gap-3">
-                  <span className="text-[14px] font-medium text-pine">{r.name}</span>
-                  <span
-                    className={`flex-none text-[10.5px] font-medium uppercase tracking-[0.18em] ${STATE_STYLE[r.state]}`}
-                  >
-                    {r.status}
-                  </span>
-                </div>
-                <p className="mt-1.5 text-[12.5px] leading-snug text-pine/70">{r.detail}</p>
-              </li>
-            ))}
+            {roadStatus.routes.map((r) => {
+              const split = r.detail.indexOf(". ");
+              const lede = split === -1 ? r.detail : r.detail.slice(0, split + 1);
+              const rest = split === -1 ? "" : r.detail.slice(split + 2);
+              return (
+                <li key={r.name} className="rounded-[3px] bg-glacier/50 p-4">
+                  <div className="flex items-start justify-between gap-3">
+                    <span className="text-[14px] font-medium text-pine">{r.name}</span>
+                    <span
+                      className={`flex-none text-[10.5px] font-medium uppercase tracking-[0.18em] ${STATE_STYLE[r.state]}`}
+                    >
+                      {r.status}
+                    </span>
+                  </div>
+                  <div aria-hidden className="my-2.5 h-px bg-pine/12" />
+                  <p className="text-[12.5px] leading-[1.55] text-pine/70">
+                    <span className="font-medium text-pine/95">{lede}</span>
+                    {rest && " "}
+                    {rest}
+                  </p>
+                </li>
+              );
+            })}
           </ul>
         </div>
 
