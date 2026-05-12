@@ -35,9 +35,9 @@ export function Journey({ selected }: { selected: string | null }) {
   );
 
   return (
-    <section ref={ref} id="journey" className="relative bg-snow">
+    <section ref={ref} id="journey" className="relative bg-glacier">
       {/* Static journey header, no overlap with TopBar */}
-      <div className="border-y border-pine/10 bg-glacier">
+      <div className="border-y border-pine/10 bg-snow">
         <div className="mx-auto flex max-w-[1280px] flex-col gap-3 px-5 py-6 sm:flex-row sm:items-center sm:justify-between sm:px-10">
           <div>
             <p className="font-mono text-[10.5px] uppercase tracking-[0.22em] text-dusk">
@@ -96,38 +96,38 @@ function DaySection({
   const localProgress = useTransform(scrollYProgress, [localStart, localEnd], [0, 1]);
 
   return (
-    <div className="relative grid grid-cols-1 gap-8 px-5 py-20 sm:px-10 sm:py-28 lg:grid-cols-12 lg:gap-10">
-      <div className="lg:col-span-4">
-        <div className="lg:sticky lg:top-[120px]">
+    <div className="relative grid grid-cols-1 gap-5 border-t border-pine/10 px-5 py-10 first:border-t-0 sm:gap-6 sm:px-10 sm:py-14 lg:grid-cols-12 lg:gap-8">
+      <div className="lg:col-span-3">
+        <div className="lg:sticky lg:top-24">
           <DayCard day={day} progress={localProgress} total={total} />
         </div>
       </div>
 
-      <ol className="lg:col-span-8 space-y-6">
+      <ol className="space-y-3.5 sm:space-y-4 lg:col-span-9">
         {day.hours.map((h, i) => (
           <motion.li
             key={i}
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 18 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-150px" }}
-            transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1], delay: i * 0.07 }}
-            className="grid grid-cols-[80px_1fr] items-start gap-5 sm:grid-cols-[100px_1fr] sm:gap-8"
+            viewport={{ once: true, margin: "-80px" }}
+            transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1], delay: i * 0.05 }}
+            className="grid grid-cols-[56px_1fr] items-start gap-3 sm:grid-cols-[76px_1fr] sm:gap-5"
           >
-            <div className="font-mono text-[15px] tracking-tight text-pine">
+            <div className="font-mono text-[12px] tracking-tight text-pine sm:text-[13px]">
               <div>{h.time}</div>
-              <div className="mt-1 h-px w-6 bg-pine/30" />
+              <div className="mt-1 h-px w-4 bg-pine/30" />
             </div>
-            <div className="rounded-[3px] bg-snow/80 p-5 backdrop-blur-md ring-soft sm:p-6">
-              <h4 className="font-display text-[24px] leading-tight tracking-tightest text-pine sm:text-[28px]">
+            <div className="rounded-[3px] bg-snow/80 p-3 backdrop-blur-md ring-soft sm:p-4">
+              <h4 className="font-display text-[17px] leading-[1.15] tracking-tightest text-pine sm:text-[19px]">
                 {h.title}
               </h4>
-              <p className="mt-2 max-w-prose text-pretty text-[15px] leading-relaxed text-pine/75">
+              <p className="mt-1 max-w-prose text-pretty text-[13px] leading-snug text-pine/75 sm:text-[13.5px]">
                 {h.detail}
               </p>
               {h.image && (
-                <div className="mt-4">
+                <div className="mt-2.5">
                   <div className="overflow-hidden rounded-[3px]">
-                    <div className="relative aspect-[16/9]">
+                    <div className="relative aspect-[2/1]">
                       <Image
                         src={h.image}
                         alt={`${h.title}, ${day.place}, Himachal Pradesh (${h.time}).`}
@@ -178,57 +178,54 @@ function DayCard({
         color: c.text,
       }}
     >
-      <div className="relative aspect-[4/3]">
+      <div className="relative aspect-[16/9] lg:aspect-[4/3]">
         <Image
           src={day.cover}
           alt={`Day ${day.day} of the Spiti Circuit, ${day.title}. ${day.place}, elevation ${day.elevation}.`}
           fill
-          sizes="(min-width: 1024px) 30vw, 92vw"
+          sizes="(min-width: 1024px) 22vw, 92vw"
           className="object-cover opacity-90"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/50" />
-        <div className="absolute inset-x-0 bottom-0 p-5 text-snow">
-          <p className="font-mono text-[11px] uppercase tracking-[0.22em] opacity-85">
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/55" />
+        <div className="absolute inset-x-0 bottom-0 p-2.5 text-snow sm:p-3">
+          <p className="font-mono text-[9.5px] uppercase tracking-[0.22em] opacity-85">
             Day {day.day} of {total}
           </p>
-          <h3 className="mt-1 font-display text-[28px] leading-none tracking-tightest">
+          <h3 className="mt-0.5 font-display text-[17px] leading-none tracking-tightest sm:text-[18px]">
             {day.title}
           </h3>
         </div>
       </div>
-      <div className="grid grid-cols-3 divide-x divide-white/10 text-center text-[11px] uppercase tracking-[0.18em]">
-        <div className="py-3">
+      <div className="grid grid-cols-3 divide-x divide-white/10 text-center text-[9px] uppercase tracking-[0.18em]">
+        <div className="py-1.5">
           <div className="opacity-70">Place</div>
-          <div className="mt-1 font-medium normal-case tracking-normal">{day.place}</div>
+          <div className="mt-0.5 text-[11px] font-medium normal-case tracking-normal">{day.place}</div>
         </div>
-        <div className="py-3">
+        <div className="py-1.5">
           <div className="opacity-70">Elev.</div>
-          <div className="mt-1 font-medium normal-case tracking-normal">{day.elevation}</div>
+          <div className="mt-0.5 text-[11px] font-medium normal-case tracking-normal">{day.elevation}</div>
         </div>
-        <div className="py-3">
+        <div className="py-1.5">
           <div className="opacity-70">Sky</div>
-          <div className="mt-1 font-medium normal-case tracking-normal">
+          <div className="mt-0.5 font-medium normal-case tracking-normal">
             <WeatherIcon w={day.weather} />
           </div>
         </div>
       </div>
-      <div className="px-4 pb-4">
-        <div className="h-1 overflow-hidden rounded-full bg-white/20">
+      <div className="px-2.5 pb-2 pt-0.5">
+        <div className="h-[3px] overflow-hidden rounded-full bg-white/20">
           <motion.div
             className="h-full bg-white"
             style={{ scaleX: progress, transformOrigin: "left" }}
           />
         </div>
-        <p className="mt-2 text-[10.5px] uppercase tracking-[0.22em] opacity-70">
-          The day passes as you scroll
-        </p>
       </div>
     </motion.div>
   );
 }
 
 function WeatherIcon({ w }: { w: JourneyDay["weather"] }) {
-  const className = "inline-block h-4 w-4 align-middle";
+  const className = "inline-block h-3.5 w-3.5 align-middle";
   if (w === "snow")
     return (
       <svg viewBox="0 0 24 24" className={className} fill="none" stroke="currentColor" strokeWidth="1.5">
@@ -268,7 +265,7 @@ function EnquirePanel({
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-150px" }}
       transition={{ duration: 1.1, ease: [0.22, 1, 0.36, 1] }}
-      className="relative z-20 mx-auto max-w-[1280px] px-5 pb-24 pt-8 sm:px-10 sm:pb-32"
+      className="relative z-20 mx-auto max-w-[1280px] px-5 pb-16 pt-4 sm:px-10 sm:pb-20 sm:pt-6"
     >
       <div className="overflow-hidden rounded-[4px] bg-pine text-snow ring-soft">
         <div className="grid grid-cols-1 lg:grid-cols-12">
