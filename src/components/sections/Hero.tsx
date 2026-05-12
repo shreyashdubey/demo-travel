@@ -40,7 +40,7 @@ export function Hero() {
           </div>
 
           <h1 className="font-display text-balance text-[36px] leading-[1.02] tracking-tightest sm:text-[68px] lg:text-[96px]">
-            Saroj's Himachal -
+            Saroj's Himachal,
             <br />
             <span className="opacity-90">not the one in the brochures.</span>
           </h1>
