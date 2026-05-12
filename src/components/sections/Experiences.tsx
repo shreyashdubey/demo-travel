@@ -14,7 +14,7 @@ export function Experiences() {
       className="relative overflow-hidden bg-snow pb-10 pt-8 sm:pb-12 sm:pt-12 lg:pb-16 lg:pt-16"
     >
       <div className="mx-auto max-w-[1280px] px-5 sm:px-10">
-        <div className="mb-14 flex flex-col items-start justify-between gap-6 lg:flex-row lg:items-end">
+        <div className="mb-6 flex flex-col items-start justify-between gap-4 sm:mb-10 sm:gap-6 lg:flex-row lg:items-end">
           <div>
             <p className="mb-4 text-[12px] uppercase tracking-[0.22em] text-dusk">
               <span className="mr-2 inline-block h-px w-8 align-middle bg-dusk/60" />

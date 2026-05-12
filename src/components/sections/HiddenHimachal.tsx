@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { useMemo, useState } from "react";
+import { Fragment, useMemo, useState } from "react";
 import { hiddenPlaces } from "@/data/content";
 import { whatsappUrl } from "@/lib/contact";
 import { MediaLightbox, type MediaItem } from "@/components/chrome/MediaLightbox";
@@ -17,8 +17,12 @@ function hasShotByUs(
   return "shotByUs" in p && p.shotByUs !== undefined;
 }
 
+const MOBILE_VISIBLE = 4;
+
 export function HiddenHimachal() {
   const [openSlug, setOpenSlug] = useState<string | null>(null);
+  const [showAllMobile, setShowAllMobile] = useState(false);
+  const hiddenOnMobileCount = hiddenPlaces.length - MOBILE_VISIBLE;
 
   const openPlace = useMemo(
     () =>
@@ -80,10 +84,11 @@ export function HiddenHimachal() {
                 ? p.shotByUs.photos.length + (p.shotByUs.video ? 1 : 0)
                 : 0;
             const hasVideo = shot && Boolean(p.shotByUs?.video);
+            const hiddenOnMobile = i >= MOBILE_VISIBLE && !showAllMobile;
 
             return (
+              <Fragment key={p.slug}>
               <motion.div
-                key={p.slug}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-80px" }}
@@ -96,7 +101,7 @@ export function HiddenHimachal() {
                   shot
                     ? "ring-2 ring-snow/30 transition-all hover:ring-snow/70"
                     : ""
-                }`}
+                } ${hiddenOnMobile ? "hidden sm:block" : ""}`}
               >
                 <div className="relative aspect-[4/5]">
                   <Image
@@ -223,14 +228,58 @@ export function HiddenHimachal() {
                   </div>
                 </div>
               </motion.div>
+              {i === MOBILE_VISIBLE - 1 && !showAllMobile && (
+                <button
+                  type="button"
+                  onClick={() => setShowAllMobile(true)}
+                  aria-label={`See ${hiddenOnMobileCount} more places`}
+                  className="group flex w-full items-center justify-between gap-4 rounded-full bg-snow py-3 pl-6 pr-3 text-left text-pine shadow-lg shadow-night/50 transition-all duration-300 ease-soft hover:bg-white hover:shadow-xl hover:shadow-night/60 active:scale-[0.99] sm:hidden"
+                >
+                  <span className="flex flex-col">
+                    <span className="text-[15px] font-semibold leading-tight">
+                      See {hiddenOnMobileCount} more places
+                    </span>
+                    <span className="mt-1 text-[12px] font-semibold uppercase tracking-[0.1em] text-pine">
+                      Hikkim · Chitkul · Malana · Pangi
+                    </span>
+                  </span>
+                  <span className="relative inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-pine text-snow transition-transform duration-300 ease-soft group-hover:translate-y-0.5">
+                    <span className="absolute inset-0 rounded-full bg-alpenglow/0 transition-colors duration-300 group-hover:bg-alpenglow/10" />
+                    <svg
+                      width="14"
+                      height="14"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2.6"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      aria-hidden
+                    >
+                      <path d="m6 9 6 6 6-6" />
+                    </svg>
+                  </span>
+                </button>
+              )}
+              </Fragment>
             );
           })}
         </div>
 
-        <div className="mt-10 rounded-[3px] border border-snow/15 bg-white/5 px-5 py-5 text-center">
-          <p className="text-[14px] leading-relaxed text-snow/85">
-            None of these are in the standard packages. Tell us which one calls to you, Saroj
-            will build the route. Six travellers maximum, always.
+        <div className="mx-auto mt-12 max-w-2xl text-center sm:mt-16">
+          <div className="mb-5 flex items-center justify-center gap-3">
+            <span aria-hidden className="h-px w-10 bg-alpenglow/50 sm:w-14" />
+            <span className="text-[11px] font-bold uppercase tracking-[0.28em] text-alpenglow">
+              Custom route only
+            </span>
+            <span aria-hidden className="h-px w-10 bg-alpenglow/50 sm:w-14" />
+          </div>
+          <p className="text-balance font-display text-[22px] leading-[1.25] tracking-tightest text-snow sm:text-[28px]">
+            None of these are in the standard packages. Tell us which one calls to you,
+            Saroj will build the route.
+          </p>
+          <p className="mt-5 text-[11.5px] font-semibold uppercase tracking-[0.24em] text-snow/55">
+            Six travellers maximum · Always
           </p>
         </div>
       </div>
