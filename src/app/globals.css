@@ -197,17 +197,10 @@ html {
   will-change: transform, opacity;
 }
 
-/* Gemini-style traveling border shimmer, conic-gradient masked to a ring */
-@property --shimmer-angle {
-  syntax: "<angle>";
-  initial-value: 0deg;
-  inherits: false;
-}
-
-@keyframes shimmerSpin {
-  to {
-    --shimmer-angle: 360deg;
-  }
+/* Horizontal sheen sweep on a masked border ring */
+@keyframes shimmerSlide {
+  0%   { background-position: 100% 0; }
+  100% { background-position: 0% 0; }
 }
 
 .shimmer-border {
@@ -220,37 +213,32 @@ html {
   inset: 0;
   border-radius: inherit;
   padding: 0.5px;
-  background: conic-gradient(
-    from var(--shimmer-angle),
-    transparent 0deg,
-    transparent 200deg,
-    rgba(37, 99, 235, 0) 210deg,
-    #1e40af 222deg,
-    #2563eb 236deg,
-    #3b82f6 250deg,
-    #4f46e5 264deg,
-    #a855f7 278deg,
-    #ec4899 292deg,
-    #f43f5e 306deg,
-    #ef4444 320deg,
-    #f97316 334deg,
-    #facc15 348deg,
-    rgba(250, 204, 21, 0) 356deg,
-    transparent 360deg
+  background-image: linear-gradient(
+    90deg,
+    transparent 0%,
+    transparent 36%,
+    #1e40af 40%,
+    #2563eb 43%,
+    #3b82f6 46%,
+    #4f46e5 49%,
+    #a855f7 52%,
+    #ec4899 55%,
+    #f43f5e 58%,
+    #ef4444 61%,
+    #f97316 64%,
+    #facc15 67%,
+    transparent 71%,
+    transparent 100%
   );
+  background-size: 300% 100%;
+  background-repeat: no-repeat;
   -webkit-mask:
     linear-gradient(#000 0 0) content-box,
     linear-gradient(#000 0 0);
   -webkit-mask-composite: xor;
           mask-composite: exclude;
-  animation: shimmerSpin 6.5s linear infinite;
+  animation: shimmerSlide 6.5s linear infinite;
   pointer-events: none;
-}
-
-@supports not (background: conic-gradient(from 0deg, red, blue)) {
-  .shimmer-border::before {
-    display: none;
-  }
 }
 
 /* Reduced motion */
