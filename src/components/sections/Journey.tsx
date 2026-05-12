@@ -40,7 +40,7 @@ export function Journey({ selected }: { selected: string | null }) {
       <div className="border-y border-pine/10 bg-snow">
         <div className="mx-auto flex max-w-[1280px] flex-col gap-3 px-5 py-6 sm:flex-row sm:items-center sm:justify-between sm:px-10">
           <div>
-            <p className="font-mono text-[10.5px] uppercase tracking-[0.22em] text-dusk">
+            <p className="font-mono text-[11.5px] uppercase tracking-[0.16em] text-dusk">
               The journey · day by day
             </p>
             <h2 className="mt-1 font-display text-[26px] leading-none tracking-tightest text-pine sm:text-[32px]">
@@ -113,15 +113,15 @@ function DaySection({
             transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1], delay: i * 0.05 }}
             className="grid grid-cols-[56px_1fr] items-start gap-3 sm:grid-cols-[76px_1fr] sm:gap-5"
           >
-            <div className="font-mono text-[12px] tracking-tight text-pine sm:text-[13px]">
+            <div className="font-mono text-[13px] font-medium tracking-tight text-pine sm:text-[14px]">
               <div>{h.time}</div>
-              <div className="mt-1 h-px w-4 bg-pine/30" />
+              <div className="mt-1 h-px w-4 bg-pine/40" />
             </div>
-            <div className="rounded-[3px] bg-snow/80 p-3 backdrop-blur-md ring-soft sm:p-4">
-              <h4 className="font-display text-[17px] leading-[1.15] tracking-tightest text-pine sm:text-[19px]">
+            <div className="rounded-[3px] bg-snow/80 p-3.5 backdrop-blur-md ring-soft sm:p-4">
+              <h4 className="font-display text-[18px] leading-[1.2] tracking-tightest text-pine sm:text-[20px]">
                 {h.title}
               </h4>
-              <p className="mt-1 max-w-prose text-pretty text-[13px] leading-snug text-pine/75 sm:text-[13.5px]">
+              <p className="mt-1.5 max-w-prose text-pretty text-[14px] leading-[1.55] text-pine/85 sm:text-[14.5px]">
                 {h.detail}
               </p>
               {h.image && (
@@ -143,12 +143,12 @@ function DaySection({
                         href={h.imageCredit.url}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="mt-1.5 inline-block text-[10.5px] text-pine/45 hover:text-pine/70 hover:underline"
+                        className="mt-2 inline-block text-[11.5px] text-pine/60 hover:text-pine/85 hover:underline"
                       >
                         {h.imageCredit.text}
                       </a>
                     ) : (
-                      <p className="mt-1.5 text-[10.5px] text-pine/45">{h.imageCredit.text}</p>
+                      <p className="mt-2 text-[11.5px] text-pine/60">{h.imageCredit.text}</p>
                     ))}
                 </div>
               )}
@@ -187,27 +187,27 @@ function DayCard({
           className="object-cover opacity-90"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/55" />
-        <div className="absolute inset-x-0 bottom-0 p-2.5 text-snow sm:p-3">
-          <p className="font-mono text-[9.5px] uppercase tracking-[0.22em] opacity-85">
+        <div className="absolute inset-x-0 bottom-0 p-3 text-snow sm:p-3.5">
+          <p className="text-[12px] font-medium tracking-wide opacity-95">
             Day {day.day} of {total}
           </p>
-          <h3 className="mt-0.5 font-display text-[17px] leading-none tracking-tightest sm:text-[18px]">
+          <h3 className="mt-1 font-display text-[19px] leading-[1.05] tracking-tightest sm:text-[21px]">
             {day.title}
           </h3>
         </div>
       </div>
-      <div className="grid grid-cols-3 divide-x divide-white/10 text-center text-[9px] uppercase tracking-[0.18em]">
-        <div className="py-1.5">
-          <div className="opacity-70">Place</div>
-          <div className="mt-0.5 text-[11px] font-medium normal-case tracking-normal">{day.place}</div>
+      <div className="grid grid-cols-3 divide-x divide-white/10 text-center">
+        <div className="py-2">
+          <div className="text-[10.5px] uppercase tracking-[0.12em] opacity-75">Place</div>
+          <div className="mt-1 text-[12.5px] font-medium">{day.place}</div>
         </div>
-        <div className="py-1.5">
-          <div className="opacity-70">Elev.</div>
-          <div className="mt-0.5 text-[11px] font-medium normal-case tracking-normal">{day.elevation}</div>
+        <div className="py-2">
+          <div className="text-[10.5px] uppercase tracking-[0.12em] opacity-75">Elev.</div>
+          <div className="mt-1 text-[12.5px] font-medium">{day.elevation}</div>
         </div>
-        <div className="py-1.5">
-          <div className="opacity-70">Sky</div>
-          <div className="mt-0.5 font-medium normal-case tracking-normal">
+        <div className="py-2">
+          <div className="text-[10.5px] uppercase tracking-[0.12em] opacity-75">Sky</div>
+          <div className="mt-1 font-medium">
             <WeatherIcon w={day.weather} />
           </div>
         </div>
@@ -225,7 +225,7 @@ function DayCard({
 }
 
 function WeatherIcon({ w }: { w: JourneyDay["weather"] }) {
-  const className = "inline-block h-3.5 w-3.5 align-middle";
+  const className = "inline-block h-4 w-4 align-middle";
   if (w === "snow")
     return (
       <svg viewBox="0 0 24 24" className={className} fill="none" stroke="currentColor" strokeWidth="1.5">
