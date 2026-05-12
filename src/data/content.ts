@@ -575,7 +575,7 @@ export const trustPoints = [
     stat: "9",
     label: "Years in the valley",
     detail:
-      "The Saroj Promise, full refund if a cloudburst or road closure ends your trip.",
+      "Our weather promise, full refund if a cloudburst or road closure ends your trip.",
   },
   {
     stat: "₹0",

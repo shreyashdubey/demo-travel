@@ -19,8 +19,16 @@ export function Packages({
   selected: string | null;
 }) {
   return (
-    <section id="journeys" className="relative bg-snow py-24 sm:py-32 lg:py-40">
-      <div className="mx-auto max-w-[1280px] px-5 sm:px-10">
+    <section id="journeys" className="relative overflow-hidden bg-snow py-24 sm:py-32 lg:py-40">
+      {/* Decorative rhododendron illustration */}
+      <img
+        src="/decorations/rhododendron.svg"
+        alt=""
+        aria-hidden
+        className="pointer-events-none absolute right-[-180px] top-[20px] h-[340px] w-[340px] -rotate-[30deg] select-none opacity-80 mix-blend-multiply sm:h-[460px] sm:w-[460px] lg:h-[560px] lg:w-[560px]"
+      />
+
+      <div className="relative mx-auto max-w-[1280px] px-5 sm:px-10">
         <div className="mb-10 flex flex-col items-start justify-between gap-6 lg:flex-row lg:items-end">
           <div>
             <p className="mb-4 text-[12px] uppercase tracking-[0.22em] text-dusk">
