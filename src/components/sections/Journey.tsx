@@ -2,12 +2,13 @@
 
 import Image from "next/image";
 import {
+  AnimatePresence,
   motion,
   useScroll,
   useTransform,
   type MotionValue,
 } from "framer-motion";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { spitiJourney, packages, type JourneyDay } from "@/data/content";
 import { whatsappUrl } from "@/lib/contact";
 
@@ -20,6 +21,7 @@ const PHASE_COLORS: Record<JourneyDay["phase"], { from: string; to: string; text
 
 export function Journey({ selected }: { selected: string | null }) {
   const ref = useRef<HTMLElement>(null);
+  const [expanded, setExpanded] = useState(false);
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ["start start", "end end"],
@@ -29,15 +31,32 @@ export function Journey({ selected }: { selected: string | null }) {
   const days = spitiJourney;
   const pack = packages.find((p) => p.slug === (selected ?? "spiti-circuit"))!;
   const totalDays = days.length;
+  const totalMoments = days.reduce((s, d) => s + d.hours.length, 0);
+  const placeCount = new Set(days.map((d) => d.place)).size;
 
   const enquireHref = whatsappUrl(
     `Hi Saroj, I'd like to enquire about the ${pack.title} journey (${pack.days} days, ${pack.nights} nights).`,
   );
 
+  const scrollToDay = (dayNum: number) => {
+    const jump = () => {
+      const el = document.getElementById(`day-${dayNum}`);
+      if (!el) return;
+      const y = el.getBoundingClientRect().top + window.scrollY - 88;
+      window.scrollTo({ top: y, behavior: "smooth" });
+    };
+    if (!expanded) {
+      setExpanded(true);
+      window.setTimeout(jump, 700);
+    } else {
+      jump();
+    }
+  };
+
   return (
     <section ref={ref} id="journey" className="relative bg-glacier">
       {/* Static journey header, no overlap with TopBar */}
-      <div className="border-y border-pine/10 bg-snow">
+      <div className="border-b border-pine/10 bg-glacier">
         <div className="mx-auto flex max-w-[1280px] flex-col gap-3 px-5 py-6 sm:flex-row sm:items-center sm:justify-between sm:px-10">
           <div>
             <p className="font-mono text-[11.5px] uppercase tracking-[0.16em] text-dusk">
@@ -61,22 +80,172 @@ export function Journey({ selected }: { selected: string | null }) {
         </div>
       </div>
 
-      {/* Day sections */}
-      <div className="relative z-10">
-        {days.map((d, i) => (
-          <DaySection
-            key={d.day}
-            day={d}
-            index={i}
-            total={totalDays}
-            scrollYProgress={scrollYProgress}
-          />
-        ))}
-      </div>
+      <JourneyTeaser
+        days={days}
+        totalMoments={totalMoments}
+        placeCount={placeCount}
+        firstPlace={days[0].place}
+        lastPlace={days[days.length - 1].place}
+        expanded={expanded}
+        onToggle={() => setExpanded((e) => !e)}
+        onDayClick={scrollToDay}
+      />
+
+      <AnimatePresence initial={false}>
+        {expanded && (
+          <motion.div
+            key="days"
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: "auto" }}
+            exit={{ opacity: 0, height: 0 }}
+            transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
+            className="relative z-10 overflow-hidden"
+          >
+            {days.map((d, i) => (
+              <DaySection
+                key={d.day}
+                day={d}
+                index={i}
+                total={totalDays}
+                scrollYProgress={scrollYProgress}
+              />
+            ))}
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       {/* Reveal panel */}
       <EnquirePanel pack={pack} enquireHref={enquireHref} />
     </section>
+  );
+}
+
+function JourneyTeaser({
+  days,
+  totalMoments,
+  placeCount,
+  firstPlace,
+  lastPlace,
+  expanded,
+  onToggle,
+  onDayClick,
+}: {
+  days: JourneyDay[];
+  totalMoments: number;
+  placeCount: number;
+  firstPlace: string;
+  lastPlace: string;
+  expanded: boolean;
+  onToggle: () => void;
+  onDayClick: (day: number) => void;
+}) {
+  return (
+    <div className="mx-auto max-w-[1280px] px-5 py-10 sm:px-10 sm:py-14">
+      <div className="text-center">
+        <p className="font-mono text-[12px] uppercase tracking-[0.18em] text-dusk">
+          The map
+        </p>
+        <h3 className="mt-2.5 font-display text-[30px] leading-[1.02] tracking-tightest text-pine sm:text-[42px]">
+          {firstPlace} <span className="font-sans text-[0.6em] font-medium uppercase tracking-[0.18em] text-pine/55">to</span> {lastPlace}
+        </h3>
+        <p className="mx-auto mt-3 max-w-md text-pretty text-[15px] leading-relaxed text-pine/75 sm:text-[16.5px]">
+          Hour by hour, from first light to the last star.
+        </p>
+      </div>
+
+      <div className="relative mt-7 -mx-5 overflow-x-auto px-5 [scrollbar-width:none] sm:-mx-10 sm:px-10 [&::-webkit-scrollbar]:hidden">
+        <ol className="relative mx-auto flex snap-x snap-mandatory items-start gap-3 pb-1 sm:max-w-[1080px] sm:snap-none sm:gap-2">
+          <div
+            aria-hidden
+            className="pointer-events-none absolute left-[80px] right-[80px] top-[14px] hidden h-px bg-pine/20 sm:block"
+            style={{ left: "calc((100% / 18))", right: "calc((100% / 18))" }}
+          />
+          {days.map((d) => {
+            const c = PHASE_COLORS[d.phase];
+            return (
+              <li
+                key={d.day}
+                className="relative z-10 flex w-[150px] flex-none snap-start flex-col items-center sm:w-auto sm:min-w-0 sm:flex-1"
+              >
+                <button
+                  type="button"
+                  onClick={() => onDayClick(d.day)}
+                  aria-label={`Jump to Day ${d.day}: ${d.title}, ${d.place}`}
+                  className="grid h-7 w-7 place-items-center rounded-full ring-[3px] ring-glacier transition-transform duration-300 ease-soft hover:scale-[1.18] focus-visible:outline-none focus-visible:ring-pine"
+                  style={{ background: `linear-gradient(135deg, ${c.from}, ${c.to})` }}
+                >
+                  <span
+                    className="text-[10.5px] font-bold tabular-nums"
+                    style={{ color: c.text }}
+                  >
+                    {d.day}
+                  </span>
+                </button>
+                <p className="mt-2 font-mono text-[10.5px] uppercase tracking-[0.14em] text-pine/60">
+                  Day {d.day}
+                </p>
+                <p className="mt-1 text-pretty text-center text-[13px] leading-tight text-pine sm:text-[11.5px] sm:text-pine/85">
+                  {d.place}
+                </p>
+              </li>
+            );
+          })}
+        </ol>
+        <div
+          aria-hidden
+          className="pointer-events-none absolute right-0 top-0 h-full w-10 bg-gradient-to-l from-glacier to-transparent sm:hidden"
+        />
+      </div>
+
+      <div className="mt-7 flex flex-wrap items-center justify-center gap-x-8 gap-y-3 border-y border-pine/10 py-4 sm:gap-x-14">
+        <Stat label="Days" value={`${days.length}`} />
+        <Stat label="Moments" value={`${totalMoments}`} />
+        <Stat label="Places" value={`${placeCount}`} />
+        <Stat label="Group" value="≤ 6" />
+      </div>
+
+      <div className="mt-7 flex justify-center">
+        <button
+          type="button"
+          onClick={onToggle}
+          aria-expanded={expanded}
+          className="group inline-flex items-center gap-3 rounded-full bg-pine px-7 py-3.5 text-[14.5px] font-semibold text-snow shadow-md transition-all hover:bg-pine/90"
+        >
+          <span>
+            {expanded ? "Close the day-by-day" : `Open the ${days.length}-day journey`}
+          </span>
+          <span
+            aria-hidden
+            className={`grid h-6 w-6 place-items-center rounded-full bg-snow/15 transition-transform duration-300 ${expanded ? "rotate-180" : ""}`}
+          >
+            <svg
+              width="10"
+              height="10"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2.5"
+              className="text-snow"
+            >
+              <path d="M6 9l6 6 6-6" />
+            </svg>
+          </span>
+        </button>
+      </div>
+    </div>
+  );
+}
+
+function Stat({ label, value }: { label: string; value: string }) {
+  return (
+    <div className="text-center">
+      <div className="font-display text-[28px] leading-none tracking-tightest text-pine sm:text-[32px]">
+        {value}
+      </div>
+      <div className="mt-1.5 font-mono text-[10.5px] uppercase tracking-[0.18em] text-pine/55">
+        {label}
+      </div>
+    </div>
   );
 }
 
@@ -96,7 +265,10 @@ function DaySection({
   const localProgress = useTransform(scrollYProgress, [localStart, localEnd], [0, 1]);
 
   return (
-    <div className="relative grid grid-cols-1 gap-5 border-t border-pine/10 px-5 py-10 first:border-t-0 sm:gap-6 sm:px-10 sm:py-14 lg:grid-cols-12 lg:gap-8">
+    <div
+      id={`day-${day.day}`}
+      className="relative grid scroll-mt-24 grid-cols-1 gap-5 border-t border-pine/10 px-5 py-10 first:border-t-0 sm:gap-6 sm:px-10 sm:py-14 lg:grid-cols-12 lg:gap-8"
+    >
       <div className="lg:col-span-3">
         <div className="lg:sticky lg:top-24">
           <DayCard day={day} progress={localProgress} total={total} />
