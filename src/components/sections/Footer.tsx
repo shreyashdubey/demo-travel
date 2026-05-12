@@ -15,7 +15,7 @@ export function Footer() {
           <div className="relative h-28 w-28 overflow-hidden rounded-full ring-1 ring-snow/15 sm:h-36 sm:w-36">
             <Image
               src="/img/logo.jpeg"
-              alt="Wandering Saya Travels — Himachal Pradesh travel atelier based in Kullu valley."
+              alt="Wandering Saya Travels, Himachal Pradesh travel atelier based in Kullu valley."
               fill
               sizes="(min-width: 640px) 144px, 112px"
               className="object-cover"

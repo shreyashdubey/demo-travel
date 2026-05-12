@@ -30,7 +30,7 @@ export function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
         >
-          {/* Trust pill — credentials at a glance */}
+          {/* Trust pill, credentials at a glance */}
           <div className="mb-4 inline-flex flex-wrap items-center gap-x-3 gap-y-1 rounded-full border border-white/25 bg-white/15 px-4 py-2 text-[12.5px] text-snow backdrop-blur">
             <span className="font-medium">🏔 Based in Kullu</span>
             <span className="opacity-50">·</span>
@@ -40,21 +40,21 @@ export function Hero() {
           </div>
 
           <h1 className="font-display text-balance text-[36px] leading-[1.02] tracking-tightest sm:text-[68px] lg:text-[96px]">
-            Saroj's Himachal —
+            Saroj's Himachal -
             <br />
             <span className="opacity-90">not the one in the brochures.</span>
           </h1>
 
           <p className="mt-4 max-w-2xl text-pretty text-[15.5px] leading-relaxed text-snow/90 sm:mt-5 sm:text-[17.5px]">
-            Born and raised in Bhuntar. We've been in this valley all our lives — and we take you
+            Born and raised in Bhuntar. We've been in this valley all our lives, and we take you
             to the homestays you call by first name, the trails the buses skip, the festivals only
             the villages know.
             <span className="mt-2 block font-medium text-snow">
-              Tell us your dates — Saroj replies on WhatsApp within 4 hours.
+              Tell us your dates, Saroj replies on WhatsApp within 4 hours.
             </span>
           </p>
 
-          {/* Snow window CTA — clean glass pill, cool not warm */}
+          {/* Snow window CTA, clean glass pill, cool not warm */}
           <a
             href="#weather"
             className="mt-5 inline-flex items-center gap-2.5 rounded-full border border-snow/30 bg-white/10 px-4 py-2.5 text-[13.5px] font-medium text-snow backdrop-blur transition-all hover:border-snow/60 hover:bg-white/20"
@@ -81,7 +81,7 @@ export function Hero() {
             </span>
             <span>
               Find out when it snows
-              <span className="ml-1.5 text-snow/65">— free tool →</span>
+              <span className="ml-1.5 text-snow/65">- free tool →</span>
             </span>
           </a>
 

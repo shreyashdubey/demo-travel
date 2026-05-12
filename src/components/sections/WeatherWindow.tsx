@@ -21,8 +21,8 @@ type Destination = {
   months: MonthRow[];
 };
 
-// Each destination shows only the months that actually matter for it —
-// snow season + a couple of shoulder/peak months — so the user is never
+// Each destination shows only the months that actually matter for it -
+// snow season + a couple of shoulder/peak months, so the user is never
 // staring at empty zero-snow bars.
 const WEATHER: Record<string, Destination> = {
   spiti: {
@@ -37,7 +37,7 @@ const WEATHER: Record<string, Destination> = {
       { name: "Aug", snow: 0, temp: "7° / 21°", note: "Clear skies, monasteries open" },
       { name: "Sep", snow: 5, temp: "4° / 18°", note: "Quieter, gold light" },
       { name: "Jan", snow: 95, temp: "−20° / −5°", note: "Snow leopard tracking" },
-      { name: "Feb", snow: 95, temp: "−18° / −3°", note: "Coldest — Kaza by air only" },
+      { name: "Feb", snow: 95, temp: "−18° / −3°", note: "Coldest, Kaza by air only" },
     ],
   },
   manali: {
@@ -48,11 +48,11 @@ const WEATHER: Record<string, Destination> = {
       "Snow December–February. Apple blossom April–May. Cool and green June–September. Apple harvest October.",
     months: [
       { name: "Dec", snow: 80, temp: "−3° / 8°", note: "Winter takes hold" },
-      { name: "Jan", snow: 90, temp: "−4° / 8°", note: "Deep snow — Solang at its best" },
+      { name: "Jan", snow: 90, temp: "−4° / 8°", note: "Deep snow, Solang at its best" },
       { name: "Feb", snow: 85, temp: "−2° / 10°", note: "Fresh falls likely" },
       { name: "Mar", snow: 55, temp: "1° / 15°", note: "Snow melts, valley wakes" },
       { name: "May", snow: 5, temp: "10° / 26°", note: "Apple blossom" },
-      { name: "Oct", snow: 20, temp: "5° / 18°", note: "Apple harvest — our favourite" },
+      { name: "Oct", snow: 20, temp: "5° / 18°", note: "Apple harvest, our favourite" },
     ],
   },
   shimla: {
@@ -127,12 +127,12 @@ export function WeatherWindow() {
             </h2>
           </div>
           <p className="max-w-md text-pretty text-[15.5px] leading-relaxed text-pine/70">
-            Pick a place. We show only the months that matter — when it snows, when it's
+            Pick a place. We show only the months that matter, when it snows, when it's
             comfortable, when to skip. Based on ten years of regional data.
           </p>
         </div>
 
-        {/* Road status — updated by our driver network */}
+        {/* Road status, updated by our driver network */}
         <div className="mb-10 rounded-[3px] border border-pine/10 bg-white p-5">
           <div className="flex flex-wrap items-baseline justify-between gap-2 border-b border-pine/10 pb-3">
             <p className="font-mono text-[11px] uppercase tracking-[0.22em] text-pine">
@@ -197,7 +197,7 @@ export function WeatherWindow() {
             <div className="relative aspect-[4/3] lg:aspect-auto lg:min-h-[420px]">
               <Image
                 src={data.image}
-                alt={`${data.name}, Himachal Pradesh (elevation ${data.elevation}) — ${data.summary}`}
+                alt={`${data.name}, Himachal Pradesh (elevation ${data.elevation}), ${data.summary}`}
                 fill
                 sizes="(min-width: 1024px) 50vw, 100vw"
                 className="object-cover"
@@ -261,7 +261,7 @@ export function WeatherWindow() {
         </motion.div>
 
         <p className="mt-6 text-[13px] text-pine/55">
-          Based on regional climate averages — not a forecast. Saroj will confirm what to expect
+          Based on regional climate averages, not a forecast. Saroj will confirm what to expect
           for your specific dates over WhatsApp.
         </p>
       </div>

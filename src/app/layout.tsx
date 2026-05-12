@@ -35,9 +35,9 @@ const mono = JetBrains_Mono({
 
 const SITE_URL = "https://wanderingsayatravels.com";
 const SITE_NAME = "Wandering Saya Travels";
-const TITLE = "Wandering Saya Travels — Himachal trips by a local Kullu family";
+const TITLE = "Wandering Saya Travels, Himachal trips by a local Kullu family";
 const DESCRIPTION =
-  "Curated, small-group Himachal Pradesh tours by Saroj Thakur — born and raised in the Kullu valley. Manali, Spiti, Shimla, Kasol, Tirthan and Bir-Billing trips with verified homestays, free cancellation, and a 4-hour WhatsApp reply.";
+  "Curated, small-group Himachal Pradesh tours by Saroj Thakur, born and raised in the Kullu valley. Manali, Spiti, Shimla, Kasol, Tirthan and Bir-Billing trips with verified homestays, free cancellation, and a 4-hour WhatsApp reply.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -117,13 +117,13 @@ export const metadata: Metadata = {
         url: "/img/places/kullu-valley.jpg",
         width: 1600,
         height: 1067,
-        alt: "Kullu valley in Himachal Pradesh — pine ridges and the Beas river below.",
+        alt: "Kullu valley in Himachal Pradesh, pine ridges and the Beas river below.",
       },
       {
         url: "/img/logo.jpeg",
         width: 1240,
         height: 1240,
-        alt: "Wandering Saya Travels logo — Himachal Pradesh travel atelier.",
+        alt: "Wandering Saya Travels logo, Himachal Pradesh travel atelier.",
       },
     ],
   },
@@ -134,7 +134,7 @@ export const metadata: Metadata = {
     images: [
       {
         url: "/img/places/kullu-valley.jpg",
-        alt: "Kullu valley in Himachal Pradesh — pine ridges and the Beas river below.",
+        alt: "Kullu valley in Himachal Pradesh, pine ridges and the Beas river below.",
       },
     ],
     creator: "@wanderingsaya",

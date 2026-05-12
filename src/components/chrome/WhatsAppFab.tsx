@@ -15,7 +15,7 @@ export function WhatsAppFab() {
         href={HREF}
         target="_blank"
         rel="noopener noreferrer"
-        aria-label="WhatsApp Saroj — chat about a trip"
+        aria-label="WhatsApp Saroj, chat about a trip"
         className="animate-happy-hop flex h-14 w-14 items-center justify-center rounded-full bg-[#25D366] text-white shadow-[0_8px_24px_rgba(0,0,0,0.25)] transition-shadow duration-300 hover:shadow-[0_12px_32px_rgba(37,211,102,0.5)] active:scale-95 sm:h-16 sm:w-16"
       >
         <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor" aria-hidden>

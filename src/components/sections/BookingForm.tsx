@@ -1,10 +1,12 @@
 "use client";
 
 import { motion, AnimatePresence } from "framer-motion";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { packages } from "@/data/content";
 import { whatsappUrl } from "@/lib/contact";
 import { cn } from "@/lib/cn";
+
+const DRAFT_KEY = "wst-booking-draft-v1";
 
 type Form = {
   name: string;
@@ -30,6 +32,8 @@ const STEPS = ["Who", "When", "What", "How", "Confirm"] as const;
 export function BookingForm() {
   const [step, setStep] = useState(0);
   const [submitted, setSubmitted] = useState<{ ref: string; data: Form } | null>(null);
+  const [submitting, setSubmitting] = useState(false);
+  const honeypotRef = useRef<HTMLInputElement>(null);
   const [form, setForm] = useState<Form>({
     name: "",
     travellers: 2,
@@ -43,6 +47,30 @@ export function BookingForm() {
     notes: "",
   });
 
+  // Restore an in-progress draft so an accidental refresh mid-fill doesn't wipe their answers.
+  useEffect(() => {
+    try {
+      const raw = window.localStorage.getItem(DRAFT_KEY);
+      if (!raw) return;
+      const draft = JSON.parse(raw);
+      setForm((f) => ({ ...f, ...draft }));
+    } catch {}
+  }, []);
+
+  useEffect(() => {
+    if (submitted) return;
+    try {
+      window.localStorage.setItem(DRAFT_KEY, JSON.stringify(form));
+    } catch {}
+  }, [form, submitted]);
+
+  useEffect(() => {
+    if (!submitted) return;
+    try {
+      window.localStorage.removeItem(DRAFT_KEY);
+    } catch {}
+  }, [submitted]);
+
   const update = <K extends keyof Form>(k: K, v: Form[K]) =>
     setForm((f) => ({ ...f, [k]: v }));
 
@@ -51,12 +79,32 @@ export function BookingForm() {
   };
   const back = () => setStep((s) => Math.max(0, s - 1));
 
-  const submit = () => {
+  const submit = async () => {
+    if (submitting) return;
     const ref = `WST-${form.month.toUpperCase()}-${Math.random()
       .toString(36)
       .slice(2, 6)
       .toUpperCase()}`;
-    setSubmitted({ ref, data: form });
+    setSubmitting(true);
+    try {
+      await fetch("/api/lead", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          ref,
+          ...form,
+          website: honeypotRef.current?.value ?? "",
+        }),
+        keepalive: true,
+      });
+    } catch (err) {
+      // Server-side failure is logged in Vercel; the user still gets the
+      // success screen with the WhatsApp button so the lead isn't dropped.
+      console.error("[lead] submit failed", err);
+    } finally {
+      setSubmitting(false);
+      setSubmitted({ ref, data: form });
+    }
   };
 
   const valid = useMemo(() => {
@@ -240,7 +288,7 @@ export function BookingForm() {
                   )}
 
                   {step === 2 && (
-                    <Step title="What kind of journey?" hint="Pick a starter — we customise from here.">
+                    <Step title="What kind of journey?" hint="Pick a starter, we customise from here.">
                       <div className="grid grid-cols-1 gap-3 sm:grid-cols-3">
                         {packages.map((p) => (
                           <button
@@ -288,7 +336,7 @@ export function BookingForm() {
                         >
                           <div className="flex items-center justify-between">
                             <h4 className="font-display text-[20px] tracking-tightest">
-                              I'm not sure — suggest me a route
+                              I'm not sure, suggest me a route
                             </h4>
                             <span>→</span>
                           </div>
@@ -344,12 +392,12 @@ export function BookingForm() {
                   )}
 
                   {step === 4 && (
-                    <Step title="Take a look — does this feel right?" hint="One tap and Saroj is on it.">
+                    <Step title="Take a look, does this feel right?" hint="One tap and Saroj is on it.">
                       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-                        <Summary k="Traveller" v={form.name || "—"} />
+                        <Summary k="Traveller" v={form.name || "-"} />
                         <Summary k="Travellers" v={`${form.travellers}`} />
-                        <Summary k="WhatsApp" v={form.whatsapp || "—"} />
-                        <Summary k="Email" v={form.email || "—"} />
+                        <Summary k="WhatsApp" v={form.whatsapp || "-"} />
+                        <Summary k="Email" v={form.email || "-"} />
                         <Summary k="Month" v={form.month} />
                         <Summary
                           k="Journey"
@@ -373,6 +421,22 @@ export function BookingForm() {
                 </motion.div>
               )}
             </AnimatePresence>
+          </div>
+
+          {/* Honeypot, visible to bots, hidden from humans. Bots auto-fill all
+              inputs; if this field has a value on submit, the API silently drops it. */}
+          <div aria-hidden className="pointer-events-none absolute left-[-9999px] top-0 h-0 w-0 overflow-hidden opacity-0">
+            <label>
+              Website (leave empty)
+              <input
+                ref={honeypotRef}
+                type="text"
+                name="website"
+                tabIndex={-1}
+                autoComplete="off"
+                defaultValue=""
+              />
+            </label>
           </div>
 
           {/* Footer / actions */}
@@ -399,12 +463,28 @@ export function BookingForm() {
               ) : (
                 <button
                   onClick={submit}
-                  className="inline-flex items-center gap-2 rounded-full bg-alpenglow px-7 py-3 text-[14px] font-medium text-pine transition-all hover:bg-pine hover:text-snow"
+                  disabled={submitting}
+                  className="inline-flex items-center gap-2 rounded-full bg-alpenglow px-7 py-3 text-[14px] font-medium text-pine transition-all hover:bg-pine hover:text-snow disabled:cursor-progress disabled:opacity-70 disabled:hover:bg-alpenglow disabled:hover:text-pine"
                 >
-                  Send to Saroj
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
-                    <path d="M5 12h14m-6-6 6 6-6 6" />
-                  </svg>
+                  {submitting ? "Sending…" : "Send to Saroj"}
+                  {submitting ? (
+                    <svg
+                      width="14"
+                      height="14"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      className="animate-spin"
+                      aria-hidden
+                    >
+                      <path d="M12 3a9 9 0 1 0 9 9" strokeLinecap="round" />
+                    </svg>
+                  ) : (
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
+                      <path d="M5 12h14m-6-6 6 6-6 6" />
+                    </svg>
+                  )}
                 </button>
               )}
             </div>
@@ -522,7 +602,7 @@ function Success({ submitted }: { submitted: { ref: string; data: Form } }) {
     "Hi Saroj!",
     "",
     "Here are the details from your website:",
-    `• Name: ${data.name || "—"}`,
+    `• Name: ${data.name || "-"}`,
     `• Travellers: ${data.travellers}`,
     `• Month: ${data.month}`,
     `• Journey: ${journeyName}`,
@@ -553,7 +633,7 @@ function Success({ submitted }: { submitted: { ref: string; data: Form } }) {
         Your details are ready.
       </h3>
       <p className="mt-3 max-w-xl text-pretty text-[15.5px] leading-relaxed text-pine/70">
-        Send them to Saroj on WhatsApp — she replies within 4 hours with a hand-crafted itinerary
+        Send them to Saroj on WhatsApp, she replies within 4 hours with a hand-crafted itinerary
         and a fair quote.
       </p>
 
@@ -574,7 +654,7 @@ function Success({ submitted }: { submitted: { ref: string; data: Form } }) {
         <span className="font-medium">{ref}</span>
       </div>
       <p className="mt-10 max-w-md text-[14px] italic text-pine/60">
-        "The mountains will still be here when you are ready." — Saroj
+        "The mountains will still be here when you are ready.", Saroj
       </p>
     </motion.div>
   );

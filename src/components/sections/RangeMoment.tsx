@@ -54,7 +54,7 @@ export function RangeMoment() {
           transition={{ duration: 1.1, delay: 0.3 }}
           className="mt-5 max-w-md text-pretty text-[15.5px] leading-relaxed text-snow/70"
         >
-          Move your cursor — the range moves with you. The Pir Panjal in the south, the
+          Move your cursor, the range moves with you. The Pir Panjal in the south, the
           Dhauladhar to the west, the Greater Himalayas above us all.
         </motion.p>
       </div>

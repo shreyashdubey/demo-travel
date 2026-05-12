@@ -36,7 +36,7 @@ export function HowItWorks() {
             Three steps. No forms.
           </h2>
           <p className="mt-5 text-pretty text-[16px] leading-relaxed text-pine/70">
-            We don't sell packages off a shelf. Saroj builds each itinerary by hand — you talk to a
+            We don't sell packages off a shelf. Saroj builds each itinerary by hand, you talk to a
             person, not a chatbot.
           </p>
         </div>
@@ -60,7 +60,7 @@ export function HowItWorks() {
 
         <div className="mt-10 flex justify-center">
           <a
-            href={whatsappUrl("Hi Saroj, I'd like to plan a trip — could we talk?")}
+            href={whatsappUrl("Hi Saroj, I'd like to plan a trip, could we talk?")}
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-3 rounded-full bg-[#25D366] px-7 py-4 text-[15px] font-semibold text-white transition-colors hover:bg-[#1ebd5a]"

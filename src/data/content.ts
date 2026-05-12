@@ -43,7 +43,7 @@ export const destinations = [
     signature: "A cold desert that prays in monasteries.",
     elevation: "3,800–4,500 m",
     bestMonths: "Jun–Sep · winter for the brave",
-    body: "Lahaul-Spiti is moonscape Himalaya — Key Monastery clinging to a cliff, Chandratal cupping the sky, Hikkim posting letters from the world's highest post office.",
+    body: "Lahaul-Spiti is moonscape Himalaya, Key Monastery clinging to a cliff, Chandratal cupping the sky, Hikkim posting letters from the world's highest post office.",
     image: "/img/places/spiti.jpg",
     color: "#2f4862",
   },
@@ -226,7 +226,7 @@ export const spitiJourney: JourneyDay[] = [
       {
         time: "07:30",
         title: "Pickup at Bhuntar airport",
-        detail: "An Innova waiting with chai in a flask. Saroj's cousin Tashi is your driver — he's been doing this run since 2009.",
+        detail: "An Innova waiting with chai in a flask. Saroj's cousin Tashi is your driver, he's been doing this run since 2009.",
         image:
           "https://images.unsplash.com/photo-1483728642387-6c3bdd6c93e5?auto=format&fit=crop&w=900&q=80",
       },
@@ -280,7 +280,7 @@ export const spitiJourney: JourneyDay[] = [
       {
         time: "18:00",
         title: "Arrive Kaza",
-        detail: "Spiti's tiny administrative town. Thinner air. You may feel a small headache — drink water, walk slow.",
+        detail: "Spiti's tiny administrative town. Thinner air. You may feel a small headache, drink water, walk slow.",
         image: "/img/places/key-monastery.jpg",
       },
       {
@@ -346,7 +346,7 @@ export const spitiJourney: JourneyDay[] = [
       {
         time: "12:00",
         title: "Mudh village walk",
-        detail: "End of the road. We have lunch with Sonam — black-pea soup, barley bread.",
+        detail: "End of the road. We have lunch with Sonam, black-pea soup, barley bread.",
       },
       {
         time: "15:30",
@@ -404,7 +404,7 @@ export const spitiJourney: JourneyDay[] = [
     cover: "/img/places/kullu-valley.jpg",
     hours: [
       { time: "07:00", title: "Sunrise at the lake", detail: "Pink on the peaks. A short prayer if you wish." },
-      { time: "10:00", title: "Drive to Gramphu", detail: "Slow over Batal — the road is the road." },
+      { time: "10:00", title: "Drive to Gramphu", detail: "Slow over Batal, the road is the road." },
       { time: "16:00", title: "Manali check-in", detail: "Hot showers. A long, long sleep is allowed." },
     ],
   },
@@ -449,13 +449,13 @@ export const spitiJourney: JourneyDay[] = [
       "https://images.unsplash.com/photo-1517760444937-f6397edcbbcd?auto=format&fit=crop&w=1800&q=80",
     hours: [
       { time: "08:00", title: "Toy train to Kalka", detail: "5 hours of slow descent through 102 tunnels. UNESCO heritage." },
-      { time: "14:00", title: "Drop at Chandigarh airport / station", detail: "A small parting gift — a Kullvi shawl scarf, our way of saying come back." },
+      { time: "14:00", title: "Drop at Chandigarh airport / station", detail: "A small parting gift, a Kullvi shawl scarf, our way of saying come back." },
     ],
   },
 ];
 
 // Real photos. Sourced from Wikimedia Commons (CC-BY-SA / public domain),
-// each one is the actual Pahari/Himachali dish — not a generic curry.
+// each one is the actual Pahari/Himachali dish, not a generic curry.
 export const food = [
   {
     name: "Sidu",
@@ -504,7 +504,7 @@ export const phrases = [
   { hi: "Dhanyavaad", en: "Thank you", pahari: "Meherbani" },
 ];
 
-// PLACEHOLDER testimonials — replace with real reviews from past travellers
+// PLACEHOLDER testimonials, replace with real reviews from past travellers
 // (ask 4–6 of your past travellers if you can quote them with their city and trip).
 export const testimonials = [
   {
@@ -519,7 +519,7 @@ export const testimonials = [
     location: "Mumbai",
     trip: "Kullu Roots · October 2025",
     quote:
-      "I've done a lot of Himachal trips with bigger operators. This was the first that felt like staying with family. Mahendra's orchard, Dolma's kitchen — these aren't on any app.",
+      "I've done a lot of Himachal trips with bigger operators. This was the first that felt like staying with family. Mahendra's orchard, Dolma's kitchen, these aren't on any app.",
   },
   {
     name: "The Iyer family",
@@ -544,11 +544,11 @@ export const faqs = [
   },
   {
     q: "How does payment work?",
-    a: "25% advance to confirm dates and reserve homestays. Balance is paid on arrival in cash, UPI, or bank transfer — whichever you prefer.",
+    a: "25% advance to confirm dates and reserve homestays. Balance is paid on arrival in cash, UPI, or bank transfer, whichever you prefer.",
   },
   {
     q: "What if I need to cancel?",
-    a: "Free cancellation up to 14 days before departure. And if a cloudburst or road closure ends your trip mid-way, we refund what hasn't been used — every rupee. We call it the Saroj Promise.",
+    a: "Free cancellation up to 14 days before departure. And if a cloudburst or road closure ends your trip mid-way, we refund what hasn't been used, every rupee. We call it the Saroj Promise.",
   },
   {
     q: "Are the drivers and guides safe?",
@@ -573,7 +573,7 @@ export const trustPoints = [
     stat: "9",
     label: "Years in the valley",
     detail:
-      "The Saroj Promise — full refund if a cloudburst or road closure ends your trip.",
+      "The Saroj Promise, full refund if a cloudburst or road closure ends your trip.",
   },
   {
     stat: "₹0",
@@ -596,7 +596,7 @@ export const trustPoints = [
 // The "where few go" section. Real census-era population numbers, real elevations.
 // Each place is chosen because Saroj has been and very few tourists do.
 export const hiddenPlaces = [
-  // Mathsaur — real photos + video shot by Saroj. The `shotByUs` field
+  // Mathsaur, real photos + video shot by Saroj. The `shotByUs` field
   // unlocks the lightbox in the UI.
   {
     slug: "mathsaur",
@@ -606,7 +606,7 @@ export const hiddenPlaces = [
     stat: "📷",
     statLabel: "Our own photos and video",
     detail:
-      "A pine-cedar ridge above the cloud-line. Locals walk up for the cloud break — we did, and brought back the proof.",
+      "A pine-cedar ridge above the cloud-line. Locals walk up for the cloud break, we did, and brought back the proof.",
     image: "/img/places/mathsaur/mathsaur-1.jpg",
     shotByUs: {
       photos: [
@@ -617,7 +617,7 @@ export const hiddenPlaces = [
       video: "/video/mathsaur.mp4",
     },
   },
-  // Dhanasar Lake — glacial lake we've actually walked to.
+  // Dhanasar Lake, glacial lake we've actually walked to.
   {
     slug: "dhanasar",
     name: "Dehnasar Lake",
@@ -626,7 +626,7 @@ export const hiddenPlaces = [
     stat: "📷",
     statLabel: "Our own photos",
     detail:
-      "A high alpine glacial lake in the Dhauladhar, at the foot of Ghora Lotnu peak. Reached by a 14 km climb from Polling village in Chota Bhangal — a hard single push, easier in two days. Half-frozen most of the year, and almost nobody up there with you.",
+      "A high alpine glacial lake in the Dhauladhar, at the foot of Ghora Lotnu peak. Reached by a 14 km climb from Polling village in Chota Bhangal, a hard single push, easier in two days. Half-frozen most of the year, and almost nobody up there with you.",
     image: "/img/places/dhanasar/dhanasar-1.jpg",
     shotByUs: {
       photos: [
@@ -635,7 +635,7 @@ export const hiddenPlaces = [
       ],
     },
   },
-  // Bijli Mahadev — temple ridge above Kullu town, our own walk-up photo.
+  // Bijli Mahadev, temple ridge above Kullu town, our own walk-up photo.
   {
     slug: "bijli-mahadev",
     name: "Bijli Mahadev",
@@ -644,7 +644,7 @@ export const hiddenPlaces = [
     stat: "📷",
     statLabel: "Our own photo",
     detail:
-      "A Shiva temple on a high ridge above Kullu. The lightning rod is said to attract bolts that shatter the lingam each year — and the priests rebuild it with butter. A 3-km uphill walk most tourists skip.",
+      "A Shiva temple on a high ridge above Kullu. The lightning rod is said to attract bolts that shatter the lingam each year, and the priests rebuild it with butter. A 3-km uphill walk most tourists skip.",
     image: "/img/places/bijli-mahadev.jpg",
     shotByUs: {
       photos: ["/img/places/bijli-mahadev.jpg"],
@@ -703,7 +703,7 @@ export const hiddenPlaces = [
     stat: "~1,700 yrs",
     statLabel: "One of the world's oldest democracies",
     detail:
-      "Speaks its own language (Kanashi), governs by its own council, claims descent from Alexander's soldiers. Visit with respect — touching things is forbidden.",
+      "Speaks its own language (Kanashi), governs by its own council, claims descent from Alexander's soldiers. Visit with respect, touching things is forbidden.",
     image: "/img/places/kasol-parvati.jpg",
   },
   {
@@ -730,14 +730,14 @@ export const roadStatus = {
       status: "Open",
       state: "open",
       detail:
-        "Atal Tunnel clear. Sissu, Keylong, Jispa accessible. Fuel at Tandi sangam — last petrol pump for 365 km.",
+        "Atal Tunnel clear. Sissu, Keylong, Jispa accessible. Fuel at Tandi sangam, last petrol pump for 365 km.",
     },
     {
       name: "Manali–Kaza via Kunzum La",
       status: "Open · caution",
       state: "caution",
       detail:
-        "Kunzum La (4,551 m) opened mid-May. River crossings active past Batal — go with a driver only, no self-drive.",
+        "Kunzum La (4,551 m) opened mid-May. River crossings active past Batal, go with a driver only, no self-drive.",
     },
     {
       name: "Rohtang Pass",

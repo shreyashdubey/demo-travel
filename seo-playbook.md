@@ -5,6 +5,41 @@
 
 ---
 
+## ▶ Resume here — what to do next
+
+The technical SEO foundation is done. The code work that follows is scaffolding the blog/destination pages. But **none of it ranks until the site is deployed and Google knows it exists.** Do the three "yours to do" items below first.
+
+### The next 7 days — for Saroj / Vikrant to do (≈ 2 hours total)
+
+1. **Deploy the site to `wanderingsayatravels.com`** — Vercel is the path of least resistance (free, 5 minutes, automatic HTTPS). Until it's live on the real domain under HTTPS, nothing else here matters.
+
+2. **Verify Google Search Console**
+   - Add property for `wanderingsayatravels.com`
+   - Take the verification token and replace `REPLACE_WITH_GOOGLE_SEARCH_CONSOLE_TOKEN` in `src/app/layout.tsx`
+   - Submit `https://wanderingsayatravels.com/sitemap.xml`
+   - Click *"Request indexing"* on the homepage (forces a crawl in hours, not days)
+   - Do the same in **Bing Webmaster Tools** (powers DuckDuckGo + ChatGPT search)
+
+3. **Google Business Profile** for *Wandering Saya Travels, Patlikuhl, Kullu* — **single biggest ROI move for a local travel business.** More important than the blog. Add photos, services (each tour as a service), hours (8 AM – 9 PM IST daily), WhatsApp + email. Then message 5 past travellers (Anjali, Vikram, Iyer family, Priya, one more) asking for a Google review with a direct link.
+
+### The next 30 days — code work Claude can do
+
+Pick one (or all three, in order) when ready:
+
+4. **Scaffold the `/blog` route** — server-rendered, MDX-authored, with `Article` + `BreadcrumbList` + `FAQPage` JSON-LD per post. Seeded with a template post for *"Is the Atal Tunnel open today?"* so Saroj can dictate-and-publish. **Unblocks all of Phase 2.**
+
+5. **Build dedicated `/destinations/*` and `/tours/*` pages** — converts the anchor-only sections (`/#spiti`, `/#manali`) into real ranking pages with unique metadata, content, and JSON-LD per page. Bigger short-term SEO win than the blog.
+
+6. **Upgrade Next.js** (14 → 15 → 16) — closes the CVE backlog flagged in the security review. Real but contained breaking changes. Should be a focused ticket on its own branch with full retesting.
+
+### Recommended order
+
+Do #1 + #2 + #3 yourself this week (2 hrs total). Have Claude start #4 (scaffold blog) in parallel so the first post can go live the day after launch. #5 in week 2. #6 within the first month, before too much new code is added on top of the old Next version.
+
+---
+
+---
+
 ## The strategy in one paragraph
 
 We will **never** outrank MakeMyTrip / Thrillophilia / TravelTriangle on head terms like *"Manali tour packages"* — they have 1,000× our backlinks and unlimited ad budget. We win by being the **authoritative local voice** for Himachal travel: long-tail queries no aggregator can answer (*"What's open on the Spiti road in May?"*, *"Best homestay in Tirthan for solo female travellers"*), **Google Maps dominance** for *"travel agency in Kullu / Manali"*, and content depth that proves real on-the-ground expertise. Google now heavily weights **E-E-A-T** (Experience, Expertise, Authoritativeness, Trust) — and Saroj has authentic *Experience* that no aggregator can buy. **That is our moat.**

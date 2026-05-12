@@ -53,7 +53,7 @@ export function organizationJsonLd() {
       absoluteUrl("/img/places/chandratal.jpg"),
     ],
     description:
-      "A travel atelier from the Himalayas. Small-group, locally-run tours through Kullu, Manali, Spiti, Shimla, Kasol, Tirthan and Bir-Billing — by Saroj Thakur, born and raised in the Kullu valley.",
+      "A travel atelier from the Himalayas. Small-group, locally-run tours through Kullu, Manali, Spiti, Shimla, Kasol, Tirthan and Bir-Billing, by Saroj Thakur, born and raised in the Kullu valley.",
     founder: {
       "@type": "Person",
       name: "Saroj Thakur",

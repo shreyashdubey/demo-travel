@@ -74,7 +74,7 @@ body {
   }
 }
 
-/* Snow floater animations — kept in plain CSS so they hot-reload reliably */
+/* Snow floater animations, kept in plain CSS so they hot-reload reliably */
 @keyframes flakeFall {
   0% {
     transform: translate(0, -6px);
@@ -112,7 +112,7 @@ body {
   animation: slowSpin 9s linear infinite;
 }
 
-/* Happy WhatsApp bounce — three quick hops with squash/stretch, like an excited kid */
+/* Happy WhatsApp bounce, three quick hops with squash/stretch, like an excited kid */
 @keyframes happyHop {
   0% {
     transform: translateY(0) rotate(0deg) scale(1, 1);

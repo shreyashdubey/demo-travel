@@ -41,11 +41,11 @@ export function AboutSaroj() {
 
             <div className="mt-10 grid grid-cols-1 gap-y-7 sm:grid-cols-[80px_1fr] sm:gap-x-8">
               {[
-                ["Born", "In Bhuntar — the small town in the Kullu valley where the airport sits and the Beas meets the Parvati."],
+                ["Born", "In Bhuntar, the small town in the Kullu valley where the airport sits and the Beas meets the Parvati."],
                 ["School", "Right here in the valley. Pine forests on the way to school, the river loud in monsoon."],
-                ["Tourism", "Studied hotel management and tourism — because she wanted to learn how to host people the way Pahari families already do, but at scale."],
+                ["Tourism", "Studied hotel management and tourism, because she wanted to learn how to host people the way Pahari families already do, but at scale."],
                 ["2017", "Founded Wandering Saya Travels with a single Innova and a notebook full of homestay friends."],
-                ["Today", "Eight drivers, eleven homestay families. In the off-season she travels — Ladakh, Bhutan, Nepal, Norway, Patagonia next — to bring back what the world is doing right."],
+                ["Today", "Eight drivers, eleven homestay families. In the off-season she travels, Ladakh, Bhutan, Nepal, Norway, Patagonia next, to bring back what the world is doing right."],
               ].map(([year, line]) => (
                 <motion.div
                   key={year}
@@ -65,7 +65,7 @@ export function AboutSaroj() {
           </div>
         </div>
 
-        {/* Trust strip — big numbers + the promise behind each */}
+        {/* Trust strip, big numbers + the promise behind each */}
         <div className="mt-20 grid grid-cols-1 gap-px overflow-hidden rounded-[3px] bg-snow/10 sm:grid-cols-2 lg:grid-cols-4">
           {trustPoints.map((p, i) => (
             <motion.div

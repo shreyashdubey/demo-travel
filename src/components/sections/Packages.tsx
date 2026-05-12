@@ -32,12 +32,12 @@ export function Packages({
             </h2>
           </div>
           <p className="max-w-md text-pretty text-[15.5px] leading-relaxed text-pine/70">
-            Tap a card to step into the journey hour-by-hour. Or message Saroj — she'll shape one
+            Tap a card to step into the journey hour-by-hour. Or message Saroj, she'll shape one
             around your dates and pace.
           </p>
         </div>
 
-        {/* Apple Harvest signature callout — bold, action-forward */}
+        {/* Apple Harvest signature callout, bold, action-forward */}
         <div className="mb-10 rounded-[4px] border-2 border-alpenglow bg-gradient-to-r from-alpenglow/20 via-alpenglow/8 to-transparent px-5 py-5 sm:px-6">
           <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
             <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:gap-4">
@@ -45,7 +45,7 @@ export function Packages({
                 🍎 New · Sept–Oct
               </span>
               <p className="text-[16.5px] font-medium text-pine">
-                The Apple Harvest — our signature trip through Kullu's orchards.
+                The Apple Harvest, our signature trip through Kullu's orchards.
               </p>
             </div>
             <a
@@ -81,7 +81,7 @@ export function Packages({
               >
                 <Image
                   src={p.cover}
-                  alt={`${p.title} — ${p.days}-day Himachal Pradesh journey. ${p.pitch}`}
+                  alt={`${p.title}, ${p.days}-day Himachal Pradesh journey. ${p.pitch}`}
                   fill
                   sizes="(min-width: 1024px) 32vw, 92vw"
                   className="object-cover transition-transform duration-[1400ms] ease-soft group-hover:scale-[1.06]"
@@ -142,7 +142,7 @@ export function Packages({
         <div className="mt-8 rounded-[3px] border border-pine/10 bg-glacier/60 px-5 py-4 text-center">
           <p className="text-[13.5px] leading-relaxed text-pine">
             <span className="font-medium">Every journey:</span> free cancellation up to 14 days
-            before — and a full refund if a cloudburst or road closure ends the trip. The Saroj
+            before, and a full refund if a cloudburst or road closure ends the trip. The Saroj
             Promise.
           </p>
         </div>
@@ -153,7 +153,7 @@ export function Packages({
               Don't see your trip?
             </p>
             <p className="mt-2 font-display text-[26px] leading-tight tracking-tightest text-pine">
-              We build journeys around your dates, pace and people. Tell us what you're after —
+              We build journeys around your dates, pace and people. Tell us what you're after -
               we'll send you a draft within a day.
             </p>
           </div>

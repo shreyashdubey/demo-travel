@@ -42,7 +42,7 @@ export function HiddenHimachal() {
       items.push({
         type: "photo",
         src: photo,
-        alt: `${openPlace.name} in ${openPlace.region}, Himachal Pradesh — photographed by Wandering Saya Travels.`,
+        alt: `${openPlace.name} in ${openPlace.region}, Himachal Pradesh, photographed by Wandering Saya Travels.`,
       });
     }
     return items;
@@ -67,7 +67,7 @@ export function HiddenHimachal() {
           </div>
           <p className="max-w-md text-pretty text-[15.5px] leading-relaxed text-snow/75">
             Himachal had <span className="text-snow font-medium">1.8 crore visitors in 2024.</span>{" "}
-            Most of them never left Manali Mall Road. Saroj has been to all of these — off the
+            Most of them never left Manali Mall Road. Saroj has been to all of these, off the
             highway, off the apps, off the bus routes.
           </p>
         </div>
@@ -101,7 +101,7 @@ export function HiddenHimachal() {
                 <div className="relative aspect-[4/5]">
                   <Image
                     src={p.image}
-                    alt={`${p.name} — ${p.region}, Himachal Pradesh (${p.elevation}). ${p.statLabel}.`}
+                    alt={`${p.name}, ${p.region}, Himachal Pradesh (${p.elevation}). ${p.statLabel}.`}
                     fill
                     sizes="(min-width: 1024px) 30vw, (min-width: 640px) 46vw, 92vw"
                     className="object-cover transition-transform duration-[1400ms] ease-soft group-hover:scale-105"
@@ -217,7 +217,7 @@ export function HiddenHimachal() {
 
         <div className="mt-10 rounded-[3px] border border-snow/15 bg-white/5 px-5 py-5 text-center">
           <p className="text-[14px] leading-relaxed text-snow/85">
-            None of these are in the standard packages. Tell us which one calls to you — Saroj
+            None of these are in the standard packages. Tell us which one calls to you, Saroj
             will build the route. Six travellers maximum, always.
           </p>
         </div>

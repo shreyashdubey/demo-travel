@@ -24,7 +24,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 1,
   };
 
-  // Anchor-only "pages" — included so crawlers see the main concepts as named
+  // Anchor-only "pages", included so crawlers see the main concepts as named
   // landing fragments. Single-page sites benefit from the breadth.
   const anchors: MetadataRoute.Sitemap = ANCHOR_SECTIONS.map((id) => ({
     url: `${SITE_URL}/#${id}`,

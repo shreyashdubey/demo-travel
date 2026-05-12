@@ -67,7 +67,7 @@ export function MediaLightbox({
   if (!items.length) return null;
   const current = items[index] ?? items[0];
   const enquireHref = whatsappUrl(
-    `Hi Saroj, I just saw the ${title} photos on your site — could we plan a trip?`,
+    `Hi Saroj, I just saw the ${title} photos on your site, could we plan a trip?`,
   );
 
   return (
@@ -115,14 +115,14 @@ export function MediaLightbox({
               </button>
             </div>
 
-            {/* Media area — natural aspect ratio, capped to 60vh tall */}
+            {/* Media area, natural aspect ratio, capped to 60vh tall */}
             <div className="relative flex min-h-[280px] flex-1 items-center justify-center overflow-hidden bg-night">
               {current.type === "photo" ? (
                 /* eslint-disable-next-line @next/next/no-img-element */
                 <img
                   key={current.src}
                   src={current.src}
-                  alt={current.alt || `${title} in ${region} — photo from Wandering Saya Travels.`}
+                  alt={current.alt || `${title} in ${region}, photo from Wandering Saya Travels.`}
                   loading="lazy"
                   decoding="async"
                   className="block max-h-[60vh] max-w-full object-contain"
@@ -138,7 +138,7 @@ export function MediaLightbox({
                   playsInline
                   loop
                   preload="metadata"
-                  aria-label={`${title} in ${region} — video shot by Wandering Saya Travels.`}
+                  aria-label={`${title} in ${region}, video shot by Wandering Saya Travels.`}
                   className="block max-h-[60vh] max-w-full"
                 />
               )}

@@ -8,7 +8,7 @@ import { HiddenHimachal } from "@/components/sections/HiddenHimachal";
 import { WeatherWindow } from "@/components/sections/WeatherWindow";
 import { Packages } from "@/components/sections/Packages";
 import { Journey } from "@/components/sections/Journey";
-// import { RangeMoment } from "@/components/sections/RangeMoment"; // disabled per request — bring back when 3D is ready
+// import { RangeMoment } from "@/components/sections/RangeMoment"; // disabled per request, bring back when 3D is ready
 import { Testimonials } from "@/components/sections/Testimonials";
 import { FoodCulture } from "@/components/sections/FoodCulture";
 import { AboutSaroj } from "@/components/sections/AboutSaroj";
@@ -36,7 +36,7 @@ export default function Home() {
       <StoryStrip />
       <Packages selected={selected} onSelect={setSelected} />
       <WeatherWindow />
-      {/* <RangeMoment /> — disabled per request */}
+      {/* <RangeMoment />, disabled per request */}
       <Journey selected={selected} />
       <Testimonials />
       <FoodCulture />
