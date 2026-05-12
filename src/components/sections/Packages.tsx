@@ -25,7 +25,7 @@ export function Packages({
         src="/decorations/rhododendron.svg"
         alt=""
         aria-hidden
-        className="pointer-events-none absolute right-[-180px] top-[20px] h-[340px] w-[340px] -rotate-[30deg] select-none opacity-80 mix-blend-multiply sm:h-[460px] sm:w-[460px] lg:h-[560px] lg:w-[560px]"
+        className="pointer-events-none absolute right-[-140px] top-[20px] h-[340px] w-[340px] -rotate-[30deg] select-none opacity-80 mix-blend-multiply sm:right-[-180px] sm:h-[460px] sm:w-[460px] lg:h-[560px] lg:w-[560px]"
       />
 
       {/* Decorative apple illustration, left side */}

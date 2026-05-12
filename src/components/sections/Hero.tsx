@@ -1,7 +1,6 @@
 "use client";
 
 import Image from "next/image";
-import { motion } from "framer-motion";
 import { whatsappUrl, WHATSAPP_DISPLAY } from "@/lib/contact";
 
 const ENQUIRE = whatsappUrl(
@@ -15,21 +14,18 @@ export function Hero() {
       className="relative h-[100svh] w-full overflow-hidden bg-night text-snow sm:h-screen sm:min-h-[720px]"
     >
       <Image
-        src="https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?auto=format&fit=crop&w=1920&q=80"
+        src="https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?auto=format&fit=crop&w=1600&q=70"
         alt="Snow-capped Himalayan peaks above the Kullu valley in Himachal Pradesh at first light."
         fill
         priority
         sizes="100vw"
+        quality={70}
         className="object-cover"
       />
       <div className="absolute inset-0 bg-gradient-to-t from-night via-night/55 to-night/15" />
 
       <div className="relative z-10 mx-auto flex h-full max-w-[1280px] flex-col justify-start px-5 pb-10 pt-20 sm:justify-end sm:px-10 sm:pb-56 sm:pt-0">
-        <motion.div
-          initial={{ opacity: 0, y: 18 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-        >
+        <div>
           {/* Trust pill, credentials at a glance */}
           <div className="mb-4 flex flex-wrap items-center gap-2.5">
             <div className="inline-flex flex-wrap items-center gap-x-3 gap-y-1 rounded-full border border-white/25 bg-white/15 px-4 py-2 text-[12.5px] text-snow backdrop-blur">
@@ -219,7 +215,7 @@ export function Hero() {
               <CheckMark /> Verified homestays
             </span>
           </div>
-        </motion.div>
+        </div>
       </div>
     </section>
   );
