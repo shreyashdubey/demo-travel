@@ -48,10 +48,10 @@ export function Hero() {
               className="group inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/15 py-1.5 pl-1.5 pr-3.5 text-[12.5px] text-snow backdrop-blur transition-all hover:border-white/45 hover:bg-white/25"
             >
               <span className="grid h-6 w-6 place-items-center rounded-full bg-gradient-to-tr from-[#F58529] via-[#DD2A7B] to-[#8134AF] text-white shadow-sm transition-transform group-hover:scale-105">
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+                <svg width="15" height="15" viewBox="2 2 20 20" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
                   <rect x="3" y="3" width="18" height="18" rx="5" />
-                  <circle cx="12" cy="12" r="3.6" />
-                  <circle cx="17.6" cy="6.4" r="0.6" fill="currentColor" />
+                  <circle cx="12" cy="12" r="4" />
+                  <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none" />
                 </svg>
               </span>
               <span className="flex items-baseline gap-1.5">
