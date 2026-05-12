@@ -33,12 +33,12 @@ export default function Home() {
       <Hero />
       <Experiences />
       <HiddenHimachal />
-      <StoryStrip />
       <Packages selected={selected} onSelect={setSelected} />
       <WeatherWindow />
       {/* <RangeMoment />, disabled per request */}
       <Journey selected={selected} />
       <Testimonials />
+      <StoryStrip />
       <FoodCulture />
       <AboutSaroj />
       <HowItWorks />
