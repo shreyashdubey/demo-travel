@@ -127,7 +127,7 @@ export function Hero() {
                   history.pushState(null, "", "#journeys");
                 }
               }}
-              className="group inline-flex items-center gap-2.5 rounded-full border border-snow/30 bg-white/10 px-4 py-2.5 text-[13.5px] font-medium text-snow backdrop-blur transition-all hover:border-snow/60 hover:bg-white/20"
+              className="shimmer-border group inline-flex items-center gap-2.5 rounded-full bg-white/10 px-4 py-2.5 text-[13.5px] font-medium text-snow backdrop-blur transition-all hover:bg-white/20"
             >
               <span className="relative grid h-7 w-7 place-items-center rounded-full bg-snow text-pine">
                 <span

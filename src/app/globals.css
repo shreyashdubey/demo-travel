@@ -197,6 +197,62 @@ html {
   will-change: transform, opacity;
 }
 
+/* Gemini-style traveling border shimmer, conic-gradient masked to a ring */
+@property --shimmer-angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+
+@keyframes shimmerSpin {
+  to {
+    --shimmer-angle: 360deg;
+  }
+}
+
+.shimmer-border {
+  position: relative;
+}
+
+.shimmer-border::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 0.5px;
+  background: conic-gradient(
+    from var(--shimmer-angle),
+    transparent 0deg,
+    transparent 200deg,
+    rgba(37, 99, 235, 0) 210deg,
+    #1e40af 222deg,
+    #2563eb 236deg,
+    #3b82f6 250deg,
+    #4f46e5 264deg,
+    #a855f7 278deg,
+    #ec4899 292deg,
+    #f43f5e 306deg,
+    #ef4444 320deg,
+    #f97316 334deg,
+    #facc15 348deg,
+    rgba(250, 204, 21, 0) 356deg,
+    transparent 360deg
+  );
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+          mask-composite: exclude;
+  animation: shimmerSpin 6.5s linear infinite;
+  pointer-events: none;
+}
+
+@supports not (background: conic-gradient(from 0deg, red, blue)) {
+  .shimmer-border::before {
+    display: none;
+  }
+}
+
 /* Reduced motion */
 @media (prefers-reduced-motion: reduce) {
   *,
