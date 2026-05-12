@@ -125,16 +125,31 @@ function DaySection({
                 {h.detail}
               </p>
               {h.image && (
-                <div className="mt-4 overflow-hidden rounded-[3px]">
-                  <div className="relative aspect-[16/9]">
-                    <Image
-                      src={h.image}
-                      alt={`${h.title}, ${day.place}, Himachal Pradesh (${h.time}).`}
-                      fill
-                      sizes="(min-width: 1024px) 50vw, 92vw"
-                      className="object-cover transition-transform duration-[1200ms] ease-soft hover:scale-[1.04]"
-                    />
+                <div className="mt-4">
+                  <div className="overflow-hidden rounded-[3px]">
+                    <div className="relative aspect-[16/9]">
+                      <Image
+                        src={h.image}
+                        alt={`${h.title}, ${day.place}, Himachal Pradesh (${h.time}).`}
+                        fill
+                        sizes="(min-width: 1024px) 50vw, 92vw"
+                        className="object-cover transition-transform duration-[1200ms] ease-soft hover:scale-[1.04]"
+                      />
+                    </div>
                   </div>
+                  {h.imageCredit &&
+                    (h.imageCredit.url ? (
+                      <a
+                        href={h.imageCredit.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="mt-1.5 inline-block text-[10.5px] text-pine/45 hover:text-pine/70 hover:underline"
+                      >
+                        {h.imageCredit.text}
+                      </a>
+                    ) : (
+                      <p className="mt-1.5 text-[10.5px] text-pine/45">{h.imageCredit.text}</p>
+                    ))}
                 </div>
               )}
             </div>

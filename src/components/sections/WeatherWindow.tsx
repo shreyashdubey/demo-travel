@@ -109,7 +109,7 @@ export function WeatherWindow() {
   return (
     <section
       id="weather"
-      className="relative overflow-hidden bg-gradient-to-b from-[#FBF4DF] via-glacier to-[#D8C8A0] py-24 sm:py-32 lg:py-40"
+      className="relative overflow-hidden bg-gradient-to-b from-[#FBF4DF] via-glacier to-[#D8C8A0] py-8 sm:py-10 lg:py-12"
     >
       <div aria-hidden className="pointer-events-none absolute inset-0">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_70%_50%_at_20%_5%,_rgba(255,255,255,0.55),_transparent_65%)]" />

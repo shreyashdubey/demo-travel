@@ -51,7 +51,7 @@ export function HiddenHimachal() {
   return (
     <section
       id="hidden"
-      className="relative bg-night py-24 text-snow sm:py-32 lg:py-40"
+      className="relative bg-night py-8 text-snow sm:py-10 lg:py-12"
     >
       <div className="mx-auto max-w-[1280px] px-5 sm:px-10">
         <div className="mb-12 flex flex-col items-start justify-between gap-6 lg:flex-row lg:items-end">

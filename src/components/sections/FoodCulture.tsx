@@ -12,7 +12,7 @@ export function FoodCulture() {
   const dish = active !== null ? food[active] : null;
 
   return (
-    <section id="food" className="relative bg-snow py-24 sm:py-32 lg:py-40">
+    <section id="food" className="relative bg-snow py-8 sm:py-10 lg:py-12">
       <div className="mx-auto max-w-[1280px] px-5 sm:px-10">
         <div className="mb-14 flex flex-col items-start justify-between gap-6 lg:flex-row lg:items-end">
           <div>

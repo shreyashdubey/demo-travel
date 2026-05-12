@@ -200,6 +200,10 @@ export type JourneyHour = {
   title: string;
   detail: string;
   image?: string;
+  imageCredit?: {
+    text: string;
+    url?: string;
+  };
 };
 export type JourneyDay = {
   day: number;
@@ -227,8 +231,11 @@ export const spitiJourney: JourneyDay[] = [
         time: "07:30",
         title: "Pickup at Bhuntar airport",
         detail: "An Innova waiting with chai in a flask. Saroj's cousin Tashi is your driver, he's been doing this run since 2009.",
-        image:
-          "https://images.unsplash.com/photo-1483728642387-6c3bdd6c93e5?auto=format&fit=crop&w=900&q=80",
+        image: "/img/places/bhuntar-airport.jpg",
+        imageCredit: {
+          text: "Photo: Pinakpani, CC BY-SA 4.0",
+          url: "https://commons.wikimedia.org/wiki/File:Kullu_Manali_Airport_in_Bhunter_05.jpg",
+        },
       },
       {
         time: "10:00",
@@ -269,8 +276,6 @@ export const spitiJourney: JourneyDay[] = [
         time: "09:00",
         title: "Sissu waterfall stop",
         detail: "A frozen ribbon if it's December. The river still moves under the ice.",
-        image:
-          "https://images.unsplash.com/photo-1604152135912-04a022e23696?auto=format&fit=crop&w=900&q=80",
       },
       {
         time: "13:00",
@@ -281,7 +286,6 @@ export const spitiJourney: JourneyDay[] = [
         time: "18:00",
         title: "Arrive Kaza",
         detail: "Spiti's tiny administrative town. Thinner air. You may feel a small headache, drink water, walk slow.",
-        image: "/img/places/key-monastery.jpg",
       },
       {
         time: "21:00",
@@ -352,8 +356,6 @@ export const spitiJourney: JourneyDay[] = [
         time: "15:30",
         title: "Dhankar fort-monastery",
         detail: "On a knife-edge ridge above the Spiti river. Climb up to the lake if your lungs are willing (1.5 hr).",
-        image:
-          "https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?auto=format&fit=crop&w=900&q=80",
       },
       {
         time: "19:30",

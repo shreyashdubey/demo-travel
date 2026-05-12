@@ -5,7 +5,7 @@ import { testimonials } from "@/data/content";
 
 export function Testimonials() {
   return (
-    <section className="relative bg-glacier py-24 sm:py-32 lg:py-40">
+    <section className="relative bg-glacier py-8 sm:py-10 lg:py-12">
       <div className="mx-auto max-w-[1280px] px-5 sm:px-10">
         <div className="mb-12 flex flex-col items-start justify-between gap-6 lg:flex-row lg:items-end">
           <div>

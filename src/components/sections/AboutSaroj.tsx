@@ -6,7 +6,7 @@ import { trustPoints } from "@/data/content";
 
 export function AboutSaroj() {
   return (
-    <section id="saroj" className="relative bg-pine py-24 text-snow sm:py-32 lg:py-40">
+    <section id="saroj" className="relative bg-pine py-8 text-snow sm:py-10 lg:py-12">
       <div className="mx-auto max-w-[1280px] px-5 sm:px-10">
         <div className="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:gap-16">
           <div className="lg:col-span-5">
