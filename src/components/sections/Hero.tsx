@@ -24,7 +24,7 @@ export function Hero() {
       />
       <div className="absolute inset-0 bg-gradient-to-t from-night via-night/55 to-night/15" />
 
-      <div className="relative z-10 mx-auto flex h-full max-w-[1280px] flex-col justify-start px-5 pb-10 pt-20 sm:justify-end sm:px-10 sm:pb-20 sm:pt-0">
+      <div className="relative z-10 mx-auto flex h-full max-w-[1280px] flex-col justify-start px-5 pb-10 pt-20 sm:justify-end sm:px-10 sm:pb-56 sm:pt-0">
         <motion.div
           initial={{ opacity: 0, y: 18 }}
           animate={{ opacity: 1, y: 0 }}
