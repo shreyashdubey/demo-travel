@@ -2,10 +2,12 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
+import { useState } from "react";
 import { experiences } from "@/data/content";
 import { whatsappUrl } from "@/lib/contact";
 
 export function Experiences() {
+  const [openSlug, setOpenSlug] = useState<string | null>(null);
   return (
     <section
       id="experiences"
@@ -27,8 +29,10 @@ export function Experiences() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4">
-          {experiences.map((e, i) => (
+        <div className="grid grid-cols-2 gap-2.5 sm:gap-3 lg:grid-cols-4">
+          {experiences.map((e, i) => {
+            const isOpen = openSlug === e.slug;
+            return (
             <motion.article
               key={e.slug}
               initial={{ opacity: 0, y: 26 }}
@@ -39,7 +43,8 @@ export function Experiences() {
                 ease: [0.22, 1, 0.36, 1],
                 delay: (i % 4) * 0.06 + Math.floor(i / 4) * 0.1,
               }}
-              className="group relative aspect-[5/6] overflow-hidden rounded-[3px] bg-pine"
+              onClick={() => setOpenSlug(isOpen ? null : e.slug)}
+              className="group relative aspect-[5/6] cursor-pointer select-none overflow-hidden rounded-[3px] bg-pine"
             >
               <Image
                 src={e.image}
@@ -50,18 +55,29 @@ export function Experiences() {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-night/85 via-night/35 to-transparent transition-opacity duration-500 group-hover:from-night/70" />
 
-              <div className="absolute inset-x-0 top-0 p-5">
+              <div
+                aria-hidden
+                className={`absolute inset-0 bg-night/55 backdrop-blur-[3px] transition-opacity duration-500 ease-soft ${
+                  isOpen ? "opacity-100" : "opacity-0"
+                }`}
+              />
+
+              <div className="absolute inset-x-0 top-0 p-3.5 sm:p-5">
                 <ExpIcon name={e.icon} />
               </div>
 
-              <div className="absolute inset-x-0 bottom-0 p-5 text-snow">
-                <h3 className="font-display text-[26px] leading-none tracking-tightest">
+              <div className="absolute inset-x-0 bottom-0 p-3.5 text-snow sm:p-5">
+                <h3 className="font-display text-[20px] leading-none tracking-tightest sm:text-[26px]">
                   {e.title}
                 </h3>
-                <p className="mt-1 text-[11.5px] uppercase tracking-[0.18em] text-snow/70">
+                <p className="mt-1 text-[10.5px] uppercase tracking-[0.18em] text-snow/70 sm:text-[11.5px]">
                   {e.sub}
                 </p>
-                <p className="mt-3 max-h-0 overflow-hidden text-[13.5px] leading-snug text-snow/85 transition-all duration-700 ease-soft group-hover:max-h-32">
+                <p
+                  className={`mt-3 overflow-hidden text-[13.5px] leading-snug text-snow/90 transition-all duration-700 ease-soft [@media(hover:hover)]:group-hover:max-h-40 ${
+                    isOpen ? "max-h-40" : "max-h-0"
+                  }`}
+                >
                   {e.body}
                 </p>
                 <a
@@ -70,7 +86,8 @@ export function Experiences() {
                   )}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group/cta mt-4 inline-flex items-center gap-1.5 rounded-full bg-snow px-4 py-2 text-[12.5px] font-semibold text-pine shadow-md shadow-night/40 ring-1 ring-snow/60 transition-all duration-300 ease-soft hover:gap-2.5 hover:bg-white hover:shadow-lg hover:shadow-night/50"
+                  onClick={(ev) => ev.stopPropagation()}
+                  className="group/cta mt-3 inline-flex items-center gap-1.5 rounded-full bg-snow px-3 py-1.5 text-[11.5px] font-semibold text-pine shadow-md shadow-night/40 ring-1 ring-snow/60 transition-all duration-300 ease-soft hover:gap-2.5 hover:bg-white hover:shadow-lg hover:shadow-night/50 sm:mt-4 sm:px-4 sm:py-2 sm:text-[12.5px]"
                 >
                   Enquire for free
                   <svg
@@ -88,7 +105,8 @@ export function Experiences() {
                 </a>
               </div>
             </motion.article>
-          ))}
+            );
+          })}
         </div>
       </div>
     </section>
