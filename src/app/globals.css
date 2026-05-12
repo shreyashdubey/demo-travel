@@ -18,6 +18,10 @@ body {
   scroll-behavior: smooth;
 }
 
+html {
+  scroll-padding-top: 80px;
+}
+
 ::selection {
   background: #3a4a2f;
   color: #f1e4cb;

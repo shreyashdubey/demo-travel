@@ -109,7 +109,24 @@ export function Hero() {
             </a>
 
             <a
-              href="#seasons"
+              href="#journeys"
+              onClick={(ev) => {
+                ev.preventDefault();
+                const target = document.getElementById("journeys");
+                if (!target) return;
+                const topBar = document.querySelector("header") as HTMLElement | null;
+                const topBarHeight = topBar?.offsetHeight ?? 60;
+                const intoSection = 140;
+                const y =
+                  target.getBoundingClientRect().top +
+                  window.pageYOffset -
+                  topBarHeight +
+                  intoSection;
+                window.scrollTo({ top: y, behavior: "smooth" });
+                if (typeof history !== "undefined") {
+                  history.pushState(null, "", "#journeys");
+                }
+              }}
               className="group inline-flex items-center gap-2.5 rounded-full border border-snow/30 bg-white/10 px-4 py-2.5 text-[13.5px] font-medium text-snow backdrop-blur transition-all hover:border-snow/60 hover:bg-white/20"
             >
               <span className="relative grid h-7 w-7 place-items-center rounded-full bg-snow text-pine">
@@ -141,7 +158,20 @@ export function Hero() {
           {/* Primary CTAs */}
           <div className="mt-4 flex flex-col items-stretch gap-3 sm:flex-row sm:items-center sm:gap-3">
             <a
-              href="#journeys"
+              href="#journey"
+              onClick={(ev) => {
+                ev.preventDefault();
+                const target = document.getElementById("journey");
+                if (!target) return;
+                const topBar = document.querySelector("header") as HTMLElement | null;
+                const offset = (topBar?.offsetHeight ?? 60) + 12;
+                const y =
+                  target.getBoundingClientRect().top + window.pageYOffset - offset;
+                window.scrollTo({ top: y, behavior: "smooth" });
+                if (typeof history !== "undefined") {
+                  history.pushState(null, "", "#journey");
+                }
+              }}
               className="inline-flex items-center justify-center gap-2 rounded-full bg-snow px-6 py-3.5 text-[15px] font-semibold text-pine transition-colors hover:bg-white"
             >
               See all journeys
