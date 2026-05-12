@@ -31,12 +31,34 @@ export function Hero() {
           transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
         >
           {/* Trust pill, credentials at a glance */}
-          <div className="mb-4 inline-flex flex-wrap items-center gap-x-3 gap-y-1 rounded-full border border-white/25 bg-white/15 px-4 py-2 text-[12.5px] text-snow backdrop-blur">
-            <span className="font-medium">🏔 Based in Kullu</span>
-            <span className="opacity-50">·</span>
-            <span>Since 2017</span>
-            <span className="opacity-50">·</span>
-            <span>11 homestay families</span>
+          <div className="mb-4 flex flex-wrap items-center gap-2.5">
+            <div className="inline-flex flex-wrap items-center gap-x-3 gap-y-1 rounded-full border border-white/25 bg-white/15 px-4 py-2 text-[12.5px] text-snow backdrop-blur">
+              <span className="font-medium">🏔 Based in Kullu</span>
+              <span className="opacity-50">·</span>
+              <span>Since 2017</span>
+              <span className="opacity-50">·</span>
+              <span>11 homestay families</span>
+            </div>
+
+            <a
+              href="https://www.instagram.com/wanderingsayatravels/"
+              target="_blank"
+              rel="noopener noreferrer me"
+              aria-label="Follow Wandering Saya Travels on Instagram"
+              className="group inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/15 py-1.5 pl-1.5 pr-3.5 text-[12.5px] text-snow backdrop-blur transition-all hover:border-white/45 hover:bg-white/25"
+            >
+              <span className="grid h-6 w-6 place-items-center rounded-full bg-gradient-to-tr from-[#F58529] via-[#DD2A7B] to-[#8134AF] text-white shadow-sm transition-transform group-hover:scale-105">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+                  <rect x="3" y="3" width="18" height="18" rx="5" />
+                  <circle cx="12" cy="12" r="3.6" />
+                  <circle cx="17.6" cy="6.4" r="0.6" fill="currentColor" />
+                </svg>
+              </span>
+              <span className="flex items-baseline gap-1.5">
+                <span className="font-medium">@wanderingsayatravels</span>
+                <span className="hidden text-snow/65 sm:inline">— follow the journey</span>
+              </span>
+            </a>
           </div>
 
           <h1 className="font-display text-balance text-[36px] leading-[1.02] tracking-tightest sm:text-[68px] lg:text-[96px]">
