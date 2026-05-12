@@ -141,35 +141,47 @@ export function HiddenHimachal() {
                     <p className="mt-3 text-[13.5px] leading-snug text-snow/85">{p.detail}</p>
 
                     {shot ? (
-                      <button
-                        type="button"
-                        onClick={() => setOpenSlug(p.slug)}
-                        className="group/cta mt-4 inline-flex items-center gap-2 rounded-full bg-snow px-5 py-2.5 text-[13px] font-semibold text-pine shadow-lg shadow-snow/40 transition-all duration-300 ease-soft hover:gap-3 hover:bg-white"
-                      >
-                        <svg
-                          width="13"
-                          height="13"
-                          viewBox="0 0 24 24"
-                          fill="currentColor"
-                          aria-hidden
+                      <div className="mt-4 flex flex-wrap items-center gap-2">
+                        <button
+                          type="button"
+                          onClick={() => setOpenSlug(p.slug)}
+                          className="group/cta inline-flex items-center gap-2 rounded-full bg-snow px-4 py-2 text-[12.5px] font-semibold text-pine shadow-lg shadow-snow/40 transition-all duration-300 ease-soft hover:gap-3 hover:bg-white"
                         >
-                          <path d="M8 5v14l11-7Z" />
-                        </svg>
-                        See {mediaCount > 1 ? `${mediaCount} ` : ""}photos
-                        {hasVideo ? " + video" : ""}
-                        <svg
-                          width="13"
-                          height="13"
-                          viewBox="0 0 24 24"
-                          fill="none"
-                          stroke="currentColor"
-                          strokeWidth="2.4"
-                          aria-hidden
-                          className="transition-transform duration-300 ease-soft group-hover/cta:translate-x-0.5"
+                          <svg
+                            width="12"
+                            height="12"
+                            viewBox="0 0 24 24"
+                            fill="currentColor"
+                            aria-hidden
+                          >
+                            <path d="M8 5v14l11-7Z" />
+                          </svg>
+                          See {mediaCount > 1 ? `${mediaCount} ` : ""}photos
+                          {hasVideo ? " + video" : ""}
+                        </button>
+                        <a
+                          href={whatsappUrl(
+                            `Hi Saroj, I'd like to enquire about a trip to ${p.name} (${p.region}).`,
+                          )}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="group/cta2 inline-flex items-center gap-1.5 rounded-full bg-alpenglow px-4 py-2 text-[12.5px] font-semibold text-snow shadow-lg shadow-alpenglow/40 ring-1 ring-alpenglow/70 transition-all duration-300 ease-soft hover:gap-2.5 hover:bg-[#cc6747]"
                         >
-                          <path d="M5 12h14m-6-6 6 6-6 6" />
-                        </svg>
-                      </button>
+                          Enquire
+                          <svg
+                            width="12"
+                            height="12"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            strokeWidth="2.4"
+                            aria-hidden
+                            className="transition-transform duration-300 ease-soft group-hover/cta2:translate-x-0.5"
+                          >
+                            <path d="M5 12h14m-6-6 6 6-6 6" />
+                          </svg>
+                        </a>
+                      </div>
                     ) : (
                       <a
                         href={whatsappUrl(

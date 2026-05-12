@@ -9,7 +9,7 @@ export function Experiences() {
   return (
     <section
       id="experiences"
-      className="relative overflow-hidden bg-snow pb-24 pt-12 sm:pb-32 sm:pt-16 lg:pb-40 lg:pt-20"
+      className="relative overflow-hidden bg-snow pb-10 pt-8 sm:pb-12 sm:pt-12 lg:pb-16 lg:pt-16"
     >
       <div className="mx-auto max-w-[1280px] px-5 sm:px-10">
         <div className="mb-14 flex flex-col items-start justify-between gap-6 lg:flex-row lg:items-end">

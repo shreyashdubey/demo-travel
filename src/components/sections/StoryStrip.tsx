@@ -16,7 +16,7 @@ export function StoryStrip() {
   return (
     <section
       ref={ref}
-      className="relative bg-snow pt-14 pb-4 sm:pt-20 sm:pb-8 lg:pt-24 lg:pb-10"
+      className="relative bg-snow pt-6 pb-2 sm:pt-8 sm:pb-3 lg:pt-10 lg:pb-4"
     >
       <div className="mx-auto grid max-w-[1280px] grid-cols-1 items-center gap-10 px-5 sm:px-10 lg:grid-cols-12 lg:gap-16">
         <div className="lg:col-span-5">
