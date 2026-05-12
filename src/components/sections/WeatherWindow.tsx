@@ -7,9 +7,9 @@ import { roadStatus } from "@/data/content";
 import { whatsappUrl } from "@/lib/contact";
 
 const STATE_STYLE: Record<string, string> = {
-  open: "text-pine",
-  caution: "text-alpenglow",
-  closed: "text-mist",
+  open: "bg-emerald-600 text-white",
+  caution: "bg-amber-500 text-white",
+  closed: "bg-rose-600 text-white",
 };
 
 type MonthRow = { name: string; snow: number; temp: string; note: string };
@@ -134,11 +134,11 @@ export function WeatherWindow() {
 
         {/* Road status, updated by our driver network */}
         <div className="mb-10 rounded-[3px] border border-pine/10 bg-white p-5">
-          <div className="flex flex-wrap items-baseline justify-between gap-2 border-b border-pine/10 pb-3">
-            <p className="font-mono text-[11px] uppercase tracking-[0.22em] text-pine">
+          <div className="flex flex-wrap items-end justify-between gap-3 border-b border-pine/15 pb-4">
+            <h3 className="font-display text-[32px] leading-[1] tracking-tightest text-pine sm:text-[40px]">
               Roads today
-            </p>
-            <p className="text-[11.5px] text-pine/55">
+            </h3>
+            <p className="text-[12.5px] text-pine/55">
               Last checked {roadStatus.updated} · by {roadStatus.by}
             </p>
           </div>
@@ -150,16 +150,18 @@ export function WeatherWindow() {
               return (
                 <li key={r.name} className="rounded-[3px] bg-glacier/50 p-4">
                   <div className="flex items-start justify-between gap-3">
-                    <span className="text-[14px] font-medium text-pine">{r.name}</span>
+                    <span className="text-[17px] font-semibold leading-tight text-pine">
+                      {r.name}
+                    </span>
                     <span
-                      className={`flex-none text-[10.5px] font-medium uppercase tracking-[0.18em] ${STATE_STYLE[r.state]}`}
+                      className={`flex-none rounded-full px-2.5 py-1 text-[10.5px] font-semibold uppercase tracking-[0.16em] ${STATE_STYLE[r.state]}`}
                     >
                       {r.status}
                     </span>
                   </div>
-                  <div aria-hidden className="my-2.5 h-px bg-pine/12" />
-                  <p className="text-[12.5px] leading-[1.55] text-pine/70">
-                    <span className="font-medium text-pine/95">{lede}</span>
+                  <div aria-hidden className="my-3 h-px bg-pine/15" />
+                  <p className="text-[14.5px] leading-[1.55] text-pine/80">
+                    <span className="font-semibold text-pine">{lede}</span>
                     {rest && " "}
                     {rest}
                   </p>
