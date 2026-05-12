@@ -20,7 +20,7 @@ export function Packages({
 }) {
   return (
     <section id="journeys" className="relative overflow-hidden bg-snow py-24 sm:py-32 lg:py-40">
-      {/* Decorative rhododendron illustration */}
+      {/* Decorative rhododendron illustration, right side */}
       <img
         src="/decorations/rhododendron.svg"
         alt=""
@@ -28,7 +28,15 @@ export function Packages({
         className="pointer-events-none absolute right-[-180px] top-[20px] h-[340px] w-[340px] -rotate-[30deg] select-none opacity-80 mix-blend-multiply sm:h-[460px] sm:w-[460px] lg:h-[560px] lg:w-[560px]"
       />
 
-      <div className="relative mx-auto max-w-[1280px] px-5 sm:px-10">
+      {/* Decorative apple illustration, left side */}
+      <img
+        src="/decorations/apple.png?v=2"
+        alt=""
+        aria-hidden
+        className="pointer-events-none absolute left-[-100px] top-[-50px] h-[340px] w-[340px] -rotate-[25deg] select-none opacity-90 sm:h-[460px] sm:w-[460px] lg:h-[560px] lg:w-[560px]"
+      />
+
+      <div className="relative mx-auto max-w-[1280px] px-5 pt-52 sm:px-10 sm:pt-72">
         <div className="mb-10 flex flex-col items-start justify-between gap-6 lg:flex-row lg:items-end">
           <div>
             <p className="mb-4 text-[12px] uppercase tracking-[0.22em] text-dusk">
