@@ -113,10 +113,23 @@ export function Hero() {
               className="group inline-flex items-center gap-2.5 rounded-full border border-snow/30 bg-white/10 px-4 py-2.5 text-[13.5px] font-medium text-snow backdrop-blur transition-all hover:border-snow/60 hover:bg-white/20"
             >
               <span className="relative grid h-7 w-7 place-items-center rounded-full bg-snow text-pine">
-                <span className="absolute inset-0 rounded-full">
-                  <span className="absolute inset-0 animate-ping rounded-full bg-alpenglow/40" />
-                </span>
-                <span className="relative inline-block h-2 w-2 rounded-full bg-alpenglow" />
+                <span
+                  aria-hidden
+                  className="animate-soft-ping absolute inset-0 rounded-full"
+                  style={{ background: "rgba(74, 222, 128, 0.45)" }}
+                />
+                <span
+                  aria-hidden
+                  className="animate-soft-ping absolute inset-0 rounded-full"
+                  style={{ background: "rgba(74, 222, 128, 0.3)", animationDelay: "0.8s" }}
+                />
+                <span
+                  className="animate-soft-breathe relative inline-block h-2 w-2 rounded-full"
+                  style={{
+                    background: "#4ADE80",
+                    boxShadow: "0 0 8px rgba(74, 222, 128, 0.65)",
+                  }}
+                />
               </span>
               <span>
                 3 seasons opening
