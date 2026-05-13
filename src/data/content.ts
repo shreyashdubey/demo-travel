@@ -616,24 +616,30 @@ export const hiddenPlaces = [
         "/img/places/mathsaur/mathsaur-2.jpg",
         "/img/places/mathsaur/mathsaur-3.jpg",
       ],
-      video: "/video/mathsaur.mp4",
+      videos: ["/video/mathsaur.mp4"],
     },
   },
-  // Dhanasar Lake, glacial lake we've actually walked to.
+  // Dehnasar Lake (also called Dansar or Daina Sar), glacial lake we've walked to.
   {
     slug: "dhanasar",
     name: "Dehnasar Lake",
-    region: "Chota Bhangal, Kangra",
+    region: "Barot Valley, Kangra",
     elevation: "4,280 m",
     stat: "📷",
     statLabel: "Our own photos",
     detail:
-      "A high alpine glacial lake in the Dhauladhar, at the foot of Ghora Lotnu peak. Reached by a 14 km climb from Polling village in Chota Bhangal, a hard single push, easier in two days. Half-frozen most of the year, and almost nobody up there with you.",
+      "A high alpine lake in the Dhauladhar, at the foot of Ghora Lotnu peak. Sacred to the Gaddi community, who gather here for a holy bath on the 20th of Bhadrapada. The trail is open only June to September. The rest of the year the lake is locked under snow.",
     image: "/img/places/dhanasar/dhanasar-1.jpg",
     shotByUs: {
       photos: [
         "/img/places/dhanasar/dhanasar-1.jpg",
         "/img/places/dhanasar/dhanasar-2.jpg",
+        "/img/places/dhanasar/dhanasar-3.jpg",
+        "/img/places/dhanasar/dhanasar-4.jpg",
+        "/img/places/dhanasar/dhanasar-5.jpg",
+        "/img/places/dhanasar/dhanasar-6.jpg",
+        "/img/places/dhanasar/dhanasar-7.jpg",
+        "/img/places/dhanasar/dhanasar-8.jpg",
       ],
     },
   },
@@ -650,6 +656,47 @@ export const hiddenPlaces = [
     image: "/img/places/bijli-mahadev.jpg",
     shotByUs: {
       photos: ["/img/places/bijli-mahadev.jpg"],
+    },
+  },
+  // Panch Dhar, a quiet ridge above the valley our travellers ask us back to.
+  {
+    slug: "panch-dhar",
+    name: "Panch Dhar",
+    region: "Kullu",
+    elevation: "",
+    stat: "📷",
+    statLabel: "Our own photo and video",
+    detail:
+      "A ridge above the valley our travellers keep asking us back to. The photo and the vlog were both shot on a recent trip, by us and by a traveller we walked up with.",
+    image: "/img/places/panch-dhar.jpg",
+    shotByUs: {
+      photos: ["/img/places/panch-dhar.jpg"],
+      videos: ["/video/panch-dhar.mp4"],
+    },
+  },
+  // Tiun in Lug Valley, a secluded Kullu side-valley with low-altitude walks.
+  {
+    slug: "tiun-lug-valley",
+    name: "Tiun, Lug Valley",
+    region: "Sarwari Khad, Kullu",
+    elevation: "Up to 3,000 m",
+    stat: "🎥",
+    statLabel: "Our own videos",
+    detail:
+      "Lug Valley is one of the quietest folds of Kullu. From Tiun the trails climb gently to Pajaund Galu and Sari Galu through pine and oak. A handful of short vlogs from our recent walks in.",
+    image: "/img/places/chai-in-valley.jpg",
+    shotByUs: {
+      photos: ["/img/places/chai-in-valley.jpg"],
+      videos: [
+        "/video/tiun-lugvalley-vlog.mp4",
+        "/video/tiun-lugvalley-1.mp4",
+        "/video/tiun-lugvalley-2.mp4",
+        "/video/tiun-lugvalley-3.mp4",
+        "/video/tiun-lugvalley-4.mp4",
+        "/video/lugvalley-vlog-2.mp4",
+        "/video/lugvalley-vlog-3.mp4",
+        "/video/tiun-vlog-1.mp4",
+      ],
     },
   },
   {

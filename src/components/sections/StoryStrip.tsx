@@ -64,14 +64,14 @@ export function StoryStrip() {
               className="relative aspect-[5/6] overflow-hidden rounded-[2px] ring-1 ring-gold/30 lg:aspect-[4/5]"
             >
               <Image
-                src="/img/places/kullu-valley.jpg"
-                alt="Kullu valley, pine forests, snow ridges, the Beas below"
+                src="/img/saroj/founder.jpg"
+                alt="Saroj Thakur, founder of Wandering Saya Travels, in Kullu, Himachal Pradesh."
                 fill
                 className="object-cover"
                 sizes="(min-width: 1024px) 40vw, 100vw"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-pine via-pine/30 to-transparent" />
-              <div className="absolute inset-0 bg-gradient-to-tr from-gold/15 via-transparent to-transparent mix-blend-overlay" />
+              <div className="absolute inset-0 bg-gradient-to-t from-pine/80 via-pine/15 to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-tr from-gold/10 via-transparent to-transparent mix-blend-overlay" />
             </motion.div>
 
             <div className="mt-6 flex items-center gap-3">

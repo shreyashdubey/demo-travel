@@ -12,7 +12,7 @@ type HiddenPlace = (typeof hiddenPlaces)[number];
 function hasShotByUs(
   p: HiddenPlace,
 ): p is HiddenPlace & {
-  shotByUs: { photos: readonly string[]; video?: string };
+  shotByUs: { photos: readonly string[]; videos?: readonly string[] };
 } {
   return "shotByUs" in p && p.shotByUs !== undefined;
 }
@@ -35,12 +35,9 @@ export function HiddenHimachal() {
   const lightboxItems: MediaItem[] = useMemo(() => {
     if (!openPlace || !hasShotByUs(openPlace)) return [];
     const items: MediaItem[] = [];
-    if (openPlace.shotByUs.video) {
-      items.push({
-        type: "video",
-        src: openPlace.shotByUs.video,
-        poster: openPlace.shotByUs.photos[0],
-      });
+    const poster = openPlace.shotByUs.photos[0];
+    for (const v of openPlace.shotByUs.videos ?? []) {
+      items.push({ type: "video", src: v, poster });
     }
     for (const photo of openPlace.shotByUs.photos) {
       items.push({
@@ -79,11 +76,11 @@ export function HiddenHimachal() {
         <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {hiddenPlaces.map((p, i) => {
             const shot = hasShotByUs(p);
-            const mediaCount =
-              shot && p.shotByUs
-                ? p.shotByUs.photos.length + (p.shotByUs.video ? 1 : 0)
-                : 0;
-            const hasVideo = shot && Boolean(p.shotByUs?.video);
+            const videoCount = shot ? p.shotByUs.videos?.length ?? 0 : 0;
+            const mediaCount = shot
+              ? p.shotByUs.photos.length + videoCount
+              : 0;
+            const hasVideo = videoCount > 0;
             const hiddenOnMobile = i >= MOBILE_VISIBLE && !showAllMobile;
 
             return (
@@ -106,7 +103,7 @@ export function HiddenHimachal() {
                 <div className="relative aspect-[4/5]">
                   <Image
                     src={p.image}
-                    alt={`${p.name}, ${p.region}, Himachal Pradesh (${p.elevation}). ${p.statLabel}.`}
+                    alt={`${p.name}, ${p.region}, Himachal Pradesh${p.elevation ? ` (${p.elevation})` : ""}. ${p.statLabel}.`}
                     fill
                     sizes="(min-width: 1024px) 30vw, (min-width: 640px) 46vw, 92vw"
                     className="object-cover transition-transform duration-[1400ms] ease-soft group-hover:scale-105"
@@ -135,7 +132,7 @@ export function HiddenHimachal() {
                   {/* Content */}
                   <div className="absolute inset-x-0 bottom-0 p-5">
                     <p className="text-[10.5px] uppercase tracking-[0.22em] text-snow/65">
-                      {p.region} · {p.elevation}
+                      {p.elevation ? `${p.region} · ${p.elevation}` : p.region}
                     </p>
                     <h3 className="mt-1 font-display text-[30px] leading-none tracking-tightest">
                       {p.name}
@@ -240,7 +237,7 @@ export function HiddenHimachal() {
                       See {hiddenOnMobileCount} more places
                     </span>
                     <span className="mt-1 text-[12px] font-semibold uppercase tracking-[0.1em] text-pine">
-                      Hikkim · Chitkul · Malana · Pangi
+                      Tiun · Komic · Hikkim · Chitkul
                     </span>
                   </span>
                   <span className="relative inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-pine text-snow transition-transform duration-300 ease-soft group-hover:translate-y-0.5">
