@@ -14,10 +14,10 @@ const SAME_AS = [
 
 const ADDRESS = {
   "@type": "PostalAddress",
-  streetAddress: "Patlikuhl",
+  streetAddress: "Village Tharass, PO Hurla, Tehsil Bhuntar",
   addressLocality: "Kullu",
   addressRegion: "Himachal Pradesh",
-  postalCode: "175130",
+  postalCode: "175125",
   addressCountry: "IN",
 } as const;
 

@@ -92,9 +92,9 @@ export function Footer() {
             <div className="min-w-0">
               <p className="text-[12px] uppercase tracking-[0.22em] text-snow/55">The office</p>
               <ul className="mt-4 space-y-2 text-[14.5px] text-snow/85">
-                <li>Patlikuhl, Kullu</li>
-                <li>Himachal Pradesh 175130</li>
-                <li>India</li>
+                <li>Village Tharass, PO Hurla</li>
+                <li>Tehsil Bhuntar, Kullu</li>
+                <li>Himachal Pradesh 175125, India</li>
               </ul>
             </div>
             <div className="min-w-0">
